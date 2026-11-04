@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amol Joshi — Full-stack developer</title>
+<meta name="description" content="Full-stack developer in Ratnagiri, India, with 11+ years of experience, building and shipping web platforms and mobile apps in Ruby on Rails, Vue and React Native.">
+<meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16130f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://amolmjoshi93.github.io/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Amol Joshi — Full-stack developer">
+<meta property="og:description" content="Web platforms and mobile apps, built and shipped end to end. Rails, Vue, React Native.">
+<meta property="og:url" content="https://amolmjoshi93.github.io/">
+<meta property="og:image" content="https://amolmjoshi93.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Amol Joshi","jobTitle":"Full-stack developer","url":"https://amolmjoshi93.github.io/","address":{"@type":"PostalAddress","addressLocality":"Ratnagiri","addressCountry":"IN"},"sameAs":["https://github.com/amolmjoshi93"]}
+</script>
+</head>
+<body>
+<a class="skip" href="#work">Skip to work</a>
+
+<header class="top wrap">
+  <a class="mark" href="#top" aria-label="Amol Joshi, home">Amol Joshi</a>
+  <nav aria-label="Primary">
+    <a href="#work">Work</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <p class="eyebrow">Full-stack developer · Ratnagiri, India</p>
+    <h1>I build whole products, from the first migration to the <em>store&nbsp;listing.</em></h1>
+    <p class="lede">Over 11 years of building web applications, mostly in Ruby on Rails and Vue, and more recently mobile apps in React Native. I handle the whole job myself, from the data model to deployment and store release.</p>
+    <dl class="facts">
+      <div><dt>Years building</dt><dd>11+</dd></div>
+      <div><dt>Products below</dt><dd>10</dd></div>
+      <div><dt>Commits across them</dt><dd>1,900+</dd></div>
+      <div><dt>Apps in stores</dt><dd>5</dd></div>
+    </dl>
+  </section>
+
+  <section id="work" class="wrap" aria-labelledby="work-h">
+    <div class="sect">
+      <h2 id="work-h">Selected work</h2>
+      <p>The source for these is private, so each one links to the live product where there is one.</p>
+    </div>
+
+    <article class="case">
+      <div class="case-side">
+        <img src="assets/icons/school.webp" width="88" height="88" alt="" class="ico ico-light" loading="lazy">
+        <p class="status"><span class="dot live"></span>Live · waitlist open</p>
+      </div>
+      <div class="case-body">
+        <h3>Smart School</h3>
+        <p class="kicker">Multi-tenant school management platform</p>
+        <p>One deployment serves many schools, each on its own subdomain with its own branding, roles, data and billing. It covers admissions, attendance, timetabling, homework, exams and report cards, fee collection and parent communication. Lighter modes support solo tutors and field-service contractors.</p>
+        <ul class="points">
+          <li>Two interfaces on one backend: server-rendered Hotwire, and a Vue 3 single-page app over a JSON API. Each account chooses which one it uses.</li>
+          <li>Role-based access enforced on every action, endpoint and dashboard widget.</li>
+          <li>Online fee payments through Razorpay, plus GST invoicing, an add-on marketplace and metered SMS and WhatsApp.</li>
+          <li>Realtime notifications through ActionCable, with Web Push for closed PWAs.</li>
+        </ul>
+        <dl class="scale">
+          <div><dd>1,380+</dd><dt>commits</dt></div>
+          <div><dd>1,270+</dd><dt>spec files</dt></div>
+          <div><dd>440+</dd><dt>Vue components</dt></div>
+          <div><dd>220+</dd><dt>models</dt></div>
+        </dl>
+        <ul class="tags"><li>Rails 8.1</li><li>Vue 3</li><li>Pinia</li><li>PostgreSQL</li><li>Hotwire</li><li>Tailwind 4</li><li>Solid Queue</li><li>Razorpay</li><li>Kamal</li></ul>
+        <p class="links"><a href="https://managemysmartschool.co.in" rel="noopener">managemysmartschool.co.in <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-side">
+        <img src="assets/icons/news.webp" width="88" height="88" alt="" class="ico" loading="lazy">
+        <p class="status"><span class="dot live"></span>Live</p>
+      </div>
+      <div class="case-body">
+        <h3>Positive News Daily</h3>
+        <p class="kicker">A news reader that only carries good news</p>
+        <p>Background jobs scrape news portals on a schedule, an LLM decides which stories are genuinely uplifting, and another pass writes a short summary so readers can skip the long version. Stories come from India and around the world in over a dozen languages, on the web and in an Android app.</p>
+        <ul class="points">
+          <li>Scraping and summarising run as separate queued jobs, with daily tracking of AI token use and cost.</li>
+          <li>Classification falls back from DeepSeek to Claude to an offline model, so the feed keeps moving through an outage. A multilingual headline prefilter skips the paid call for obvious rejects.</li>
+          <li>Subscriptions through Razorpay and Google Play, rewarded ads, comments with moderation, and weekly digests.</li>
+        </ul>
+        <ul class="tags"><li>Rails 8.1</li><li>PostgreSQL</li><li>DeepSeek</li><li>Claude API</li><li>Hotwire</li><li>Tailwind</li><li>Razorpay</li><li>Solid Queue</li><li>Kamal</li></ul>
+        <p class="links">
+          <a href="https://positivenewsdaily.xyz" rel="noopener">positivenewsdaily.xyz <span aria-hidden="true">↗</span></a>
+          <a href="https://www.indusappstore.com/apps/news/positive-news-daily/com.apnaprogrammer.ainewsaggregator/?page=details&amp;id=com.apnaprogrammer.ainewsaggregator" rel="noopener">Indus Appstore <span aria-hidden="true">↗</span></a>
+        </p>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-side">
+        <img src="assets/icons/finance.webp" width="88" height="88" alt="" class="ico" loading="lazy">
+        <p class="status"><span class="dot live"></span>On Google Play</p>
+      </div>
+      <div class="case-body">
+        <h3>Finance Planner</h3>
+        <p class="kicker">Offline personal finance for Indian households</p>
+        <p>Budgets, EMIs, SIPs, tax, insurance and net worth, all on the phone with no account, bank login or server. The dashboard sets aside money already committed to rent, bills and EMIs, and shows what is really left to spend this month.</p>
+        <ul class="points">
+          <li>Fully local data model with recurring transactions materialised on app start.</li>
+          <li>Available in five languages: English, Hindi, Marathi, Gujarati and Bengali.</li>
+          <li>Covered by 50 Jest test files.</li>
+        </ul>
+        <ul class="tags"><li>React Native</li><li>Expo</li><li>TypeScript</li><li>Zustand</li><li>NativeWind</li><li>i18next</li><li>Jest</li></ul>
+        <p class="links">
+          <a href="https://play.google.com/store/apps/details?id=com.apnaprogrammer.financeplanner" rel="noopener">Google Play <span aria-hidden="true">↗</span></a>
+          <a href="https://www.indusappstore.com/apps/finance/finance-planner/com.apnaprogrammer.financeplanner/?page=details&amp;id=com.apnaprogrammer.financeplanner" rel="noopener">Indus Appstore <span aria-hidden="true">↗</span></a>
+        </p>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-side">
+        <img src="assets/icons/dasbodh.webp" width="88" height="88" alt="" class="ico" loading="lazy">
+        <p class="status"><span class="dot live"></span>On Google Play</p>
+      </div>
+      <div class="case-body">
+        <h3><span lang="mr" class="deva">दासबोध</span> Dasbodh</h3>
+        <p class="kicker">Offline reader for the works of Samarth Ramdas Swami</p>
+        <p>All 200 samas and 7,751 ovis of the Dasbodh, plus Manache Shlok and Atmaram, in Devanagari. It has no accounts, ads or analytics, and it never needs the internet. The care went into the text itself: readings were compared word by word against printed and online sources, and changed only when at least two sources agreed.</p>
+        <ul class="points">
+          <li>Search with Devanagari-normalised matching across every verse.</li>
+          <li>Short Marathi meanings bundled offline, shown on long-press.</li>
+          <li>Read-aloud using the phone's own Marathi text-to-speech voice, with a spelling clean-up layer for the older text.</li>
+        </ul>
+        <ul class="tags"><li>React Native</li><li>Expo Router</li><li>TypeScript</li><li>Text-to-speech</li></ul>
+        <p class="links">
+          <a href="https://play.google.com/store/apps/details?id=com.apnaprogrammer.dasbodh" rel="noopener">Google Play <span aria-hidden="true">↗</span></a>
+          <a href="https://www.indusappstore.com/apps/devotional/dasbodh/com.apnaprogrammer.dasbodh/?page=details&amp;id=com.apnaprogrammer.dasbodh" rel="noopener">Indus Appstore <span aria-hidden="true">↗</span></a>
+        </p>
+      </div>
+    </article>
+
+    <h3 class="sub">Also built</h3>
+    <div class="grid">
+      <article class="card">
+        <img src="assets/icons/vehicle.webp" width="48" height="48" alt="" class="ico" loading="lazy">
+        <h4><a href="https://www.indusappstore.com/apps/auto-and-vehicles/vehicle-service-tracker/com.apnaprogrammer.vehicleservicetracker/?page=details&amp;id=com.apnaprogrammer.vehicleservicetracker" rel="noopener">Vehicle Service Tracker <span aria-hidden="true">↗</span></a></h4>
+        <p>Service history, maintenance schedules, insurance and document expiry, fuel economy, trips and tyres for every vehicle you own, with local reminders.</p>
+        <p class="meta">React Native · Expo · TypeScript</p>
+      </article>
+      <article class="card">
+        <img src="assets/icons/inventory.webp" width="48" height="48" alt="" class="ico" loading="lazy">
+        <h4>SmartInventory</h4>
+        <p>Offline-first shop management: barcode scanning and label printing, GST invoices as PDFs, stock that reconciles when an invoice is edited, and an app lock.</p>
+        <p class="meta">React Native · Expo · TypeScript</p>
+      </article>
+      <article class="card">
+        <img src="assets/icons/duplicates.webp" width="48" height="48" alt="" class="ico" loading="lazy">
+        <h4>Duplicate Image Finder</h4>
+        <p>Windows desktop app that finds exact and near-duplicate photos across JPEG, HEIC and PNG using perceptual hashing, then recommends the best copy to keep and says why.</p>
+        <p class="meta">Python · PySide6 · Perceptual hashing</p>
+      </article>
+      <article class="card">
+        <span class="ico glyph" aria-hidden="true">→</span>
+        <h4>ForwardFlow</h4>
+        <p>Self-hosted WhatsApp forwarding on the official Meta Business API. Rules filter by keyword, sender or media type, and every recipient has to opt in first.</p>
+        <p class="meta">Rails 8.1 · Hotwire · Meta WhatsApp API</p>
+      </article>
+      <article class="card">
+        <img src="assets/icons/waterproofing.webp" width="48" height="48" alt="" class="ico" loading="lazy">
+        <h4><a href="https://www.indusappstore.com/apps/business/waterproofing-calculator/com.apnaprogrammer.waterproofing_calculator/?page=details&amp;id=com.apnaprogrammer.waterproofing_calculator" rel="noopener">Waterproofing Calculator <span aria-hidden="true">↗</span></a></h4>
+        <p>Field tool for contractors. It turns area, thickness and mortar ratio into material and labour estimates, then saves them as customer quotes you can share as PDFs.</p>
+        <p class="meta">React Native · Expo · TypeScript</p>
+      </article>
+      <article class="card">
+        <span class="ico glyph glyph-cane" aria-hidden="true">₹</span>
+        <h4>Sugarcane Juice Profit Calculator</h4>
+        <p>Works out the real margin on a juice stall from cane cost, yield, power, rent and wages. Available in English, Hindi, Marathi and Gujarati, with PDF exports and a PWA.</p>
+        <p class="meta">Rails 8.1 · Hotwire · Tailwind · RSpec</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="stack" class="wrap" aria-labelledby="stack-h">
+    <div class="sect">
+      <h2 id="stack-h">What I work with</h2>
+      <p>Only what is running in the projects above.</p>
+    </div>
+    <dl class="stack">
+      <div><dt>Backend</dt><dd>Ruby on Rails 8, PostgreSQL, SQLite, Solid Queue, Solid Cache, Solid Cable, JSON APIs</dd></div>
+      <div><dt>Frontend</dt><dd>Vue 3, Pinia, Hotwire (Turbo and Stimulus), Tailwind CSS, PWAs</dd></div>
+      <div><dt>Mobile</dt><dd>React Native, Expo, TypeScript, Zustand, EAS builds, Play and Indus releases</dd></div>
+      <div><dt>AI</dt><dd>LLM classification and summarising in production (DeepSeek, Claude), provider fallback, AI-assisted development workflows</dd></div>
+      <div><dt>Payments</dt><dd>Razorpay checkout and webhooks, subscription plans, GST invoicing</dd></div>
+      <div><dt>Delivery</dt><dd>Docker, Kamal 2, GitHub Actions, RSpec, Vitest, Jest, Brakeman, RuboCop</dd></div>
+    </dl>
+  </section>
+
+  <section id="contact" class="wrap contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Get in touch</h2>
+    <p>The best way to reach me is by email.</p>
+    <p class="big"><a href="mailto:apnaprogrammer@gmail.com">apnaprogrammer@gmail.com</a></p>
+    <p class="links"><a href="https://github.com/amolmjoshi93" rel="noopener me">GitHub <span aria-hidden="true">↗</span></a></p>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>© 2026 Amol Joshi</p>
+  <p>Ratnagiri, India</p>
+</footer>
+</body>
+</html>
