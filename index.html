@@ -15,9 +15,151 @@
 <meta property="og:url" content="https://amolmjoshi93.github.io/">
 <meta property="og:image" content="https://amolmjoshi93.github.io/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="assets/fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/style.css">
+<link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Source Serif 4"; src: url("assets/fonts/source-serif-4-latin-wght-normal.woff2") format("woff2"); font-weight: 200 900; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("assets/fonts/inter-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Noto Serif Devanagari"; src: url("assets/fonts/noto-serif-devanagari-devanagari-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0900-097F, U+200C-200D; }
+
+:root {
+  color-scheme: light dark;
+  --paper: #f6f1e7;
+  --raised: #fdfaf3;
+  --ink: #1d1a15;
+  --soft: #5c5548;
+  --rule: #ddd4c2;
+  --accent: #a63a1e;
+  --live: #2f7d4f;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #16130f;
+    --raised: #1f1b16;
+    --ink: #f1eadc;
+    --soft: #aea493;
+    --rule: #38322a;
+    --accent: #ec8a66;
+    --live: #6cc58f;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.65 var(--sans); }
+h1, h2, h3, h4, p, dl, dd, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+img { display: block; }
+a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 1px; }
+a:hover { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { width: min(100% - 3rem, 68rem); margin-inline: auto; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 10; }
+
+.top { display: flex; justify-content: space-between; align-items: baseline; padding-block: 1.75rem; }
+.mark { font: 600 1.2rem var(--serif); text-decoration: none; white-space: nowrap; }
+.top nav { display: flex; gap: 1.25rem; font-size: .95rem; }
+.top nav a { text-decoration: none; color: var(--soft); }
+.top nav a:hover { color: var(--accent); }
+
+.hero { padding-block: clamp(3rem, 9vw, 7rem) clamp(3rem, 7vw, 5rem); }
+.eyebrow, .status, .meta, .facts dt, .scale dt, .stack dt { font-size: .84rem; line-height: 1.45; color: var(--soft); }
+h1 { font: 600 clamp(2.5rem, 6.6vw, 4.75rem)/1.08 var(--serif); letter-spacing: -.015em; margin-top: 1.25rem; max-width: 22ch; }
+h1 em { color: var(--accent); font-style: normal; }
+.lede { max-width: 58ch; margin-top: 1.75rem; font-size: 1.2rem; line-height: 1.55; color: var(--soft); }
+
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--ink); }
+.facts div { padding: .9rem 1rem 0 0; display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .15rem; }
+.facts dd { font: 600 clamp(1.9rem, 4vw, 2.6rem)/1.1 var(--serif); font-variant-numeric: lining-nums; }
+
+.sect { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 3rem; align-items: baseline; padding-block: clamp(3rem, 7vw, 5rem) 1.5rem; }
+h2 { font: 600 clamp(1.9rem, 4vw, 2.6rem)/1.15 var(--serif); letter-spacing: -.01em; }
+.sect p { color: var(--soft); max-width: 42ch; }
+
+.case { display: grid; grid-template-columns: 11rem 1fr; gap: 1.5rem 3rem; padding-block: 2.75rem; border-top: 1px solid var(--rule); }
+.case-body { max-width: 44rem; }
+.ico { border-radius: 22%; object-fit: cover; }
+.ico-light { background: #fff; }
+.case-side .ico { width: 88px; height: 88px; }
+.status { display: flex; align-items: center; gap: .45rem; margin-top: .9rem; }
+.dot { width: .5rem; height: .5rem; border-radius: 50%; flex: none; }
+.dot.live { background: var(--live); }
+h3 { font: 600 clamp(1.5rem, 3vw, 1.9rem)/1.2 var(--serif); }
+.deva { font-family: "Noto Serif Devanagari", var(--serif); font-weight: 400; margin-right: .15em; }
+.kicker { color: var(--accent); margin-top: .25rem; margin-bottom: .9rem; }
+.points { margin-top: 1rem; display: grid; gap: .45rem; }
+.points li { position: relative; padding-left: 1.15rem; color: var(--soft); font-size: 1rem; line-height: 1.55; }
+.points li::before { content: ""; position: absolute; left: 0; top: .72em; width: .55rem; height: 1px; background: var(--accent); }
+
+.scale { display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: .5rem 2.25rem; margin-top: 1.4rem; }
+.scale div { display: flex; flex-direction: column; }
+.scale dd { font: 600 1.5rem/1.2 var(--serif); }
+
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.25rem; }
+.tags li { font-size: .8rem; line-height: 1; padding: .4rem .6rem; border: 1px solid var(--rule); border-radius: 3px; color: var(--soft); }
+.links { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; margin-top: 1.1rem; font-weight: 500; }
+
+.sub { padding-top: 2.75rem; border-top: 1px solid var(--rule); margin-bottom: 1.5rem; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.card { background: var(--raised); border: 1px solid var(--rule); border-radius: 6px; padding: 1.35rem; display: flex; flex-direction: column; }
+.card-status { display: flex; align-items: center; gap: .45rem; font-size: .84rem; color: var(--soft); margin-bottom: .45rem; }
+.dot.testing { background: #c98a1b; }
+.card .ico { width: 48px; height: 48px; margin-bottom: .9rem; }
+.glyph { display: grid; place-items: center; background: #1f7a5c; color: #fff; font: 600 1.5rem/1 var(--sans); }
+.glyph-cane { background: #5f8f2f; }
+h4 { font: 600 1.2rem/1.3 var(--serif); margin-bottom: .45rem; }
+h4 a { text-decoration: none; }
+h4 a:hover { text-decoration: underline; }
+.card p:not(.meta) { font-size: .96rem; line-height: 1.55; color: var(--soft); }
+.meta { margin-top: auto; padding-top: .9rem; }
+
+.jobs { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--rule); }
+.job { display: grid; grid-template-columns: 11rem 1fr; gap: .4rem 3rem; padding-block: 1.6rem; border-top: 1px solid var(--rule); }
+.job > div { max-width: 44rem; }
+.job h3 { font-size: 1.35rem; }
+.job .kicker { margin-bottom: 0; }
+.when { font-size: .86rem; line-height: 1.5; color: var(--soft); padding-top: .35em; }
+.job .points { margin-top: .7rem; }
+
+.stack { border-bottom: 1px solid var(--rule); }
+.stack div { display: grid; grid-template-columns: 11rem 1fr; gap: .25rem 3rem; padding-block: .95rem; border-top: 1px solid var(--rule); }
+.stack dt { padding-top: .2em; font-size: .88rem; }
+
+.contact { padding-block: clamp(4rem, 9vw, 7rem) clamp(3rem, 6vw, 4rem); }
+.contact > p:not(.big, .links) { color: var(--soft); margin-top: .6rem; }
+.big { font: 600 clamp(1.4rem, 4.4vw, 2.7rem)/1.2 var(--serif); margin-top: 1.25rem; overflow-wrap: anywhere; }
+.big a { color: var(--accent); }
+
+.foot { display: flex; justify-content: space-between; gap: 1rem; padding-block: 1.5rem 2.5rem; border-top: 1px solid var(--rule); color: var(--soft); font-size: .9rem; }
+
+@media (max-width: 52rem) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .case { grid-template-columns: 1fr; }
+  .case-side { display: flex; align-items: center; gap: 1rem; }
+  .case-side .ico { width: 64px; height: 64px; }
+  .status { margin-top: 0; }
+  .sect { grid-template-columns: 1fr; }
+}
+@media (max-width: 36rem) {
+  body { font-size: 1rem; }
+  .wrap { width: min(100% - 2.25rem, 68rem); }
+  .facts { grid-template-columns: repeat(2, 1fr); }
+  .facts div { padding-bottom: .75rem; }
+  .scale { grid-template-columns: repeat(2, auto); }
+  .grid { grid-template-columns: 1fr; }
+  .stack div { grid-template-columns: 1fr; }
+  .job { grid-template-columns: 1fr; }
+  .top { gap: .75rem; }
+  .mark { font-size: 1.05rem; }
+  .top nav { gap: .7rem; font-size: .84rem; }
+  .lede { font-size: 1.1rem; }
+}
+</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Amol Joshi","jobTitle":"Tech Lead / Principal Software Engineer","url":"https://amolmjoshi93.github.io/","address":{"@type":"PostalAddress","addressLocality":"Ratnagiri","addressCountry":"IN"},"sameAs":["https://www.linkedin.com/in/amolmjoshi93/","https://github.com/amolmjoshi93"]}
 </script>
@@ -164,8 +306,9 @@
       <article class="card">
         <img src="assets/icons/duplicates.webp" width="48" height="48" alt="" class="ico" loading="lazy">
         <h4>Duplicate Image Finder</h4>
-        <p>Windows desktop app that finds exact and near-duplicate photos across JPEG, HEIC and PNG using perceptual hashing, then recommends the best copy to keep and says why.</p>
-        <p class="meta">Python · PySide6 · Perceptual hashing</p>
+        <p class="card-status"><span class="dot testing"></span>Windows and Android · In testing</p>
+        <p>Finds exact and near-duplicate photos across JPEG, HEIC and PNG using perceptual hashing, then recommends the best copy to keep and says why. The Android app is a native port that scans the phone’s library offline and uses the system’s 30-day trash.</p>
+        <p class="meta">Python · PySide6 · Kotlin · Jetpack Compose</p>
       </article>
       <article class="card">
         <span class="ico glyph" aria-hidden="true">→</span>
@@ -277,7 +420,7 @@
       <div><dt>Backend</dt><dd>Ruby, Ruby on Rails (up to 8.1), REST APIs, Solid Queue, Solid Cache, microservices, event-driven architecture, multi-tenancy</dd></div>
       <div><dt>Data</dt><dd>PostgreSQL, MySQL, Redis, Apache Kafka, MongoDB, SQLite</dd></div>
       <div><dt>Frontend</dt><dd>Vue 3, React, TypeScript, Hotwire (Turbo and Stimulus), Tailwind CSS, PWAs</dd></div>
-      <div><dt>Mobile</dt><dd>React Native, Expo, Zustand, native Android (Kotlin, Java), Play and Indus releases</dd></div>
+      <div><dt>Mobile</dt><dd>React Native, Expo, Zustand, native Android (Kotlin, Jetpack Compose, Java), Play and Indus releases</dd></div>
       <div><dt>AI</dt><dd>LLM features in production (content generation, grading, summarisation) with automated checks, and AI coding agents used daily (Claude, Cursor, GitHub Copilot)</dd></div>
       <div><dt>Payments</dt><dd>Razorpay checkout and webhooks, subscription plans, GST invoicing</dd></div>
       <div><dt>Delivery</dt><dd>Docker, Kubernetes, Kamal 2, AWS, GCP, CI/CD, Capistrano, RSpec, Playwright, Vitest, Jest</dd></div>
