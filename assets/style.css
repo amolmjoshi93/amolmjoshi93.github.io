@@ -45,8 +45,8 @@ a:hover { color: var(--accent); }
 .skip:focus { left: 1rem; top: 1rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 10; }
 
 .top { display: flex; justify-content: space-between; align-items: baseline; padding-block: 1.75rem; }
-.mark { font: 500 1.2rem var(--serif); text-decoration: none; }
-.top nav { display: flex; gap: 1.5rem; font-size: .95rem; }
+.mark { font: 500 1.2rem var(--serif); text-decoration: none; white-space: nowrap; }
+.top nav { display: flex; gap: 1.25rem; font-size: .95rem; }
 .top nav a { text-decoration: none; color: var(--soft); }
 .top nav a:hover { color: var(--accent); }
 
@@ -99,6 +99,14 @@ h4 a:hover { text-decoration: underline; }
 .card p:not(.meta) { font-size: .96rem; line-height: 1.55; color: var(--soft); }
 .meta { margin-top: auto; padding-top: .9rem; }
 
+.jobs { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--rule); }
+.job { display: grid; grid-template-columns: 11rem 1fr; gap: .4rem 3rem; padding-block: 1.6rem; border-top: 1px solid var(--rule); }
+.job > div { max-width: 44rem; }
+.job h3 { font-size: 1.35rem; }
+.job .kicker { margin-bottom: 0; }
+.when { font: .8rem/1.5 var(--mono); color: var(--soft); padding-top: .4em; }
+.job .points { margin-top: .7rem; }
+
 .stack { border-bottom: 1px solid var(--rule); }
 .stack div { display: grid; grid-template-columns: 11rem 1fr; gap: .25rem 3rem; padding-block: .95rem; border-top: 1px solid var(--rule); }
 .stack dt { padding-top: .25em; font-size: .82rem; }
@@ -126,5 +134,9 @@ h4 a:hover { text-decoration: underline; }
   .scale { grid-template-columns: repeat(2, auto); }
   .grid { grid-template-columns: 1fr; }
   .stack div { grid-template-columns: 1fr; }
+  .job { grid-template-columns: 1fr; }
+  .top { gap: .75rem; }
+  .mark { font-size: 1.05rem; }
+  .top nav { gap: .7rem; font-size: .84rem; }
   .lede { font-size: 1.1rem; }
 }
