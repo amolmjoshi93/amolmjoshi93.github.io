@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>बारसे निमंत्रण | शिंदे परिवार</title>
+<meta name="description" content="नामकरण सोहळा – रविवार, ९ मे २०२७, सायं. ५ वा., आनंदवन हॉल, विश्रामबाग, सांगली">
+<meta property="og:title" content="बारसे निमंत्रण | शिंदे परिवार">
+<meta property="og:description" content="आमच्या छोट्या परीचा नामकरण सोहळा • रविवार, ९ मे २०२७ • सायं. ५ वा. • सांगली">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2c2f6b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amita:wght@400;700&family=Baloo+2:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#2c2f6b;--night2:#4b4f9e;--lav:#b8a9e3;--peach:#ffc8a8;--pink:#f48fb1;--mint:#bfe8d9;--cream:#fffaf3;--ink:#3b3363;--gold:#f6c453}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Baloo 2',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden}
+.amita{font-family:'Amita',cursive}
+
+/* sky */
+.sky{position:relative;height:min(62vh,540px);min-height:450px;overflow:hidden;
+  background:linear-gradient(180deg,#1d1f4f 0%,var(--night) 45%,#6a5fb5 80%,#c9a8d8 100%)}
+.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:tw 2.6s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.3)}}
+.moon{position:absolute;top:34px;right:30px;width:80px;height:80px;border-radius:50%;box-shadow:-16px 8px 0 0 #fff3c4;transform:rotate(-20deg);filter:drop-shadow(0 0 14px rgba(255,243,196,.7))}
+.cloud{position:absolute;bottom:-20px;height:90px;border-radius:50px;background:#f7eefc;opacity:.95;animation:drift 18s ease-in-out infinite alternate}
+.cloud::before,.cloud::after{content:"";position:absolute;border-radius:50%;background:inherit}
+.cloud::before{width:110px;height:110px;top:-50px;left:30px}.cloud::after{width:80px;height:80px;top:-34px;right:30px}
+@keyframes drift{to{transform:translateX(30px)}}
+.palna{position:absolute;left:50%;top:0;width:220px;margin-left:-110px;transform-origin:50% 0;animation:swing 3.6s ease-in-out infinite}
+@keyframes swing{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-6deg)}}
+.sky-title{position:absolute;left:0;right:0;bottom:96px;text-align:center;color:#fff;z-index:3}
+.sky-title h1{font-family:'Amita',cursive;font-size:clamp(46px,13vw,72px);line-height:1;text-shadow:0 4px 18px rgba(44,47,107,.6)}
+.sky-title p{font-size:19px;font-weight:700;color:#fff;text-shadow:0 2px 8px rgba(29,31,79,.9)}
+
+/* gift reveal */
+.reveal-box{text-align:center;padding:0 16px 10px;margin-top:-70px;position:relative;z-index:4}
+.gift{width:150px;height:150px;margin:0 auto;position:relative;cursor:pointer;border:0;background:none}
+.gift .base{position:absolute;left:15px;right:15px;bottom:0;height:95px;border-radius:10px;background:linear-gradient(135deg,var(--pink),#ec6f9c)}
+.gift .lid{position:absolute;left:5px;right:5px;top:30px;height:32px;border-radius:8px;background:linear-gradient(135deg,#f8a5c2,var(--pink));transition:transform .9s cubic-bezier(.3,1.6,.5,1),opacity .9s;z-index:2}
+.gift .rib-v{position:absolute;left:50%;margin-left:-9px;width:18px;top:30px;bottom:0;background:var(--gold);z-index:3;transition:opacity .4s}
+.gift .bow{position:absolute;left:50%;top:6px;margin-left:-30px;width:60px;height:30px;z-index:4;transition:transform .9s,opacity .9s}
+.gift .bow::before,.gift .bow::after{content:"";position:absolute;top:0;width:28px;height:26px;border:6px solid var(--gold);border-radius:50% 50% 0 50%}
+.gift .bow::before{left:0;transform:rotate(-20deg)}.gift .bow::after{right:0;transform:scaleX(-1) rotate(-20deg)}
+.gift:not(.opened){animation:wiggle 2.4s ease-in-out infinite}
+@keyframes wiggle{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-6deg)}90%{transform:rotate(6deg)}95%{transform:rotate(-3deg)}}
+.opened .lid{transform:translateY(-90px) rotate(-25deg);opacity:0}
+.opened .bow{transform:translateY(-110px) rotate(30deg);opacity:0}
+.opened .rib-v{opacity:0}
+.hint{margin-top:12px;background:rgba(255,250,243,.9);display:inline-block;padding:4px 14px;border-radius:16px;font-size:18px;color:var(--night2);font-weight:700}
+.name{display:none;margin-top:12px}
+.name.show{display:block;animation:pop .9s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{0%{transform:scale(.3);opacity:0}100%{transform:scale(1);opacity:1}}
+.name small{display:block;font-size:18px;color:var(--night2)}
+.name b{display:block;font-family:'Amita',cursive;font-size:clamp(68px,20vw,104px);line-height:1.15;
+  background:linear-gradient(135deg,#ec6f9c,#8e6ad8);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .2em}
+.sparkle{position:absolute;pointer-events:none;color:var(--gold);font-size:20px;animation:spark 1.4s ease-out forwards}
+@keyframes spark{0%{opacity:1;transform:translate(0,0) scale(.5)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.4)}}
+
+main{position:relative;z-index:2;max-width:600px;margin:0 auto;padding:10px 16px 40px}
+.card{background:#fff;border-radius:26px;padding:24px 20px;margin:18px 0;box-shadow:0 12px 34px rgba(75,79,158,.12);text-align:center;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:var(--mint);opacity:.5}
+.card::after{content:"";position:absolute;bottom:-50px;left:-30px;width:110px;height:110px;border-radius:50%;background:var(--peach);opacity:.45}
+.card>*{position:relative;z-index:1}
+.card h2{font-family:'Amita',cursive;font-size:30px;color:#8e6ad8;margin-bottom:6px}
+.card p{font-size:19px;line-height:1.75}
+.parents{font-size:22px;font-weight:700;color:var(--night)}
+.when{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:10px}
+.pill{background:var(--lav);color:var(--night);border-radius:18px;padding:12px 18px;min-width:130px}
+.pill.p{background:var(--peach)}.pill.m{background:var(--mint)}
+.pill small{display:block;font-size:14px}.pill b{font-size:21px}
+.prog{text-align:left;max-width:340px;margin:8px auto 0}
+.prog div{display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--lav);font-size:18px}
+.prog span{display:flex}
+.prog b{min-width:96px;color:#8e6ad8}
+.btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:24px;text-decoration:none;font-weight:700;font-size:16px;color:#fff;background:#8e6ad8}
+.btn.p{background:#ec6f9c}.btn svg{width:17px;height:17px}
+.fam{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.fam div{background:var(--cream);border-radius:16px;padding:12px 8px;font-size:17px;line-height:1.5}
+.fam small{display:block;color:#ec6f9c;font-weight:700;font-size:15px}
+@media(max-width:420px){.fam{grid-template-columns:1fr}}
+.cd{display:flex;justify-content:center;gap:8px}
+.cd div{background:var(--night);color:#fff;border-radius:14px;padding:8px 6px;min-width:64px}
+.cd b{display:block;font-size:26px;line-height:1.1;color:var(--gold)}.cd small{font-size:13px}
+.balloon{position:fixed;bottom:-120px;width:44px;height:56px;border-radius:50% 50% 48% 48%;opacity:.85;animation:float linear infinite;z-index:0;pointer-events:none}
+.balloon::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:60px;background:rgba(59,51,99,.3)}
+@keyframes float{to{transform:translateY(-130vh) translateX(var(--sx))}}
+footer{text-align:center;padding:16px;font-size:16px;color:#8e6ad8}
+.rv{opacity:0;transform:translateY(24px);transition:all .8s ease}.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.palna,.star,.cloud,.balloon,.gift{animation:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<section class="sky" id="sky">
+  <div class="moon"></div>
+  <svg class="palna" viewBox="0 0 260 330" aria-hidden="true">
+    <path d="M60 0 L58 190 M200 0 L202 190" stroke="#f6c453" stroke-width="3"/>
+    <g fill="#f48fb1"><circle cx="59" cy="40" r="6"/><circle cx="59" cy="80" r="6" fill="#fff"/><circle cx="58" cy="120" r="6"/><circle cx="58" cy="160" r="6" fill="#fff"/>
+      <circle cx="201" cy="40" r="6"/><circle cx="201" cy="80" r="6" fill="#fff"/><circle cx="202" cy="120" r="6"/><circle cx="202" cy="160" r="6" fill="#fff"/></g>
+    <path d="M30 190 h200 a10 10 0 0 1 10 10 v10 q-10 70 -110 76 q-100 -6 -110 -76 v-10 a10 10 0 0 1 10 -10z" fill="#a1683a"/>
+    <path d="M38 198 h184 v8 q-8 60 -92 66 q-84 -6 -92 -66z" fill="#c98a52"/>
+    <path d="M40 206 q90 24 180 0" stroke="#f6c453" stroke-width="4" fill="none"/>
+    <g fill="#fff">
+      <path d="M70 196 q60 -30 120 0 q-60 12 -120 0z" fill="#fde2ec"/>
+      <circle cx="110" cy="182" r="18" fill="#ffd9c0"/><path d="M96 176 q14 -16 28 0" fill="#3b3363"/>
+      <path d="M104 186 q6 4 12 0" stroke="#3b3363" stroke-width="1.6" fill="none"/><circle cx="104" cy="181" r="1.5" fill="#3b3363"/><circle cx="116" cy="181" r="1.5" fill="#3b3363"/>
+    </g>
+    <g fill="#f6c453"><circle cx="50" cy="232" r="5"/><circle cx="80" cy="252" r="5"/><circle cx="130" cy="262" r="6"/><circle cx="180" cy="252" r="5"/><circle cx="210" cy="232" r="5"/></g>
+    <path d="M90 270 l40 40 l40 -40" stroke="#f48fb1" stroke-width="2" fill="none" stroke-dasharray="3 4"/>
+  </svg>
+  <div class="cloud" style="left:-40px;width:220px"></div><div class="cloud" style="right:-50px;width:240px;animation-delay:-6s"></div>
+  <div class="sky-title"><h1>बारसे</h1><p>नामकरण सोहळा निमंत्रण</p></div>
+</section>
+
+<div class="reveal-box">
+  <button class="gift" id="openBtn" type="button" aria-label="नाव उघडा"><div class="base"></div><div class="lid"></div><div class="rib-v"></div><div class="bow"></div></button>
+  <div class="hint" id="hint">भेटवस्तू उघडा आणि बाळाचे नाव जाणून घ्या!</div>
+  <div class="name" id="name"><small>आमच्या छोट्या परीचे नाव आहे</small><b>आरोही</b></div>
+</div>
+
+<main>
+  <div class="card rv">
+    <h2>आनंदाची बातमी!</h2>
+    <p>आमच्या घरी एका गोंडस परीचे आगमन झाले आहे.<br>तिच्या नामकरण सोहळ्यास आपण अगत्य उपस्थित राहून<br>बाळाला शुभाशीर्वाद द्यावेत, ही नम्र विनंती.</p>
+    <p style="margin-top:12px">बाळाचे आई-बाबा</p>
+    <div class="parents">श्री. रोहन शिंदे व सौ. प्रिया शिंदे</div>
+  </div>
+
+  <div class="card rv">
+    <h2>केव्हा?</h2>
+    <div class="when"><div class="pill"><small>दिनांक</small><b>रविवार, ९ मे २०२७</b></div><div class="pill p"><small>वेळ</small><b>सायं. ५ वा.</b></div></div>
+    <div class="prog">
+      <div><span><svg viewBox="0 0 24 24" width="26" height="26"><path d="M7 2v10M17 2v10" stroke="#f6c453" stroke-width="1.6"/><path d="M3 12h18q-1 8-9 8t-9-8z" fill="#c98a52"/><circle cx="10" cy="11" r="3" fill="#ffd9c0"/></svg></span><b>सायं. ५:००</b>पाळणा व नामकरण</div>
+      <div><span><svg viewBox="0 0 24 24" width="26" height="26"><g fill="#f48fb1"><ellipse cx="12" cy="6" rx="3.2" ry="5" transform="rotate(0 12 12)"/><ellipse cx="12" cy="6" rx="3.2" ry="5" transform="rotate(72 12 12)"/><ellipse cx="12" cy="6" rx="3.2" ry="5" transform="rotate(144 12 12)"/><ellipse cx="12" cy="6" rx="3.2" ry="5" transform="rotate(216 12 12)"/><ellipse cx="12" cy="6" rx="3.2" ry="5" transform="rotate(288 12 12)"/></g><circle cx="12" cy="12" r="3" fill="#f6c453"/></svg></span><b>सायं. ६:००</b>हळदी-कुंकू</div>
+      <div><span><svg viewBox="0 0 24 24" width="26" height="26"><circle cx="12" cy="13" r="9" fill="#b8a9e3"/><circle cx="12" cy="13" r="6" fill="#fffaf3"/><circle cx="10" cy="12" r="1.6" fill="#f6c453"/><circle cx="14" cy="14" r="1.6" fill="#ec6f9c"/><circle cx="12" cy="10" r="1.4" fill="#7cb342"/></svg></span><b>सायं. ७:३०</b>स्नेहभोजन</div>
+    </div>
+  </div>
+
+  <div class="card rv">
+    <h2>कुठे?</h2>
+    <p><b style="font-size:22px;color:var(--night)">'आनंदवन हॉल'</b><br>विश्रामबाग, सांगली</p>
+    <div class="btns">
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Vishrambag+Sangli"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-7-6.6-7-12.2A7 7 0 0 1 19 9.8C19 15.4 12 22 12 22z"/><circle cx="12" cy="10" r="2.5"/></svg>नकाशा</a>
+      <a class="btn p" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Aarohi%20-%20Naming%20Ceremony%20(Barse)&dates=20270509T113000Z/20270509T153000Z&location=Vishrambag%2C%20Sangli"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>कॅलेंडर</a>
+      <a class="btn" href="tel:+919876543210"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>९८७६५ ४३२१०</a>
+    </div>
+  </div>
+
+  <div class="card rv">
+    <h2>सोहळ्याला उरलेले</h2>
+    <div class="cd" id="cdBox"><div><b id="cdD">०</b><small>दिवस</small></div><div><b id="cdH">०</b><small>तास</small></div><div><b id="cdM">०</b><small>मिनिटे</small></div><div><b id="cdS">०</b><small>सेकंद</small></div></div>
+  </div>
+
+  <div class="card rv">
+    <h2>आतुरतेने वाट पाहणारे</h2>
+    <div class="fam">
+      <div><small>आजी-आजोबा</small>श्री. सुधाकर शिंदे<br>सौ. कमल शिंदे</div>
+      <div><small>आजोळ</small>श्री. दिलीप पवार<br>सौ. रंजना पवार</div>
+      <div><small>आत्या</small>सौ. पूजा व श्री. निखिल कदम</div>
+      <div><small>मामा-मामी</small>श्री. अक्षय व सौ. नेहा पवार</div>
+    </div>
+    <p style="margin-top:14px;font-weight:700;color:#8e6ad8">समस्त शिंदे व पवार परिवार</p>
+  </div>
+</main>
+<footer>❀ छोट्या आरोहीला आशीर्वाद द्यायला नक्की या! ❀</footer>
+
+<script>
+const dev=n=>String(n).replace(/\d/g,d=>'०१२३४५६७८९'[d]);
+// stars
+const sky=document.getElementById('sky');
+for(let i=0;i<60;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*60+'%';
+  s.style.animationDelay=(-Math.random()*3)+'s';const z=1+Math.random()*2.5;s.style.width=s.style.height=z+'px';sky.appendChild(s)}
+// balloons
+const bc=['#f48fb1','#b8a9e3','#bfe8d9','#ffc8a8','#f6c453'];
+for(let i=0;i<7;i++){const b=document.createElement('div');b.className='balloon';b.style.left=(5+Math.random()*90)+'%';b.style.background=bc[i%5];
+  b.style.animationDuration=(16+Math.random()*12)+'s';b.style.animationDelay=(-Math.random()*20)+'s';b.style.setProperty('--sx',(Math.random()*80-40)+'px');document.body.appendChild(b)}
+// gift
+document.getElementById('openBtn').addEventListener('click',function(){
+  if(this.classList.contains('opened'))return;this.classList.add('opened');
+  document.getElementById('hint').style.display='none';
+  setTimeout(()=>{const n=document.getElementById('name');n.classList.add('show');
+    const box=document.querySelector('.reveal-box');
+    for(let i=0;i<26;i++){const s=document.createElement('span');s.className='sparkle';s.textContent=['✦','✧','★','❀'][i%4];
+      s.style.left='50%';s.style.top='55%';const a=Math.random()*Math.PI*2,r=80+Math.random()*120;
+      s.style.setProperty('--x',Math.cos(a)*r+'px');s.style.setProperty('--y',Math.sin(a)*r+'px');s.style.color=bc[i%5];box.appendChild(s);setTimeout(()=>s.remove(),1500)}
+  },500);
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const target=new Date('2027-05-09T17:00:00+05:30').getTime();
+function tick(){let d=target-Date.now();if(d<=0){cdBox.innerHTML='<div style="padding:8px 16px">सोहळा संपन्न झाला</div>';return}
+  cdD.textContent=dev(Math.floor(d/864e5));d%=864e5;cdH.textContent=dev(Math.floor(d/36e5));d%=36e5;cdM.textContent=dev(Math.floor(d/6e4));cdS.textContent=dev(Math.floor(d%6e4/1e3))}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>

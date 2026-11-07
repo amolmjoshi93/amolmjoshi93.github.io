@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>शुभ उद्घाटन | श्री गजलक्ष्मी साडी सेंटर</title>
+<meta name="description" content="श्री गजलक्ष्मी साडी सेंटर – शुभ उद्घाटन, रविवार १४ मार्च २०२७, सकाळी ११ वा., राजारामपुरी, कोल्हापूर">
+<meta property="og:title" content="शुभ उद्घाटन | श्री गजलक्ष्मी साडी सेंटर">
+<meta property="og:description" content="रविवार, १४ मार्च २०२७ • सकाळी ११ वा. • राजारामपुरी, कोल्हापूर">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b3d3a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#0b3d3a;--teal2:#11554f;--saffron:#ff7a00;--marigold:#ffb627;--cream:#fff8ec;--magenta:#c2185b;--ink:#1d2b2a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Mukta',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden}
+body.locked{overflow:hidden}
+h1,h2,h3,.baloo{font-family:'Baloo 2',sans-serif}
+
+/* ---- shutter intro ---- */
+#shutterWrap{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;background:transparent}
+.board{background:linear-gradient(180deg,var(--teal),#072a28);color:#fff;text-align:center;padding:22px 16px 18px;border-bottom:6px solid var(--marigold);position:relative;z-index:2}
+.board small{display:block;color:var(--marigold);font-size:15px;letter-spacing:1px}
+.board h1{font-size:clamp(28px,7.5vw,44px);line-height:1.15}
+.shutter{flex:1;position:relative;overflow:hidden}
+.slats{position:absolute;inset:0;transition:transform 2.2s cubic-bezier(.6,.05,.3,1);
+  background:repeating-linear-gradient(180deg,#c9ced3 0 14px,#9aa1a8 14px 16px,#e3e6e9 16px 26px,#7d848b 26px 28px);
+  box-shadow:inset 0 -14px 0 #6b7178}
+.slats::after{content:"";position:absolute;left:50%;bottom:22px;width:70px;height:16px;margin-left:-35px;border-radius:4px;background:#5d636a;box-shadow:inset 0 2px 0 #3f444a}
+#shutterWrap.up .slats{transform:translateY(-102%)}
+#shutterWrap.up .board{transform:translateY(-100%);transition:transform 1s 1.4s ease-in}
+#shutterWrap.gone{display:none}
+.lock{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;z-index:3;transition:opacity .4s}
+#shutterWrap.up .lock{opacity:0}
+.lock button{font-family:'Baloo 2',sans-serif;font-size:21px;font-weight:700;padding:14px 30px;border-radius:40px;border:0;cursor:pointer;
+  color:#fff;background:linear-gradient(180deg,#ff9a2e,var(--saffron));box-shadow:0 8px 24px rgba(0,0,0,.35),0 0 0 6px rgba(255,122,0,.25);display:inline-flex;gap:10px;align-items:center;animation:bob 1.8s ease-in-out infinite}
+.lock button svg{width:22px;height:22px}
+.lock p{margin-top:12px;color:#2b3036;font-weight:600;background:rgba(255,255,255,.7);padding:4px 12px;border-radius:20px;display:inline-block}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* ---- hero ---- */
+.hero{background:radial-gradient(circle at 50% 0%,var(--teal2),var(--teal) 70%);color:#fff;text-align:center;padding:36px 16px 0;position:relative;overflow:hidden}
+.hero .tag{display:inline-block;background:var(--marigold);color:var(--teal);font-weight:700;padding:4px 16px;border-radius:20px;font-size:15px}
+.hero h2{font-size:clamp(40px,11vw,68px);line-height:1.05;margin:12px 0 4px;color:var(--marigold);text-shadow:0 4px 0 rgba(0,0,0,.25)}
+.hero .sub{font-size:18px;opacity:.9}
+.shop{width:min(460px,92vw);height:auto;aspect-ratio:460/300;margin:26px auto 0;display:block;overflow:visible}
+.ribbon-half{transition:transform 1.4s cubic-bezier(.5,0,.6,1),opacity 1.4s}
+.cut .ribbon-l{transform:translate(-30px,60px) rotate(-22deg);opacity:0}
+.cut .ribbon-r{transform:translate(30px,60px) rotate(22deg);opacity:0}
+.cut .bow{opacity:0;transition:opacity .4s}
+#scissors{transition:transform 1s ease-in-out,opacity .4s}
+.cut #scissors{opacity:0}
+.snip #scissors{animation:snip .25s 3 alternate}
+@keyframes snip{to{transform:translate(0,0) scale(1.1)}}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
+
+/* ---- sections ---- */
+main{max-width:640px;margin:0 auto;padding:0 16px 40px}
+.intro{text-align:center;font-size:19px;line-height:1.85;padding:34px 8px 10px}
+.intro b{color:var(--magenta)}
+.guest{margin:18px auto 0;background:#fff;border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(11,61,58,.12);border-left:6px solid var(--saffron);text-align:left}
+.guest small{color:var(--saffron);font-weight:700;letter-spacing:.5px}
+.guest h3{font-size:24px;color:var(--teal)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+.fact{background:var(--teal);color:#fff;border-radius:16px;padding:18px 12px;text-align:center;position:relative;overflow:hidden}
+.fact::before{content:"";position:absolute;right:-20px;top:-20px;width:70px;height:70px;border-radius:50%;background:rgba(255,182,39,.18)}
+.fact svg{width:30px;height:30px;color:var(--marigold)}
+.fact .k{font-size:14px;opacity:.85;margin-top:4px}
+.fact .v{font-family:'Baloo 2',sans-serif;font-size:22px;font-weight:700;color:#fff;line-height:1.2}
+h3.sec{font-size:28px;color:var(--teal);text-align:center;margin:30px 0 14px}
+h3.sec span{background:linear-gradient(transparent 60%,rgba(255,182,39,.5) 60%)}
+.timeline{position:relative;margin-left:14px;padding-left:24px;border-left:3px dashed var(--saffron)}
+.step{position:relative;background:#fff;border-radius:14px;padding:12px 16px;margin-bottom:14px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.step::before{content:"";position:absolute;left:-35px;top:16px;width:18px;height:18px;border-radius:50%;background:var(--marigold);border:3px solid var(--teal)}
+.step b{font-family:'Baloo 2',sans-serif;color:var(--saffron);font-size:17px}
+.step div{font-size:18px}
+.offer{margin:30px auto;width:210px;height:210px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:radial-gradient(circle,var(--magenta),#8e0f42);color:#fff;border:6px dashed var(--marigold);animation:spin 14s linear infinite;box-shadow:0 12px 30px rgba(194,24,91,.35)}
+.offer .in{animation:spin 14s linear infinite reverse}
+.offer .pct{font-family:'Baloo 2',sans-serif;font-size:58px;font-weight:800;line-height:1;color:var(--marigold)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cd{background:#fff;border:2px solid var(--teal);border-radius:12px;text-align:center;padding:10px 2px}
+.cd b{display:block;font-family:'Baloo 2',sans-serif;font-size:32px;color:var(--saffron);line-height:1.1}
+.cd small{font-size:14px;color:var(--teal)}
+.addr{background:#fff;border-radius:16px;padding:20px;text-align:center;font-size:18px;line-height:1.7;box-shadow:0 10px 30px rgba(11,61,58,.12)}
+.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:30px;text-decoration:none;font-weight:700;font-size:16px;color:#fff;background:var(--teal)}
+.btn.o{background:var(--saffron)}
+.btn svg{width:18px;height:18px}
+.hosts{text-align:center;margin-top:30px;padding:26px 16px;border-radius:20px;background:linear-gradient(135deg,var(--marigold),var(--saffron));color:var(--teal)}
+.hosts h3{font-size:24px}.hosts p{font-size:18px;line-height:1.7}
+footer{text-align:center;padding:20px;color:var(--teal);opacity:.7;font-size:14px}
+.rv{opacity:0;transform:translateY(30px);transition:all .8s ease}.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.offer,.offer .in,.lock button{animation:none}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body class="locked">
+
+<div id="shutterWrap">
+  <div class="board"><small>॥ श्री गणेशाय नमः ॥</small><h1>श्री गजलक्ष्मी<br>साडी सेंटर</h1></div>
+  <div class="shutter"><div class="slats"></div>
+    <div class="lock">
+      <button id="openBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 7.5-2"/></svg>शटर उघडा</button>
+      <p>आमच्या नव्या दुकानात आपले स्वागत!</p>
+    </div>
+  </div>
+</div>
+<canvas id="confetti"></canvas>
+
+<section class="hero">
+  <span class="tag">सस्नेह निमंत्रण</span>
+  <h2>शुभ उद्घाटन</h2>
+  <div class="sub">श्री गजलक्ष्मी साडी सेंटर • पैठणी • नऊवारी • शालू</div>
+  <svg class="shop" id="shop" viewBox="0 0 460 300" aria-hidden="true">
+    <rect x="30" y="70" width="400" height="230" fill="#fff8ec"/>
+    <rect x="30" y="40" width="400" height="44" rx="6" fill="#ff7a00"/>
+    <text x="230" y="70" text-anchor="middle" font-family="Baloo 2" font-weight="800" font-size="24" fill="#fff">श्री गजलक्ष्मी साडी सेंटर</text>
+    <g id="awning"></g>
+    <rect x="60" y="150" width="110" height="150" fill="#11554f"/><rect x="290" y="150" width="110" height="150" fill="#11554f"/>
+    <g fill="#c2185b"><path d="M72 170h86v110H72z" opacity=".25"/><path d="M302 170h86v110h-86z" opacity=".25"/></g>
+    <g stroke="#ffb627" stroke-width="3" fill="none"><path d="M80 175 q35 50 0 100M110 175 q35 50 0 100M140 175 q20 40 0 100"/><path d="M310 175 q35 50 0 100M340 175 q35 50 0 100M370 175 q20 40 0 100"/></g>
+    <rect x="185" y="140" width="90" height="160" fill="#0b3d3a"/><rect x="192" y="148" width="76" height="152" fill="#ffe6b8"/>
+    <circle cx="230" cy="110" r="0"/>
+    <!-- toran -->
+    <g id="miniToran"></g>
+    <!-- ribbon -->
+    <g class="ribbon-half ribbon-l"><path d="M20 215 Q120 228 230 215 L230 233 Q120 246 20 233Z" fill="#d81b60"/></g>
+    <g class="ribbon-half ribbon-r"><path d="M230 215 Q340 228 440 215 L440 233 Q340 246 230 233Z" fill="#d81b60"/></g>
+    <g class="bow"><path d="M230 224 l-30 -18 v36z M230 224 l30 -18 v36z" fill="#ad1457"/><circle cx="230" cy="224" r="8" fill="#ffb627"/></g>
+    <g id="scissors" transform="translate(40,-40)"><g transform="translate(232,200)">
+      <circle cx="-12" cy="-20" r="9" fill="none" stroke="#333" stroke-width="4"/><circle cx="12" cy="-20" r="9" fill="none" stroke="#333" stroke-width="4"/>
+      <path d="M-6 -12 L6 26 M6 -12 L-6 26" stroke="#8a9198" stroke-width="5" stroke-linecap="round"/></g></g>
+  </svg>
+</section>
+
+<main>
+  <p class="intro rv">॥ श्री गणेशाय नमः ॥<br>आई-वडिलांच्या आशीर्वादाने आणि आपल्या शुभेच्छांच्या बळावर आम्ही <b>पैठणी व पारंपरिक साड्यांचे</b> नवे दालन सुरू करत आहोत. या मंगल प्रसंगी आपण अगत्य उपस्थित राहावे, ही नम्र विनंती.</p>
+
+  <div class="guest rv"><small>शुभहस्ते</small><h3>मा. श्री. विजयराव माने</h3><div>अध्यक्ष, शहर व्यापारी संघटना</div></div>
+
+  <div class="facts">
+    <div class="fact rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg><div class="k">दिनांक</div><div class="v">रविवार,<br>१४ मार्च २०२७</div></div>
+    <div class="fact rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg><div class="k">उद्घाटन</div><div class="v">सकाळी<br>११ वा.</div></div>
+  </div>
+
+  <h3 class="sec rv"><span>कार्यक्रम</span></h3>
+  <div class="timeline">
+    <div class="step rv"><b>सकाळी ८:३० वा.</b><div>श्री सत्यनारायण महापूजा</div></div>
+    <div class="step rv"><b>सकाळी ११:०० वा.</b><div>फीत कापून शुभ उद्घाटन</div></div>
+    <div class="step rv"><b>दुपारी १२:३० वा.</b><div>तीर्थप्रसाद व अल्पोपहार</div></div>
+  </div>
+
+  <div class="offer rv"><div class="in"><div>उद्घाटनानिमित्त</div><div class="pct">१०%</div><div>विशेष सवलत</div><small>(पहिले ३ दिवस)</small></div></div>
+
+  <h3 class="sec rv"><span>उद्घाटनाला उरलेले</span></h3>
+  <div class="countdown rv" id="cdBox">
+    <div class="cd"><b id="cdD">०</b><small>दिवस</small></div><div class="cd"><b id="cdH">०</b><small>तास</small></div>
+    <div class="cd"><b id="cdM">०</b><small>मिनिटे</small></div><div class="cd"><b id="cdS">०</b><small>सेकंद</small></div>
+  </div>
+  <p id="cdDone" class="intro" style="display:none">दुकान सुरू झाले आहे! नक्की भेट द्या 🙏</p>
+
+  <h3 class="sec rv"><span>पत्ता</span></h3>
+  <div class="addr rv">
+    <b>श्री गजलक्ष्मी साडी सेंटर</b><br>दुकान नं. ३, 'शिवकृपा' कॉम्प्लेक्स,<br>राजारामपुरी ५वी गल्ली, कोल्हापूर
+    <div class="btns">
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rajarampuri+Kolhapur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-7-6.6-7-12.2A7 7 0 0 1 19 9.8C19 15.4 12 22 12 22z"/><circle cx="12" cy="10" r="2.5"/></svg>नकाशा</a>
+      <a class="btn o" href="tel:+919876543210"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>९८७६५ ४३२१०</a>
+      <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Shree%20Gajalakshmi%20Saree%20Centre%20-%20Opening&dates=20270314T053000Z/20270314T080000Z&location=Rajarampuri%2C%20Kolhapur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>कॅलेंडर</a>
+    </div>
+  </div>
+
+  <div class="hosts rv"><h3>आपले नम्र</h3><p>श्री. संदीप पाटील व सौ. स्नेहा पाटील<br>व समस्त पाटील परिवार</p></div>
+</main>
+<footer>❀ आपल्या भेटीची आतुरतेने वाट पाहत आहोत ❀</footer>
+
+<script>
+const dev=n=>String(n).replace(/\d/g,d=>'०१२३४५६७८९'[d]);
+// awning scallops + mini toran
+(function(){
+  let a='';for(let i=0;i<10;i++){const x=30+i*40;a+=`<path d="M${x} 84h40v26a20 14 0 0 1-40 0z" fill="${i%2?'#fff':'#ff7a00'}"/>`}
+  document.getElementById('awning').innerHTML=a;
+  let t='<path d="M185 140 Q230 160 275 140" stroke="#7a4a20" fill="none"/>';
+  for(let i=0;i<7;i++){const x=189+i*14,y=142+Math.sin(i/6*Math.PI)*9;t+=`<circle cx="${x}" cy="${y+4}" r="5" fill="${i%2?'#ffb627':'#ff7a00'}"/><path d="M${x} ${y+8} l-3 10 l6 0z" fill="#2f6b2a"/>`}
+  document.getElementById('miniToran').innerHTML=t;
+})();
+// confetti
+const cv=document.getElementById('confetti'),cx=cv.getContext('2d');let parts=[];
+function resize(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio;cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+resize();addEventListener('resize',resize);
+function burst(n,x,y){const c=['#ff7a00','#ffb627','#c2185b','#11554f','#ffffff','#7cb342'];
+  for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=4+Math.random()*9;
+    parts.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-6,r:4+Math.random()*5,c:c[i%c.length],rot:Math.random()*6,vr:(Math.random()-.5)*.3,life:0})}}
+(function loop(){cx.clearRect(0,0,innerWidth,innerHeight);
+  parts=parts.filter(p=>p.life<220&&p.y<innerHeight+20);
+  for(const p of parts){p.vy+=.22;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;p.life++;
+    cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);cx.fillStyle=p.c;cx.fillRect(-p.r,-p.r/2,p.r*2,p.r);cx.restore()}
+  requestAnimationFrame(loop)})();
+// open shutter -> cut ribbon
+document.getElementById('openBtn').addEventListener('click',()=>{
+  const w=document.getElementById('shutterWrap');w.classList.add('up');document.body.classList.remove('locked');
+  setTimeout(()=>w.classList.add('gone'),2600);
+  const shop=document.getElementById('shop'),sc=document.getElementById('scissors');
+  setTimeout(()=>{sc.style.transform='translate(0,0)'},2300);
+  setTimeout(()=>{shop.classList.add('snip')},3300);
+  setTimeout(()=>{shop.classList.add('cut');const r=shop.getBoundingClientRect();burst(160,r.left+r.width/2,r.top+r.height*.72);
+    setTimeout(()=>burst(90,innerWidth*.2,innerHeight*.4),300);setTimeout(()=>burst(90,innerWidth*.8,innerHeight*.4),550)},4100);
+});
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// countdown
+const target=new Date('2027-03-14T11:00:00+05:30').getTime();
+function tick(){let d=target-Date.now();if(d<=0){cdBox.style.display='none';cdDone.style.display='block';return}
+  cdD.textContent=dev(Math.floor(d/864e5));d%=864e5;cdH.textContent=dev(Math.floor(d/36e5));d%=36e5;cdM.textContent=dev(Math.floor(d/6e4));cdS.textContent=dev(Math.floor(d%6e4/1e3))}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>

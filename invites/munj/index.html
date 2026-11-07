@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>व्रतबंध (मुंज) निमंत्रण | चि. वेदांत</title>
+<meta name="description" content="चि. वेदांत याचा व्रतबंध – रविवार, २५ एप्रिल २०२७, सकाळी १०:१५, श्री दत्त मंदिर सभागृह, नाशिक">
+<meta property="og:title" content="व्रतबंध (मुंज) निमंत्रण | चि. वेदांत">
+<meta property="og:description" content="रविवार, २५ एप्रिल २०२७ • सकाळी १०:१५ • श्री दत्त मंदिर सभागृह, गंगापूर रोड, नाशिक">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#4a2a12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sahitya:wght@400;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ochre:#c8701e;--saffron:#e8892a;--parch:#f6e7c1;--parch2:#efd9a4;--brown:#4a2a12;--red:#8c1c13;--leaf:#4f7a28}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Sahitya',serif;color:var(--brown);min-height:100vh;overflow-x:hidden;
+  background:radial-gradient(circle at 50% 20%,#a5521a,#5e2c0d 65%,#3a1a07);}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='none' stroke='%23ffd38a'%3E%3Ccircle cx='60' cy='60' r='40'/%3E%3Ccircle cx='60' cy='60' r='26'/%3E%3Cpath d='M60 10v100M10 60h100M25 25l70 70M95 25l-70 70'/%3E%3C/g%3E%3C/svg%3E")}
+.wrap{max-width:560px;margin:0 auto;padding:26px 14px 50px;position:relative}
+
+/* havan */
+.havan{width:200px;height:170px;margin:0 auto -6px;display:block;position:relative;z-index:3}
+.fl{transform-origin:50% 100%;transform-box:fill-box;animation:flick 0.9s ease-in-out infinite alternate}
+.fl2{animation-duration:.7s;animation-delay:-.3s}.fl3{animation-duration:1.1s;animation-delay:-.6s}
+@keyframes flick{0%{transform:scale(1,1) skewX(0)}50%{transform:scale(.92,1.08) skewX(3deg)}100%{transform:scale(1.04,.94) skewX(-3deg)}}
+.spark{animation:rise 2.4s linear infinite;opacity:0}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(-70px);opacity:0}}
+
+/* scroll */
+.rod{height:26px;border-radius:14px;position:relative;z-index:2;margin:0 -10px;
+  background:linear-gradient(180deg,#8a4b1c,#d9954f 40%,#7a3f14 60%,#4a2a12);box-shadow:0 6px 14px rgba(0,0,0,.45)}
+.rod::before,.rod::after{content:"";position:absolute;top:-6px;width:22px;height:38px;border-radius:8px;background:radial-gradient(circle at 40% 35%,#ffd38a,#c8701e 60%,#6e3a10)}
+.rod::before{left:-12px}.rod::after{right:-12px}
+.paper{overflow:hidden;max-height:0;transition:max-height 3.2s cubic-bezier(.45,.05,.3,1);margin:0 4px;
+  background:linear-gradient(90deg,#e6cf98,var(--parch) 8%,#fbf0d4 50%,var(--parch) 92%,#e6cf98);
+  box-shadow:inset 0 10px 14px -10px rgba(0,0,0,.45),inset 0 -10px 14px -10px rgba(0,0,0,.45)}
+.open .paper{max-height:4000px}
+.inner{padding:30px 30px 36px;text-align:center;position:relative}
+.inner::before,.inner::after{content:"";position:absolute;top:18px;bottom:18px;width:2px;background:repeating-linear-gradient(180deg,var(--red) 0 8px,transparent 8px 14px)}
+.inner::before{left:10px}.inner::after{right:10px}
+
+/* seal & thread (closed state) */
+.closed{position:relative;height:90px;display:flex;align-items:center;justify-content:center}
+.thread{position:absolute;left:50%;top:-30px;width:8px;height:96px;margin-left:-4px;background:repeating-linear-gradient(180deg,#d32f2f 0 6px,#ffca28 6px 12px);border-radius:4px;transition:transform .8s,opacity .8s;z-index:4}
+.seal{position:absolute;left:50%;top:6px;width:64px;height:64px;margin-left:-32px;border-radius:50%;z-index:5;transition:transform .8s,opacity .8s;
+  background:radial-gradient(circle at 35% 35%,#d84a3a,var(--red) 60%,#5a0d07);color:#ffd38a;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 4px 10px rgba(0,0,0,.5)}
+.open .thread{transform:translateY(140px) rotate(30deg);opacity:0}
+.open .seal{transform:translateY(160px) rotate(-90deg) scale(.6);opacity:0}
+.open .closed{height:0;transition:height .6s .4s}
+.cta{text-align:center;margin-top:34px;transition:opacity .5s}
+.open .cta{opacity:0;pointer-events:none;height:0;margin:0;overflow:hidden}
+#openBtn{font-family:'Kalam',cursive;font-size:22px;font-weight:700;padding:12px 30px;border-radius:30px;cursor:pointer;color:var(--brown);
+  background:linear-gradient(180deg,#ffe2a6,#f2a64a);border:2px solid #ffe2a6;box-shadow:0 0 0 6px rgba(255,211,138,.2),0 8px 20px rgba(0,0,0,.4)}
+.cta p{color:#ffe2a6;margin-top:12px;font-family:'Kalam',cursive;font-size:18px}
+.title-out{text-align:center;color:#ffe2a6;margin:4px 0 22px}
+.title-out h1{font-family:'Kalam',cursive;font-size:clamp(36px,10vw,52px);line-height:1.1;text-shadow:0 3px 10px rgba(0,0,0,.5)}
+.title-out div{font-size:17px;opacity:.9}
+
+/* content */
+.om{font-size:34px;color:var(--red)}
+.shloka{font-style:italic;font-size:16.5px;line-height:1.9;color:#6a3a14;margin:6px 0 14px}
+.janeu{height:14px;margin:16px auto;width:80%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='14'%3E%3Cpath d='M0 7 Q10 0 20 7 T40 7' fill='none' stroke='%23c8701e' stroke-width='2.2'/%3E%3Cpath d='M0 9 Q10 2 20 9 T40 9' fill='none' stroke='%23f2c14e' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x center}
+h2.big{font-family:'Kalam',cursive;font-size:clamp(38px,10vw,54px);color:var(--red);line-height:1.1}
+.lead{font-size:18.5px;line-height:1.95}
+.batu{font-family:'Kalam',cursive;font-size:clamp(46px,13vw,66px);color:var(--ochre);line-height:1.15;margin:6px 0 0;text-shadow:0 2px 0 rgba(140,28,19,.25)}
+.batu small{font-size:24px;color:var(--red)}
+.par{font-size:16.5px;color:#6a3a14}
+.mbox{margin:18px auto 6px;border:2px solid var(--ochre);border-radius:14px;padding:16px;background:rgba(255,255,255,.45);position:relative}
+.mbox::before{content:"मुहूर्त";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--red);color:#ffe2a6;font-family:'Kalam',cursive;padding:0 14px;border-radius:12px;font-size:16px}
+.mbox .d{font-size:24px;font-weight:700;color:var(--red)}
+.mbox .t{font-size:22px}
+h3{font-family:'Kalam',cursive;font-size:28px;color:var(--red);margin:26px 0 10px}
+.prog{text-align:left;margin:0 auto;max-width:380px}
+.day{font-weight:700;color:var(--ochre);margin:10px 0 4px;font-size:18px;border-bottom:1px dashed var(--ochre)}
+.row{display:flex;gap:10px;font-size:17.5px;padding:3px 0}
+.row b{min-width:112px;color:var(--brown)}
+.place{font-size:18px;line-height:1.8}
+.place strong{font-size:21px;color:var(--red)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:20px;text-decoration:none;font-family:'Kalam',cursive;font-size:17px;font-weight:700;color:#ffe2a6;background:var(--red)}
+.btn.y{background:var(--ochre);color:#fff}
+.btn svg{width:17px;height:17px}
+.fam{display:grid;grid-template-columns:auto auto;justify-content:center;column-gap:22px;row-gap:6px;font-size:17px;text-align:left}
+.fam .solo{grid-column:1/-1;text-align:center}
+.fam div{white-space:nowrap}
+@media(max-width:470px){.fam{grid-template-columns:1fr;text-align:center;row-gap:2px}.fam div:nth-child(even){margin-bottom:10px}}
+.cd{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.cd div{background:var(--brown);color:#ffe2a6;border-radius:10px;padding:8px 10px;min-width:62px}
+.cd b{display:block;font-size:24px}
+.cd small{font-size:13px}
+.close{font-size:18.5px;line-height:1.9;margin-top:18px}
+.close b{font-family:'Kalam',cursive;font-size:24px;color:var(--red)}
+.leaf{position:absolute;width:56px;opacity:.9}
+.rv{opacity:0;transform:translateY(18px);transition:all .8s ease}.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.fl,.spark{animation:none}.paper{transition:none}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+  <svg class="havan" viewBox="0 0 200 170" aria-hidden="true">
+    <defs><radialGradient id="glow"><stop offset="0" stop-color="#ffd54f" stop-opacity=".8"/><stop offset="1" stop-color="#ff6f00" stop-opacity="0"/></radialGradient></defs>
+    <ellipse cx="100" cy="100" rx="90" ry="60" fill="url(#glow)"/>
+    <g class="fl"><path d="M100 30 C80 70 70 90 78 118 L122 118 C130 90 120 70 100 30Z" fill="#ff6f00"/></g>
+    <g class="fl fl2"><path d="M100 52 C86 80 84 98 88 118 L112 118 C116 98 114 80 100 52Z" fill="#ffb300"/></g>
+    <g class="fl fl3"><path d="M100 76 C93 92 92 104 94 118 L106 118 C108 104 107 92 100 76Z" fill="#fff59d"/></g>
+    <g class="fl fl2"><path d="M70 62 C62 86 64 100 70 118 L86 118 C84 100 80 86 70 62Z" fill="#ff8f00"/><path d="M130 62 C138 86 136 100 130 118 L114 118 C116 100 120 86 130 62Z" fill="#ff8f00"/></g>
+    <g fill="#ffe082"><circle class="spark" cx="92" cy="60" r="2"/><circle class="spark" cx="110" cy="50" r="1.6" style="animation-delay:.8s"/><circle class="spark" cx="100" cy="40" r="1.8" style="animation-delay:1.5s"/><circle class="spark" cx="84" cy="70" r="1.4" style="animation-delay:2s"/></g>
+    <path d="M40 116 h120 l-14 40 h-92z" fill="#8c1c13"/><path d="M40 116 h120 v8 h-120z" fill="#c8701e"/>
+    <path d="M50 128 h100 M56 140 h88" stroke="#e8892a" stroke-width="2"/>
+    <g fill="#ffd38a"><circle cx="70" cy="146" r="3"/><circle cx="100" cy="146" r="3"/><circle cx="130" cy="146" r="3"/></g>
+  </svg>
+
+  <div class="title-out"><h1>व्रतबंध</h1><div>उपनयन संस्कार निमंत्रण</div></div>
+
+  <div class="rod"></div>
+  <div class="closed"><div class="thread"></div><div class="seal">ॐ</div></div>
+  <div class="paper"><div class="inner">
+    <svg class="leaf" style="left:16px;top:20px" viewBox="0 0 60 60"><path d="M6 54 C10 20 30 6 54 6 C52 32 36 52 6 54Z" fill="#4f7a28"/><path d="M6 54 L48 12" stroke="#a5c66b" stroke-width="2"/></svg>
+    <svg class="leaf" style="right:16px;top:20px;transform:scaleX(-1)" viewBox="0 0 60 60"><path d="M6 54 C10 20 30 6 54 6 C52 32 36 52 6 54Z" fill="#4f7a28"/><path d="M6 54 L48 12" stroke="#a5c66b" stroke-width="2"/></svg>
+    <div class="om rv">ॐ</div>
+    <div class="rv">॥ श्री गणेशाय नमः ॥ &nbsp; ॥ श्री गायत्री देव्यै नमः ॥</div>
+    <p class="shloka rv">यज्ञोपवीतं परमं पवित्रं<br>प्रजापतेर्यत्सहजं पुरस्तात् ।</p>
+    <h2 class="big rv">उपनयन संस्कार</h2>
+    <div class="janeu"></div>
+    <p class="lead rv">सप्रेम नमस्कार वि. वि.<br>आमचे येथे श्री कृपेकरून आमचे चिरंजीव</p>
+    <div class="batu rv"><small>बटू</small> चि. वेदांत</div>
+    <div class="par rv">(श्री. अनिरुद्ध जोशी व सौ. अपर्णा जोशी यांचे चिरंजीव)</div>
+    <p class="lead rv" style="margin-top:10px">याचा व्रतबंध (मुंज) खालील शुभमुहूर्तावर<br>करण्याचे योजिले आहे.</p>
+    <div class="mbox rv"><div class="d">रविवार, दि. २५ एप्रिल २०२७</div><div class="t">सकाळी १० वा. १५ मि.</div></div>
+
+    <div class="janeu"></div>
+    <h3 class="rv">कार्यक्रम</h3>
+    <div class="prog">
+      <div class="day rv">शनिवार, दि. २४ एप्रिल २०२७</div>
+      <div class="row rv"><b>सायं. ५ वा.</b><span>ग्रहमख व देवदेवक</span></div>
+      <div class="day rv">रविवार, दि. २५ एप्रिल २०२७</div>
+      <div class="row rv"><b>सकाळी ८ वा.</b><span>चौल व मातृभोजन</span></div>
+      <div class="row rv"><b>सकाळी १०:१५</b><span>उपनयन (मुहूर्त)</span></div>
+      <div class="row rv"><b>दुपारी १२:३०</b><span>स्नेहभोजन</span></div>
+      <div class="row rv"><b>सायं. ५ वा.</b><span>भिक्षावळ</span></div>
+    </div>
+
+    <div class="janeu"></div>
+    <h3 class="rv">कार्यस्थळ</h3>
+    <div class="place rv"><strong>'श्री दत्त मंदिर सभागृह'</strong><br>गंगापूर रोड, नाशिक</div>
+    <div class="btns rv">
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Gangapur+Road+Nashik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-7-6.6-7-12.2A7 7 0 0 1 19 9.8C19 15.4 12 22 12 22z"/><circle cx="12" cy="10" r="2.5"/></svg>नकाशा</a>
+      <a class="btn y" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Vedant%20Munj%20(Upanayan)&dates=20270425T023000Z/20270425T073000Z&location=Gangapur%20Road%2C%20Nashik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>कॅलेंडर</a>
+    </div>
+    <h3 class="rv" style="font-size:22px;margin-top:18px">निवासस्थान</h3>
+    <div class="place rv">'गुरुकृपा', कॉलेज रोड, नाशिक<br>मो. ९८७६५ ४३२१०</div>
+    <div class="btns rv"><a class="btn y" href="tel:+919876543210"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>फोन करा</a></div>
+
+    <div class="janeu"></div>
+    <h3 class="rv">मुहूर्ताला उरलेले</h3>
+    <div class="cd rv" id="cdBox"><div><b id="cdD">०</b><small>दिवस</small></div><div><b id="cdH">०</b><small>तास</small></div><div><b id="cdM">०</b><small>मिनिटे</small></div><div><b id="cdS">०</b><small>सेकंद</small></div></div>
+
+    <h3 class="rv">आपले स्नेहांकित</h3>
+    <div class="fam">
+      <div class="rv">श्री. श्रीकांत रघुनाथ जोशी</div><div class="rv">सौ. शैलजा श्रीकांत जोशी</div>
+      <div class="rv">श्री. अनिरुद्ध श्रीकांत जोशी</div><div class="rv">सौ. अपर्णा अनिरुद्ध जोशी</div>
+      <div class="rv">श्री. केदार श्रीकांत जोशी</div><div class="rv">सौ. मृणाल केदार जोशी</div>
+      <div class="solo rv">कु. सानिका अनिरुद्ध जोशी</div>
+    </div>
+    <p class="close rv">वरील विनंतीस मान देऊन बटूस आशीर्वाद देण्यास अगत्य येण्याचे करावे.<br><b>समस्त जोशी परिवार</b></p>
+  </div></div>
+  <div class="rod"></div>
+
+  <div class="cta" id="cta"><button id="openBtn" type="button">पत्रिका उघडा</button><p>बटूस आशीर्वाद द्यायला नक्की या!</p></div>
+</div>
+<script>
+const dev=n=>String(n).replace(/\d/g,d=>'०१२३४५६७८९'[d]);
+document.getElementById('openBtn').addEventListener('click',()=>{
+  document.getElementById('wrap').classList.add('open');
+  setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>io.observe(el)),900);
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+const target=new Date('2027-04-25T10:15:00+05:30').getTime();
+function tick(){let d=target-Date.now();if(d<=0){cdBox.innerHTML='<div style="min-width:auto;padding:8px 16px">मुंज संपन्न झाली 🙏</div>';return}
+  cdD.textContent=dev(Math.floor(d/864e5));d%=864e5;cdH.textContent=dev(Math.floor(d/36e5));d%=36e5;cdM.textContent=dev(Math.floor(d/6e4));cdS.textContent=dev(Math.floor(d%6e4/1e3))}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>

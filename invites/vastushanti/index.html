@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>वास्तुशांती व गृहप्रवेश | 'स्वप्नपूर्ती'</title>
+<meta name="description" content="वास्तुशांती व गृहप्रवेश – रविवार, २३ मे २०२७, 'स्वप्नपूर्ती', घोडबंदर रोड, ठाणे">
+<meta property="og:title" content="वास्तुशांती व गृहप्रवेश | 'स्वप्नपूर्ती'">
+<meta property="og:description" content="रविवार, २३ मे २०२७ • सकाळी ७:३० गृहप्रवेश • घोडबंदर रोड, ठाणे">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#14123a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Hind:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ind:#14123a;--ind2:#25226a;--gold:#f5c04a;--gold2:#ffe39a;--pink:#e84a7f;--orange:#ff8a1f;--teal:#1fb5a6;--text:#f3ecff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hind',sans-serif;color:var(--text);background:var(--ind);overflow-x:hidden;
+  background-image:radial-gradient(circle at 50% 0,#2c2880 0,var(--ind) 60%)}
+.rozha{font-family:'Rozha One',serif}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 16px 20px;position:relative}
+.rangoli{width:min(360px,86vw);height:auto;aspect-ratio:1}
+.rangoli .ln{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s ease-in-out forwards}
+.rangoli .fill{opacity:0;animation:fadein 1.4s ease forwards}
+.rangoli .spin{transform-origin:200px 200px;animation:spin 60s linear infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadein{to{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero small{color:var(--gold2);letter-spacing:1px;font-size:16px;margin-top:18px;opacity:0;animation:fadein 1s 3s forwards}
+.hero h1{font-family:'Rozha One',serif;font-size:clamp(42px,12vw,74px);line-height:1.05;color:var(--gold);text-shadow:0 0 24px rgba(245,192,74,.45);opacity:0;animation:fadein 1.2s 3.3s forwards}
+.hero h1 span{display:block;font-size:.55em;color:var(--gold2)}
+.scroll-hint{margin-top:22px;font-size:15px;opacity:0;animation:fadein 1s 4.2s forwards,bob 1.8s 4.2s ease-in-out infinite;color:var(--gold2)}
+@keyframes bob{50%{transform:translateY(6px)}}
+
+.diyas{display:flex;justify-content:center;gap:clamp(10px,4vw,26px);margin:20px 0}
+.diya{width:54px;height:54px}
+.flame{transform-origin:50% 100%;transform-box:fill-box;animation:flick .8s ease-in-out infinite alternate}
+@keyframes flick{0%{transform:scale(1,1) rotate(-2deg)}100%{transform:scale(.88,1.12) rotate(3deg)}}
+
+main{max-width:600px;margin:0 auto;padding:0 16px 40px}
+.glass{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(245,192,74,.45);border-radius:22px;
+  padding:26px 20px;margin:20px 0;text-align:center;position:relative;backdrop-filter:blur(4px)}
+.glass::before{content:"";position:absolute;inset:6px;border:1px dashed rgba(245,192,74,.25);border-radius:18px;pointer-events:none}
+.glass h2{font-family:'Rozha One',serif;color:var(--gold);font-size:30px;margin-bottom:10px;font-weight:400}
+.glass p{font-size:18.5px;line-height:1.85}
+.house{width:min(300px,80vw);display:block;margin:4px auto 10px;height:auto;aspect-ratio:300/230}
+.door-l,.door-r{transition:transform 1.6s ease;transform-box:fill-box}
+.door-l{transform-origin:0 50%}.door-r{transform-origin:100% 50%}
+.house.open .door-l{transform:scaleX(.15)}.house.open .door-r{transform:scaleX(.15)}
+.glow{opacity:0;transition:opacity 1.6s}.house.open .glow{opacity:1}
+.host{font-family:'Rozha One',serif;font-size:24px;color:var(--gold2)}
+.dt{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.dt div{border-radius:16px;padding:14px 8px;background:rgba(245,192,74,.12)}
+.dt small{display:block;color:var(--gold2);font-size:14px}.dt b{font-size:20px}
+.tl{text-align:left;max-width:360px;margin:6px auto 0}
+.tl div{display:flex;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px dashed rgba(245,192,74,.3);font-size:18px}
+.tl b{min-width:108px;color:var(--gold)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:24px;text-decoration:none;font-weight:600;font-size:16px;color:var(--ind);background:var(--gold)}
+.btn.o{background:transparent;color:var(--gold);border:1.5px solid var(--gold)}
+.btn svg{width:17px;height:17px}
+.cd{display:flex;justify-content:center;gap:8px}
+.cd div{border:1px solid var(--gold);border-radius:12px;padding:8px 6px;min-width:64px}
+.cd b{display:block;font-family:'Rozha One',serif;font-size:28px;color:var(--gold);line-height:1.2;font-weight:400}.cd small{font-size:13px}
+.fam{display:grid;grid-template-columns:auto auto;justify-content:center;column-gap:24px;row-gap:8px;font-size:17.5px;text-align:left}
+.fam .solo{grid-column:1/-1;text-align:center}
+.fam div{white-space:nowrap}
+@media(max-width:470px){.fam{grid-template-columns:1fr;text-align:center;row-gap:2px}.fam div:nth-child(even){margin-bottom:10px}}
+footer{text-align:center;padding:10px 16px 30px;color:var(--gold2);font-size:15px}
+.rv{opacity:0;transform:translateY(26px);transition:all .9s ease}.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rangoli .ln{animation:none;stroke-dashoffset:0}.rangoli .fill,.hero *{animation:none!important;opacity:1!important}.flame,.spin{animation:none}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<section class="hero">
+  <svg class="rangoli" id="rangoli" viewBox="0 0 400 400" aria-hidden="true"></svg>
+  <small>॥ श्री वास्तुदेवताय नमः ॥</small>
+  <h1>गृहप्रवेश<span>व वास्तुशांती</span></h1>
+  <div class="scroll-hint">खाली सरकवा ↓</div>
+</section>
+
+<main>
+  <div class="diyas" id="diyas1"></div>
+
+  <div class="glass rv">
+    <svg class="house" id="house" viewBox="0 0 300 230" aria-hidden="true">
+      <path d="M30 100 L150 20 L270 100 Z" fill="#e84a7f"/><path d="M40 98 L150 30 L260 98" stroke="#f5c04a" stroke-width="3" fill="none"/>
+      <rect x="50" y="98" width="200" height="120" fill="#fff4dc"/>
+      <rect x="62" y="118" width="40" height="40" rx="3" fill="#25226a"/><rect x="198" y="118" width="40" height="40" rx="3" fill="#25226a"/>
+      <path d="M82 118v40M62 138h40M218 118v40M198 138h40" stroke="#f5c04a" stroke-width="2"/>
+      <rect class="glow" x="120" y="128" width="60" height="90" fill="#ffd36b"/>
+      <rect x="120" y="128" width="60" height="90" fill="#7a3a12" opacity=".0"/>
+      <g class="door-l"><rect x="120" y="128" width="30" height="90" fill="#8b4513"/><rect x="125" y="134" width="20" height="36" fill="#a0522d"/><rect x="125" y="176" width="20" height="36" fill="#a0522d"/><circle cx="146" cy="174" r="2" fill="#f5c04a"/></g>
+      <g class="door-r"><rect x="150" y="128" width="30" height="90" fill="#8b4513"/><rect x="155" y="134" width="20" height="36" fill="#a0522d"/><rect x="155" y="176" width="20" height="36" fill="#a0522d"/><circle cx="154" cy="174" r="2" fill="#f5c04a"/></g>
+      <rect x="112" y="120" width="76" height="8" fill="#f5c04a"/>
+      <g id="toran"></g>
+      <rect x="118" y="78" width="64" height="18" rx="4" fill="#25226a" stroke="#f5c04a"/>
+      <text x="150" y="91" text-anchor="middle" font-size="11" fill="#ffe39a" font-family="Hind">स्वप्नपूर्ती</text>
+      <g transform="translate(92,196)"><path d="M0 22c-6-6-6-16 2-20h16c8 4 8 14 2 20z" fill="#c62828"/><ellipse cx="10" cy="2" rx="9" ry="3" fill="#f5c04a"/><path d="M3 0c2-6 12-6 14 0" fill="#2e7d32"/><circle cx="10" cy="-4" r="5" fill="#8d6e63"/></g>
+      <g transform="translate(198,196)"><path d="M0 22c-6-6-6-16 2-20h16c8 4 8 14 2 20z" fill="#c62828"/><ellipse cx="10" cy="2" rx="9" ry="3" fill="#f5c04a"/><path d="M3 0c2-6 12-6 14 0" fill="#2e7d32"/><circle cx="10" cy="-4" r="5" fill="#8d6e63"/></g>
+      <ellipse cx="150" cy="222" rx="46" ry="6" fill="#e84a7f" opacity=".6"/><ellipse cx="150" cy="222" rx="30" ry="4" fill="#f5c04a" opacity=".8"/>
+    </svg>
+    <p>सप्रेम नमस्कार,<br>आई-वडिलांच्या आशीर्वादाने आणि श्री कृपेने आमचे <b style="color:var(--gold)">'स्वप्नपूर्ती'</b> हे नवे घर साकार झाले आहे. या वास्तूच्या गृहप्रवेश व वास्तुशांती सोहळ्यास आपण सहकुटुंब, सहपरिवार अगत्य उपस्थित राहावे, ही नम्र विनंती.</p>
+    <p style="margin-top:12px">आपले नम्र</p>
+    <div class="host">श्री. महेश गायकवाड व सौ. मीनल गायकवाड</div>
+  </div>
+
+  <div class="glass rv">
+    <h2>शुभ दिवस</h2>
+    <div class="dt"><div><small>दिनांक</small><b>रविवार,<br>२३ मे २०२७</b></div><div><small>गृहप्रवेश मुहूर्त</small><b>सकाळी<br>७ वा. ३० मि.</b></div></div>
+    <div class="tl">
+      <div><b>सकाळी ७:३०</b>गृहप्रवेश</div>
+      <div><b>सकाळी ९:००</b>वास्तुशांती व होमहवन</div>
+      <div><b>दुपारी १२:३०</b>महाप्रसाद</div>
+      <div><b>सायं. ६:००</b>श्री सत्यनारायण पूजा</div>
+    </div>
+  </div>
+
+  <div class="diyas" id="diyas2"></div>
+
+  <div class="glass rv">
+    <h2>नवा पत्ता</h2>
+    <p><b style="font-size:21px;color:var(--gold2)">'स्वप्नपूर्ती', फ्लॅट नं. ७०२</b><br>'हरिवंश रेसिडेन्सी', घोडबंदर रोड, ठाणे (प.)</p>
+    <div class="btns">
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ghodbunder+Road+Thane"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-7-6.6-7-12.2A7 7 0 0 1 19 9.8C19 15.4 12 22 12 22z"/><circle cx="12" cy="10" r="2.5"/></svg>नकाशा</a>
+      <a class="btn o" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Swapnapurti%20-%20Grihapravesh%20%26%20Vastushanti&dates=20270523T020000Z/20270523T080000Z&location=Ghodbunder%20Road%2C%20Thane"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>कॅलेंडर</a>
+      <a class="btn o" href="tel:+919876543210"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>९८७६५ ४३२१०</a>
+    </div>
+  </div>
+
+  <div class="glass rv">
+    <h2>गृहप्रवेशाला उरलेले</h2>
+    <div class="cd" id="cdBox"><div><b id="cdD">०</b><small>दिवस</small></div><div><b id="cdH">०</b><small>तास</small></div><div><b id="cdM">०</b><small>मिनिटे</small></div><div><b id="cdS">०</b><small>सेकंद</small></div></div>
+  </div>
+
+  <div class="glass rv">
+    <h2>आपले स्नेहांकित</h2>
+    <div class="fam">
+      <div>श्री. बाळासाहेब गायकवाड</div><div>सौ. सुमन गायकवाड</div>
+      <div>श्री. महेश गायकवाड</div><div>सौ. मीनल गायकवाड</div>
+      <div>श्री. सचिन गायकवाड</div><div>सौ. प्राजक्ता गायकवाड</div>
+      <div class="solo">चि. ओम व कु. ईश्वरी</div>
+    </div>
+    <p style="margin-top:14px">समस्त गायकवाड परिवार</p>
+  </div>
+  <div class="diyas" id="diyas3"></div>
+</main>
+<footer>॥ शुभं करोति कल्याणम् ॥</footer>
+
+<script>
+const dev=n=>String(n).replace(/\d/g,d=>'०१२३४५६७८९'[d]);
+const NS='http://www.w3.org/2000/svg';
+// ---- rangoli ----
+(function(){
+  const g=document.getElementById('rangoli');const C=200;let h='';let d=0;
+  const ln=(path,col,delay,w)=>`<path class="ln" pathLength="1" d="${path}" stroke="${col}" style="animation-delay:${delay}s;stroke-width:${w||2.2}"/>`;
+  const fl=(path,col,delay,op)=>`<path class="fill" d="${path}" fill="${col}" style="animation-delay:${delay}s;opacity:0" fill-opacity="${op||1}"/>`;
+  const circ=r=>`M${C-r} ${C}a${r} ${r} 0 1 0 ${2*r} 0a${r} ${r} 0 1 0 ${-2*r} 0`;
+  // outer petals (16)
+  let outer='';for(let i=0;i<16;i++){const a=i*Math.PI/8;outer+=`<path d="M${C} ${C-118} Q${C+26} ${C-150} ${C} ${C-188} Q${C-26} ${C-150} ${C} ${C-118}Z" transform="rotate(${i*22.5} ${C} ${C})"/>`}
+  h+=`<g class="spin">`;
+  h+=`<g class="fill" style="animation-delay:2.2s" fill="#e84a7f" fill-opacity=".85">${outer}</g>`;
+  for(let i=0;i<16;i++)h+=`<g transform="rotate(${i*22.5} ${C} ${C})">${ln(`M${C} ${C-118} Q${C+26} ${C-150} ${C} ${C-188} Q${C-26} ${C-150} ${C} ${C-118}`,'#f5c04a',0.1+i*0.03)}</g>`;
+  h+=`</g>`;
+  h+=fl(circ(118),'#25226a',2.3)+ln(circ(118),'#f5c04a',0.2,2.6);
+  // mid petals (8)
+  let mid='';for(let i=0;i<8;i++){mid+=`<path d="M${C} ${C-40} C${C+40} ${C-60} ${C+30} ${C-100} ${C} ${C-112} C${C-30} ${C-100} ${C-40} ${C-60} ${C} ${C-40}Z" transform="rotate(${i*45} ${C} ${C})"/>`}
+  h+=`<g class="fill" style="animation-delay:2.4s" fill="#ff8a1f">${mid}</g>`;
+  for(let i=0;i<8;i++)h+=`<g transform="rotate(${i*45} ${C} ${C})">${ln(`M${C} ${C-40} C${C+40} ${C-60} ${C+30} ${C-100} ${C} ${C-112} C${C-30} ${C-100} ${C-40} ${C-60} ${C} ${C-40}`,'#ffe39a',0.5+i*0.05)}</g>`;
+  // inner leaves (8, offset)
+  let inn='';for(let i=0;i<8;i++){inn+=`<path d="M${C} ${C-38} Q${C+14} ${C-70} ${C} ${C-96} Q${C-14} ${C-70} ${C} ${C-38}Z" transform="rotate(${i*45+22.5} ${C} ${C})"/>`}
+  h+=`<g class="fill" style="animation-delay:2.6s" fill="#1fb5a6">${inn}</g>`;
+  for(let i=0;i<8;i++)h+=`<g transform="rotate(${i*45+22.5} ${C} ${C})">${ln(`M${C} ${C-38} Q${C+14} ${C-70} ${C} ${C-96} Q${C-14} ${C-70} ${C} ${C-38}`,'#ffffff',0.9+i*0.05,1.6)}</g>`;
+  h+=fl(circ(36),'#f5c04a',2.6)+ln(circ(36),'#ffffff',1.2);
+  h+=fl(circ(20),'#e84a7f',2.8)+ln(circ(20),'#ffe39a',1.4);
+  // dots ring
+  for(let i=0;i<32;i++){const a=i*Math.PI/16;h+=`<circle class="fill" cx="${C+Math.cos(a)*196}" cy="${C+Math.sin(a)*196}" r="3" fill="#ffe39a" style="animation-delay:${1.6+i*0.03}s"/>`}
+  for(let i=0;i<8;i++){const a=i*Math.PI/4;h+=`<circle class="fill" cx="${C+Math.cos(a)*28}" cy="${C+Math.sin(a)*28}" r="2.6" fill="#fff" style="animation-delay:${2.9+i*0.05}s"/>`}
+  h+=`<circle class="fill" cx="${C}" cy="${C}" r="7" fill="#fff" style="animation-delay:3s"/>`;
+  g.innerHTML=h;
+})();
+// ---- diyas ----
+const diya=`<svg class="diya" viewBox="0 0 60 60"><defs><radialGradient id="dg"><stop offset="0" stop-color="#ffd36b" stop-opacity=".7"/><stop offset="1" stop-color="#ffd36b" stop-opacity="0"/></radialGradient></defs>
+<circle cx="30" cy="22" r="18" fill="url(#dg)"/><g class="flame"><path d="M30 8 C24 18 24 26 30 30 C36 26 36 18 30 8Z" fill="#ff8a1f"/><path d="M30 15 C27 21 27 26 30 28 C33 26 33 21 30 15Z" fill="#fff3a0"/></g>
+<path d="M8 32 Q30 58 52 32 Z" fill="#c1440e"/><path d="M8 32 Q30 40 52 32" stroke="#f5c04a" stroke-width="2.5" fill="none"/><circle cx="20" cy="42" r="2" fill="#f5c04a"/><circle cx="30" cy="45" r="2" fill="#f5c04a"/><circle cx="40" cy="42" r="2" fill="#f5c04a"/></svg>`;
+['diyas1','diyas2','diyas3'].forEach(id=>{const el=document.getElementById(id);el.innerHTML=Array(5).fill(diya).join('');
+  el.querySelectorAll('.flame').forEach((f,i)=>{f.style.animationDelay=(-i*.23)+'s';f.style.animationDuration=(.7+i*.08)+'s'})});
+// ---- toran on house ----
+(function(){let t='';for(let i=0;i<9;i++){const x=116+i*8.5;t+=`<path d="M${x} 128 q4 10 0 14 q-4 -4 0 -14z" fill="${i%2?'#2e7d32':'#43a047'}"/><circle cx="${x}" cy="130" r="3" fill="${i%2?'#ff8a1f':'#f5c04a'}"/>`}
+  document.getElementById('toran').innerHTML=t})();
+// ---- reveal + door open ----
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+  const hs=e.target.querySelector('#house');if(hs)setTimeout(()=>hs.classList.add('open'),700);io.unobserve(e.target)}}),{threshold:.2});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const target=new Date('2027-05-23T07:30:00+05:30').getTime();
+function tick(){let d=target-Date.now();if(d<=0){cdBox.innerHTML='<div style="padding:8px 16px">गृहप्रवेश संपन्न झाला</div>';return}
+  cdD.textContent=dev(Math.floor(d/864e5));d%=864e5;cdH.textContent=dev(Math.floor(d/36e5));d%=36e5;cdM.textContent=dev(Math.floor(d/6e4));cdS.textContent=dev(Math.floor(d%6e4/1e3))}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>
