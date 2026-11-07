@@ -11,13 +11,13 @@
 <meta name="theme-color" content="#14123a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Hind:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{--ind:#14123a;--ind2:#25226a;--gold:#f5c04a;--gold2:#ffe39a;--pink:#e84a7f;--orange:#ff8a1f;--teal:#1fb5a6;--text:#f3ecff}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Hind',sans-serif;color:var(--text);background:var(--ind);overflow-x:hidden;
+body{font-family:'Tiro Devanagari Marathi',serif;color:var(--text);background:var(--ind);overflow-x:hidden;
   background-image:radial-gradient(circle at 50% 0,#2c2880 0,var(--ind) 60%)}
-.rozha{font-family:'Rozha One',serif}
+.rozha{font-family:'Tiro Devanagari Marathi',serif}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 16px 20px;position:relative}
 .rangoli{width:min(360px,86vw);height:auto;aspect-ratio:1}
 .rangoli .ln{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s ease-in-out forwards}
@@ -27,7 +27,7 @@ body{font-family:'Hind',sans-serif;color:var(--text);background:var(--ind);overf
 @keyframes fadein{to{opacity:1}}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hero small{color:var(--gold2);letter-spacing:1px;font-size:16px;margin-top:18px;opacity:0;animation:fadein 1s 3s forwards}
-.hero h1{font-family:'Rozha One',serif;font-size:clamp(42px,12vw,74px);line-height:1.05;color:var(--gold);text-shadow:0 0 24px rgba(245,192,74,.45);opacity:0;animation:fadein 1.2s 3.3s forwards}
+.hero h1{font-family:'Tiro Devanagari Marathi',serif;font-size:clamp(42px,12vw,74px);line-height:1.05;color:var(--gold);text-shadow:0 0 24px rgba(245,192,74,.45);opacity:0;animation:fadein 1.2s 3.3s forwards}
 .hero h1 span{display:block;font-size:.55em;color:var(--gold2)}
 .scroll-hint{margin-top:22px;font-size:15px;opacity:0;animation:fadein 1s 4.2s forwards,bob 1.8s 4.2s ease-in-out infinite;color:var(--gold2)}
 @keyframes bob{50%{transform:translateY(6px)}}
@@ -41,14 +41,14 @@ main{max-width:600px;margin:0 auto;padding:0 16px 40px}
 .glass{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(245,192,74,.45);border-radius:22px;
   padding:26px 20px;margin:20px 0;text-align:center;position:relative;backdrop-filter:blur(4px)}
 .glass::before{content:"";position:absolute;inset:6px;border:1px dashed rgba(245,192,74,.25);border-radius:18px;pointer-events:none}
-.glass h2{font-family:'Rozha One',serif;color:var(--gold);font-size:30px;margin-bottom:10px;font-weight:400}
+.glass h2{font-family:'Tiro Devanagari Marathi',serif;color:var(--gold);font-size:30px;margin-bottom:10px;font-weight:400}
 .glass p{font-size:18.5px;line-height:1.85}
 .house{width:min(300px,80vw);display:block;margin:4px auto 10px;height:auto;aspect-ratio:300/230}
 .door-l,.door-r{transition:transform 1.6s ease;transform-box:fill-box}
 .door-l{transform-origin:0 50%}.door-r{transform-origin:100% 50%}
 .house.open .door-l{transform:scaleX(.15)}.house.open .door-r{transform:scaleX(.15)}
 .glow{opacity:0;transition:opacity 1.6s}.house.open .glow{opacity:1}
-.host{font-family:'Rozha One',serif;font-size:24px;color:var(--gold2)}
+.host{font-family:'Tiro Devanagari Marathi',serif;font-size:24px;color:var(--gold2)}
 .dt{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
 .dt div{border-radius:16px;padding:14px 8px;background:rgba(245,192,74,.12)}
 .dt small{display:block;color:var(--gold2);font-size:14px}.dt b{font-size:20px}
@@ -61,7 +61,7 @@ main{max-width:600px;margin:0 auto;padding:0 16px 40px}
 .btn svg{width:17px;height:17px}
 .cd{display:flex;justify-content:center;gap:8px}
 .cd div{border:1px solid var(--gold);border-radius:12px;padding:8px 6px;min-width:64px}
-.cd b{display:block;font-family:'Rozha One',serif;font-size:28px;color:var(--gold);line-height:1.2;font-weight:400}.cd small{font-size:13px}
+.cd b{display:block;font-family:'Tiro Devanagari Marathi',serif;font-size:28px;color:var(--gold);line-height:1.2;font-weight:400}.cd small{font-size:13px}
 .fam{display:grid;grid-template-columns:auto auto;justify-content:center;column-gap:24px;row-gap:8px;font-size:17.5px;text-align:left}
 .fam .solo{grid-column:1/-1;text-align:center}
 .fam div{white-space:nowrap}
@@ -69,6 +69,13 @@ main{max-width:600px;margin:0 auto;padding:0 16px 40px}
 footer{text-align:center;padding:10px 16px 30px;color:var(--gold2);font-size:15px}
 .rv{opacity:0;transform:translateY(26px);transition:all .9s ease}.rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rangoli .ln{animation:none;stroke-dashoffset:0}.rangoli .fill,.hero *{animation:none!important;opacity:1!important}.flame,.spin{animation:none}.rv{opacity:1;transform:none}}
+
+.fam,.family{display:grid!important;grid-template-columns:1fr 1fr!important;justify-content:stretch!important;column-gap:16px!important;row-gap:10px!important}
+.fam>div,.family>div{white-space:normal!important;margin:0!important}
+.fam>div:nth-child(odd),.family>div:nth-child(odd){text-align:right!important}
+.fam>div:nth-child(even),.family>div:nth-child(even){text-align:left!important}
+.fam>div.solo,.family>div.solo{grid-column:1/-1;text-align:center!important}
+@media(max-width:470px){.fam,.family{font-size:14.5px!important;column-gap:10px!important}}
 </style>
 </head>
 <body>
@@ -95,14 +102,14 @@ footer{text-align:center;padding:10px 16px 30px;color:var(--gold2);font-size:15p
       <rect x="112" y="120" width="76" height="8" fill="#f5c04a"/>
       <g id="toran"></g>
       <rect x="118" y="78" width="64" height="18" rx="4" fill="#25226a" stroke="#f5c04a"/>
-      <text x="150" y="91" text-anchor="middle" font-size="11" fill="#ffe39a" font-family="Hind">स्वप्नपूर्ती</text>
+      <text x="150" y="91" text-anchor="middle" font-size="11" fill="#ffe39a" font-family="Tiro Devanagari Marathi, serif">स्वप्नपूर्ती</text>
       <g transform="translate(92,196)"><path d="M0 22c-6-6-6-16 2-20h16c8 4 8 14 2 20z" fill="#c62828"/><ellipse cx="10" cy="2" rx="9" ry="3" fill="#f5c04a"/><path d="M3 0c2-6 12-6 14 0" fill="#2e7d32"/><circle cx="10" cy="-4" r="5" fill="#8d6e63"/></g>
       <g transform="translate(198,196)"><path d="M0 22c-6-6-6-16 2-20h16c8 4 8 14 2 20z" fill="#c62828"/><ellipse cx="10" cy="2" rx="9" ry="3" fill="#f5c04a"/><path d="M3 0c2-6 12-6 14 0" fill="#2e7d32"/><circle cx="10" cy="-4" r="5" fill="#8d6e63"/></g>
       <ellipse cx="150" cy="222" rx="46" ry="6" fill="#e84a7f" opacity=".6"/><ellipse cx="150" cy="222" rx="30" ry="4" fill="#f5c04a" opacity=".8"/>
     </svg>
     <p>सप्रेम नमस्कार,<br>आई-वडिलांच्या आशीर्वादाने आणि श्री कृपेने आमचे <b style="color:var(--gold)">'स्वप्नपूर्ती'</b> हे नवे घर साकार झाले आहे. या वास्तूच्या गृहप्रवेश व वास्तुशांती सोहळ्यास आपण सहकुटुंब, सहपरिवार अगत्य उपस्थित राहावे, ही नम्र विनंती.</p>
     <p style="margin-top:12px">आपले नम्र</p>
-    <div class="host">श्री. महेश गायकवाड व सौ. मीनल गायकवाड</div>
+    <div class="host">श्री. महेश देशपांडे व सौ. मीनल देशपांडे</div>
   </div>
 
   <div class="glass rv">
@@ -136,12 +143,12 @@ footer{text-align:center;padding:10px 16px 30px;color:var(--gold2);font-size:15p
   <div class="glass rv">
     <h2>आपले स्नेहांकित</h2>
     <div class="fam">
-      <div>श्री. बाळासाहेब गायकवाड</div><div>सौ. सुमन गायकवाड</div>
-      <div>श्री. महेश गायकवाड</div><div>सौ. मीनल गायकवाड</div>
-      <div>श्री. सचिन गायकवाड</div><div>सौ. प्राजक्ता गायकवाड</div>
+      <div>श्री. बाळासाहेब देशपांडे</div><div>सौ. सुमन देशपांडे</div>
+      <div>श्री. महेश देशपांडे</div><div>सौ. मीनल देशपांडे</div>
+      <div>श्री. सचिन देशपांडे</div><div>सौ. प्राजक्ता देशपांडे</div>
       <div class="solo">चि. ओम व कु. ईश्वरी</div>
     </div>
-    <p style="margin-top:14px">समस्त गायकवाड परिवार</p>
+    <p style="margin-top:14px">समस्त देशपांडे परिवार</p>
   </div>
   <div class="diyas" id="diyas3"></div>
 </main>

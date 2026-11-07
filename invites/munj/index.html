@@ -11,11 +11,11 @@
 <meta name="theme-color" content="#4a2a12">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sahitya:wght@400;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{--ochre:#c8701e;--saffron:#e8892a;--parch:#f6e7c1;--parch2:#efd9a4;--brown:#4a2a12;--red:#8c1c13;--leaf:#4f7a28}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Sahitya',serif;color:var(--brown);min-height:100vh;overflow-x:hidden;
+body{font-family:'Tiro Devanagari Marathi',serif;color:var(--brown);min-height:100vh;overflow-x:hidden;
   background:radial-gradient(circle at 50% 20%,#a5521a,#5e2c0d 65%,#3a1a07);}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='none' stroke='%23ffd38a'%3E%3Ccircle cx='60' cy='60' r='40'/%3E%3Ccircle cx='60' cy='60' r='26'/%3E%3Cpath d='M60 10v100M10 60h100M25 25l70 70M95 25l-70 70'/%3E%3C/g%3E%3C/svg%3E")}
@@ -38,7 +38,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;
   background:linear-gradient(90deg,#e6cf98,var(--parch) 8%,#fbf0d4 50%,var(--parch) 92%,#e6cf98);
   box-shadow:inset 0 10px 14px -10px rgba(0,0,0,.45),inset 0 -10px 14px -10px rgba(0,0,0,.45)}
 .open .paper{max-height:4000px}
-.inner{padding:30px 30px 36px;text-align:center;position:relative}
+.inner{padding:30px 24px 36px;text-align:center;position:relative}
 .inner::before,.inner::after{content:"";position:absolute;top:18px;bottom:18px;width:2px;background:repeating-linear-gradient(180deg,var(--red) 0 8px,transparent 8px 14px)}
 .inner::before{left:10px}.inner::after{right:10px}
 
@@ -52,35 +52,35 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;
 .open .closed{height:0;transition:height .6s .4s}
 .cta{text-align:center;margin-top:34px;transition:opacity .5s}
 .open .cta{opacity:0;pointer-events:none;height:0;margin:0;overflow:hidden}
-#openBtn{font-family:'Kalam',cursive;font-size:22px;font-weight:700;padding:12px 30px;border-radius:30px;cursor:pointer;color:var(--brown);
+#openBtn{font-family:'Tiro Devanagari Marathi',serif;font-size:22px;padding:12px 30px;border-radius:30px;cursor:pointer;color:var(--brown);
   background:linear-gradient(180deg,#ffe2a6,#f2a64a);border:2px solid #ffe2a6;box-shadow:0 0 0 6px rgba(255,211,138,.2),0 8px 20px rgba(0,0,0,.4)}
-.cta p{color:#ffe2a6;margin-top:12px;font-family:'Kalam',cursive;font-size:18px}
+.cta p{color:#ffe2a6;margin-top:12px;font-family:'Tiro Devanagari Marathi',serif;font-size:18px}
 .title-out{text-align:center;color:#ffe2a6;margin:4px 0 22px}
-.title-out h1{font-family:'Kalam',cursive;font-size:clamp(36px,10vw,52px);line-height:1.1;text-shadow:0 3px 10px rgba(0,0,0,.5)}
+.title-out h1{font-family:'Tiro Devanagari Marathi',serif;font-size:clamp(36px,10vw,52px);line-height:1.1;text-shadow:0 3px 10px rgba(0,0,0,.5)}
 .title-out div{font-size:17px;opacity:.9}
 
 /* content */
 .om{font-size:34px;color:var(--red)}
 .shloka{font-style:italic;font-size:16.5px;line-height:1.9;color:#6a3a14;margin:6px 0 14px}
 .janeu{height:14px;margin:16px auto;width:80%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='14'%3E%3Cpath d='M0 7 Q10 0 20 7 T40 7' fill='none' stroke='%23c8701e' stroke-width='2.2'/%3E%3Cpath d='M0 9 Q10 2 20 9 T40 9' fill='none' stroke='%23f2c14e' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x center}
-h2.big{font-family:'Kalam',cursive;font-size:clamp(38px,10vw,54px);color:var(--red);line-height:1.1}
+h2.big{font-family:'Tiro Devanagari Marathi',serif;font-size:clamp(38px,10vw,54px);color:var(--red);line-height:1.1}
 .lead{font-size:18.5px;line-height:1.95}
-.batu{font-family:'Kalam',cursive;font-size:clamp(46px,13vw,66px);color:var(--ochre);line-height:1.15;margin:6px 0 0;text-shadow:0 2px 0 rgba(140,28,19,.25)}
+.batu{font-family:'Tiro Devanagari Marathi',serif;font-size:clamp(46px,13vw,66px);color:var(--ochre);line-height:1.15;margin:6px 0 0;text-shadow:0 2px 0 rgba(140,28,19,.25)}
 .batu small{font-size:24px;color:var(--red)}
 .par{font-size:16.5px;color:#6a3a14}
 .mbox{margin:18px auto 6px;border:2px solid var(--ochre);border-radius:14px;padding:16px;background:rgba(255,255,255,.45);position:relative}
-.mbox::before{content:"मुहूर्त";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--red);color:#ffe2a6;font-family:'Kalam',cursive;padding:0 14px;border-radius:12px;font-size:16px}
-.mbox .d{font-size:24px;font-weight:700;color:var(--red)}
+.mbox::before{content:"मुहूर्त";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--red);color:#ffe2a6;font-family:'Tiro Devanagari Marathi',serif;padding:0 14px;border-radius:12px;font-size:16px}
+.mbox .d{font-size:24px;color:var(--red)}
 .mbox .t{font-size:22px}
-h3{font-family:'Kalam',cursive;font-size:28px;color:var(--red);margin:26px 0 10px}
+h3{font-family:'Tiro Devanagari Marathi',serif;font-size:28px;color:var(--red);margin:26px 0 10px}
 .prog{text-align:left;margin:0 auto;max-width:380px}
-.day{font-weight:700;color:var(--ochre);margin:10px 0 4px;font-size:18px;border-bottom:1px dashed var(--ochre)}
+.day{color:var(--ochre);margin:10px 0 4px;font-size:18px;border-bottom:1px dashed var(--ochre)}
 .row{display:flex;gap:10px;font-size:17.5px;padding:3px 0}
 .row b{min-width:112px;color:var(--brown)}
 .place{font-size:18px;line-height:1.8}
 .place strong{font-size:21px;color:var(--red)}
 .btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:20px;text-decoration:none;font-family:'Kalam',cursive;font-size:17px;font-weight:700;color:#ffe2a6;background:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:20px;text-decoration:none;font-family:'Tiro Devanagari Marathi',serif;font-size:17px;color:#ffe2a6;background:var(--red)}
 .btn.y{background:var(--ochre);color:#fff}
 .btn svg{width:17px;height:17px}
 .fam{display:grid;grid-template-columns:auto auto;justify-content:center;column-gap:22px;row-gap:6px;font-size:17px;text-align:left}
@@ -92,10 +92,17 @@ h3{font-family:'Kalam',cursive;font-size:28px;color:var(--red);margin:26px 0 10p
 .cd b{display:block;font-size:24px}
 .cd small{font-size:13px}
 .close{font-size:18.5px;line-height:1.9;margin-top:18px}
-.close b{font-family:'Kalam',cursive;font-size:24px;color:var(--red)}
+.close b{font-family:'Tiro Devanagari Marathi',serif;font-size:24px;color:var(--red)}
 .leaf{position:absolute;width:56px;opacity:.9}
 .rv{opacity:0;transform:translateY(18px);transition:all .8s ease}.rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.fl,.spark{animation:none}.paper{transition:none}.rv{opacity:1;transform:none}}
+
+.fam,.family{display:grid!important;grid-template-columns:1fr 1fr!important;justify-content:stretch!important;column-gap:16px!important;row-gap:10px!important}
+.fam>div,.family>div{white-space:normal!important;margin:0!important}
+.fam>div:nth-child(odd),.family>div:nth-child(odd){text-align:right!important}
+.fam>div:nth-child(even),.family>div:nth-child(even){text-align:left!important}
+.fam>div.solo,.family>div.solo{grid-column:1/-1;text-align:center!important}
+@media(max-width:470px){.fam,.family{font-size:14.5px!important;column-gap:10px!important}}
 </style>
 </head>
 <body>

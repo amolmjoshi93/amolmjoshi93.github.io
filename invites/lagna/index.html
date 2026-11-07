@@ -199,6 +199,13 @@ footer{text-align:center;color:var(--gold-light);opacity:.75;font-size:14px;padd
 @media (prefers-reduced-motion: reduce){
   .petal,.sway,.medallion,#openBtn,  .reveal{transition:none;opacity:1;transform:none}
 }
+
+.fam,.family{display:grid!important;grid-template-columns:1fr 1fr!important;justify-content:stretch!important;column-gap:16px!important;row-gap:10px!important}
+.fam>div,.family>div{white-space:normal!important;margin:0!important}
+.fam>div:nth-child(odd),.family>div:nth-child(odd){text-align:right!important}
+.fam>div:nth-child(even),.family>div:nth-child(even){text-align:left!important}
+.fam>div.solo,.family>div.solo{grid-column:1/-1;text-align:center!important}
+@media(max-width:470px){.fam,.family{font-size:14.5px!important;column-gap:10px!important}}
 </style>
 </head>
 <body class="locked">
