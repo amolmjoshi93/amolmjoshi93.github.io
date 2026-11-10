@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>पहिला वाढदिवस | चि. आरव</title>
+<meta name="description" content="रविवार, १० जानेवारी २०२७ • सायं. ६ वा. • गुलमोहर हॉल, छत्रपती संभाजीनगर">
+<meta property="og:title" content="पहिला वाढदिवस | चि. आरव">
+<meta property="og:description" content="रविवार, १० जानेवारी २०२७ • सायं. ६ वा. • गुलमोहर हॉल, छत्रपती संभाजीनगर">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1f6fb2">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Tiro Devanagari Marathi',serif;overflow-x:hidden}
+.btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:26px;text-decoration:none;font-size:16px;line-height:1.2;cursor:pointer}
+.btn svg{width:17px;height:17px;flex:none}
+.fam{display:grid;grid-template-columns:1fr 1fr;column-gap:14px;row-gap:9px}
+.fam>div:nth-child(odd){text-align:right}.fam>div:nth-child(even){text-align:left}
+.fam>div.solo{grid-column:1/-1;text-align:center}
+@media(max-width:470px){.fam{font-size:14.5px!important;column-gap:10px}}
+.labs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:400px){.labs{grid-template-columns:1fr}}
+.lab{border-radius:14px;padding:10px 8px;text-align:center}.lab:only-child{grid-column:1/-1}
+.lab small{display:block;font-size:14px;opacity:.85}
+.cd{display:flex;justify-content:center;gap:8px}
+.cd>div{min-width:62px;text-align:center;border-radius:12px;padding:8px 4px}
+.cd b{display:block;font-size:26px;line-height:1.25;font-weight:400}.cd small{font-size:13px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}.rv{opacity:1;transform:none}}
+
+:root{--bg1:#e3f4ff;--bg2:#c9ecf2;--p1:#1f6fb2;--p2:#18a999;--ink:#1b3550;--card:#ffffff}
+body{background:linear-gradient(180deg,var(--bg1),var(--bg2));background-attachment:fixed;color:var(--ink);min-height:100vh}
+html{background:var(--bg2)}
+.bunting{position:absolute;top:0;left:0;right:0;height:70px;z-index:5;pointer-events:none}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:76px 16px 30px;overflow:hidden}
+.age{font-size:clamp(84px,26vw,150px);line-height:1;color:var(--p1);text-shadow:4px 4px 0 var(--card),8px 8px 0 rgba(0,0,0,.08);animation:bounce 2.4s ease-in-out infinite}
+.age sup{font-size:.32em;vertical-align:top;position:relative;top:.4em;margin-left:4px}
+@keyframes bounce{50%{transform:translateY(-8px) rotate(-2deg)}}
+.kicker{font-size:22px;color:var(--p2);margin-top:4px}
+.hero h1{font-weight:400;font-size:clamp(34px,9.5vw,52px);line-height:1.35;margin-top:2px}
+.cake{width:min(320px,82vw);height:auto;aspect-ratio:320/250;margin-top:12px;cursor:pointer}
+.flame{transform-origin:50% 90%;transform-box:fill-box;animation:flick .7s ease-in-out infinite alternate;transition:opacity .3s,transform .3s}
+@keyframes flick{to{transform:scale(.9,1.1) rotate(3deg)}}
+.smoke{opacity:0}
+.blown .flame{opacity:0;transform:scale(.2)}
+.blown .smoke{animation:smoke 1.8s ease-out forwards}
+@keyframes smoke{0%{opacity:.8;transform:translateY(0)}100%{opacity:0;transform:translateY(-30px)}}
+.tip{font-size:16px;margin-top:10px;padding:5px 16px;border-radius:20px;background:var(--card);box-shadow:0 4px 14px rgba(0,0,0,.08);animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:scale(1.05)}}
+.wish{font-size:clamp(24px,7vw,34px);color:var(--p1);margin-top:14px;opacity:0;transform:scale(.6);transition:all .7s cubic-bezier(.3,1.6,.5,1)}
+.blown~.wish,.done .wish{opacity:1;transform:none}
+.done .tip{display:none}
+.scroll{margin-top:14px;font-size:15px;opacity:0;transition:opacity 1s 1s}.done .scroll{opacity:.8}
+.hero>.kicker,.hero>.age,.hero>h1,.hero>.cake,.hero>.tip,.hero>.wish,.hero>.scroll{position:relative;z-index:2}
+.balloon{z-index:0;position:absolute;bottom:-140px;width:52px;height:64px;border-radius:50% 50% 46% 46%;animation:rise linear infinite;opacity:.9}
+.balloon::before{content:"";position:absolute;left:14px;top:12px;width:10px;height:16px;border-radius:50%;background:rgba(255,255,255,.5)}
+.balloon::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:70px;background:rgba(0,0,0,.25)}
+@keyframes rise{to{transform:translateY(-125vh) translateX(var(--sx))}}
+main{max-width:600px;margin:0 auto;padding:0 16px 50px;position:relative;z-index:2}
+.card{background:var(--card);border-radius:26px;padding:24px 20px;margin:18px 0;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.08);border:3px dashed var(--bg2)}
+h2{font-weight:400;font-size:28px;color:var(--p1);margin-bottom:8px}
+.lead{font-size:18.5px;line-height:1.85}
+.person{margin:8px 0}.pre{font-size:17px;color:var(--p2)}
+.pname{font-size:clamp(46px,13vw,66px);line-height:1.35;color:var(--p1);padding-top:.08em}
+.psub{font-size:16px;line-height:1.6}
+.connector{font-size:22px;color:var(--p2)}
+.big{font-size:25px}.c2{color:var(--p2)}
+.sched{max-width:340px;margin:0 auto;text-align:left}
+.srow{display:flex;gap:12px;padding:9px 0;border-bottom:2px dotted var(--bg2);font-size:17.5px}.srow b{font-weight:400;min-width:100px;color:var(--p1)}
+.sday{color:var(--p2);margin-top:10px}
+.ex{margin-top:14px}.ex-poem,.ex-note,.ex-shloka{font-size:18.5px;line-height:1.9;color:var(--p2);font-style:italic}
+.ex-offer{border-radius:16px;padding:10px;background:var(--bg2)}
+.btn{color:#fff;background:var(--p1)}.btn.alt{background:var(--p2)}
+.cd>div{background:var(--bg2)}.cd b{color:var(--p1)}
+.fam{font-size:17px;line-height:1.5}
+.lab{background:var(--bg1)}.lab small{color:var(--p2)}
+.closing{font-size:18.5px;line-height:1.9;margin-top:16px}.sign{font-size:25px;color:var(--p1)}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:30}
+footer{text-align:center;padding-bottom:30px;font-size:22px;color:var(--p1)}
+
+</style>
+</head>
+<body>
+<section class="hero" id="hero">
+  <svg class="bunting" viewBox="0 0 1200 70" preserveAspectRatio="xMidYMin slice"><path d="M0 8 Q600 26 1200 8" stroke="#888" fill="none"/><path d="M0 8 l20 34 l20 -34z" fill="#1f6fb2"/><path d="M40 8 l20 34 l20 -34z" fill="#18a999"/><path d="M80 8 l20 34 l20 -34z" fill="#ffb703"/><path d="M120 8 l20 34 l20 -34z" fill="#6ec1e4"/><path d="M160 8 l20 34 l20 -34z" fill="#ff7b54"/><path d="M200 8 l20 34 l20 -34z" fill="#1f6fb2"/><path d="M240 8 l20 34 l20 -34z" fill="#18a999"/><path d="M280 8 l20 34 l20 -34z" fill="#ffb703"/><path d="M320 8 l20 34 l20 -34z" fill="#6ec1e4"/><path d="M360 8 l20 34 l20 -34z" fill="#ff7b54"/><path d="M400 8 l20 34 l20 -34z" fill="#1f6fb2"/><path d="M440 8 l20 34 l20 -34z" fill="#18a999"/><path d="M480 8 l20 34 l20 -34z" fill="#ffb703"/><path d="M520 8 l20 34 l20 -34z" fill="#6ec1e4"/><path d="M560 8 l20 34 l20 -34z" fill="#ff7b54"/><path d="M600 8 l20 34 l20 -34z" fill="#1f6fb2"/><path d="M640 8 l20 34 l20 -34z" fill="#18a999"/><path d="M680 8 l20 34 l20 -34z" fill="#ffb703"/><path d="M720 8 l20 34 l20 -34z" fill="#6ec1e4"/><path d="M760 8 l20 34 l20 -34z" fill="#ff7b54"/><path d="M800 8 l20 34 l20 -34z" fill="#1f6fb2"/><path d="M840 8 l20 34 l20 -34z" fill="#18a999"/><path d="M880 8 l20 34 l20 -34z" fill="#ffb703"/><path d="M920 8 l20 34 l20 -34z" fill="#6ec1e4"/><path d="M960 8 l20 34 l20 -34z" fill="#ff7b54"/><path d="M1000 8 l20 34 l20 -34z" fill="#1f6fb2"/><path d="M1040 8 l20 34 l20 -34z" fill="#18a999"/><path d="M1080 8 l20 34 l20 -34z" fill="#ffb703"/><path d="M1120 8 l20 34 l20 -34z" fill="#6ec1e4"/><path d="M1160 8 l20 34 l20 -34z" fill="#ff7b54"/></svg>
+  <div class="kicker">।। श्री गणेशाय नमः ।।</div>
+  <div class="age">१<sup>ला</sup></div>
+  <h1>पहिला वाढदिवस</h1>
+  <svg class="cake" id="cake" viewBox="0 0 320 250" aria-hidden="true">
+<ellipse cx="160" cy="236" rx="140" ry="10" fill="rgba(0,0,0,.12)"/>
+<rect x="30" y="170" width="260" height="62" rx="12" fill="#6ec1e4"/>
+<path d="M30 182 q16 18 32 0 q16 18 32 0 q16 18 32 0 q16 18 32 0 q16 18 32 0 q16 18 32 0 q16 18 32 0 q16 18 34 0 v-12 h-260z" fill="#ffffff"/>
+<g fill="#1f6fb2"><circle cx="70" cy="210" r="5"/><circle cx="120" cy="214" r="5"/><circle cx="170" cy="210" r="5"/><circle cx="220" cy="214" r="5"/><circle cx="260" cy="210" r="5"/></g>
+<rect x="60" y="106" width="200" height="68" rx="12" fill="#9bd8ea"/>
+<path d="M60 118 q14 16 28 0 q14 16 28 0 q14 16 28 0 q14 16 28 0 q14 16 28 0 q14 16 28 0 q14 16 32 0 v-12 h-200z" fill="#ffffff"/>
+<text x="160" y="160" text-anchor="middle" font-size="28" fill="#ffffff" font-family="Tiro Devanagari Marathi, serif">आरव</text>
+<g class="candle"><rect x="155.0" y="62" width="10" height="44" rx="3" fill="#ffb703"/>
+<path d="M155.0 72l10 -6M155.0 86l10 -6M155.0 100l10 -6" stroke="#fff" stroke-width="2" opacity=".7"/>
+<path d="M160.0 62v-6" stroke="#5a3a1a" stroke-width="1.6"/>
+<g class="flame" style="animation-delay:-0.00s"><path d="M160.0 30 C151.0 44 152.0 54 160.0 57 C168.0 54 169.0 44 160.0 30Z" fill="#ffb703"/><path d="M160.0 40 C156.0 48 156.0 53 160.0 55 C164.0 53 164.0 48 160.0 40Z" fill="#fff3b0"/></g>
+<g class="smoke"><path d="M160.0 54 q-6 -10 0 -18 q6 -8 0 -18" stroke="#9aa" stroke-width="2.4" fill="none" stroke-linecap="round"/></g></g></svg>
+  <div class="tip" id="tip">मेणबत्ती फुंकण्यासाठी केकवर टॅप करा</div>
+  <div class="wish">वाढदिवसाच्या हार्दिक शुभेच्छा!</div>
+  <div class="scroll">निमंत्रण पाहण्यासाठी खाली सरकवा ↓</div>
+</section>
+<main>
+  <div class="card rv"><p class="lead">आमच्या लाडक्या छोट्या राजकुमाराचा पहिला वाढदिवस! या आनंदक्षणी आपण उपस्थित राहून त्याला शुभाशीर्वाद द्यावेत.</p><div class="person "><div class="pre">चि.</div><div class="pname">आरव</div><div class="psub">(श्री. निखिल शिंदे व सौ. स्नेहा शिंदे यांचा लाडका)</div></div></div>
+  <div class="card rv"><h2>शुभ दिवस</h2><div class="big">रविवार, दि. १० जानेवारी २०२७</div><div class="big c2">सायं. ६ वा.</div></div>
+  <div class="card rv"><h2>कार्यक्रम</h2><div class="sched"><div class="srow "><b>सायं. ६:००</b><span>औक्षण</span></div><div class="srow "><b>सायं. ६:३०</b><span>केक कापणे</span></div><div class="srow "><b>सायं. ७:००</b><span>खेळ व मनोरंजन</span></div><div class="srow "><b>रात्री ८:००</b><span>स्नेहभोजन</span></div></div></div>
+  <div class="card rv"><h2>स्थळ</h2><div class="big">'गुलमोहर हॉल'</div><p class="lead">जालना रोड, छत्रपती संभाजीनगर</p><div class="btns"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Jalna+Road+Chhatrapati+Sambhajinagar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s-7-6.6-7-12.2A7 7 0 0 1 19 9.8C19 15.4 12 22 12 22z"/><circle cx="12" cy="10" r="2.5"/></svg><span>नकाशा</span></a><a class="btn alt" href="tel:+919876543210"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>९८७६५ ४३२१०</span></a><a class="btn alt" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Aarav%201st%20Birthday&dates=20270110T123000Z/20270110T160000Z&location=Jalna%20Road%20Chhatrapati%20Sambhajinagar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg><span>कॅलेंडर</span></a></div></div>
+  <div class="card rv"><h2>वाढदिवसाला उरलेले</h2><div class="cd" id="cdBox"><div><b id="cdD">०</b><small>दिवस</small></div><div><b id="cdH">०</b><small>तास</small></div><div><b id="cdM">०</b><small>मिनिटे</small></div><div><b id="cdS">०</b><small>सेकंद</small></div></div></div>
+  <div class="card rv"><h2>आतुरतेने वाट पाहणारे</h2><div class="labs"><div class="lab "><small>आजी-आजोबा</small>श्री. रामदास शिंदे व सौ. लता शिंदे</div><div class="lab "><small>आजोळ</small>श्री. सुभाष पाटील व सौ. वंदना पाटील</div><div class="lab "><small>आत्या</small>सौ. प्रज्ञा व श्री. विकास जगताप</div><div class="lab "><small>मामा-मामी</small>श्री. सागर व सौ. अमृता पाटील</div></div><p class="closing">छोट्या आरवला आशीर्वाद द्यायला नक्की या!</p><div class="sign">समस्त शिंदे परिवार</div></div>
+</main>
+<footer>✦ ❀ ✦</footer>
+<canvas id="confetti"></canvas>
+<script>
+
+const dev=n=>String(n).replace(/\d/g,d=>'०१२३४५६७८९'[d]);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+function watchReveals(root){(root||document).querySelectorAll('.rv:not(.in)').forEach(el=>io.observe(el))}
+const target=new Date('2027-01-10T18:00:00+05:30').getTime();
+function tick(){const b=document.getElementById('cdBox');if(!b)return;let d=target-Date.now();
+  if(d<=0){b.innerHTML='<div style="padding:8px 16px">वाढदिवस साजरा झाला!</div>';return}
+  const D=Math.floor(d/864e5);d%=864e5;const H=Math.floor(d/36e5);d%=36e5;const M=Math.floor(d/6e4);const S=Math.floor(d%6e4/1e3);
+  [['cdD',D],['cdH',H],['cdM',M],['cdS',S]].forEach(([id,v])=>{const e=document.getElementById(id);if(e)e.textContent=dev(v)})}
+tick();setInterval(tick,1000);
+
+const hero=document.getElementById('hero'),bc=['#1f6fb2', '#18a999', '#ffb703', '#6ec1e4', '#ff7b54'];
+for(let i=0;i<8;i++){const b=document.createElement('div');b.className='balloon';b.style.left=(4+Math.random()*90)+'%';b.style.background=bc[i%bc.length];
+  b.style.animationDuration=(10+Math.random()*8)+'s';b.style.animationDelay=(-Math.random()*14)+'s';b.style.setProperty('--sx',(Math.random()*80-40)+'px');hero.appendChild(b)}
+const cv=document.getElementById('confetti'),cx=cv.getContext('2d');let parts=[];
+function rs(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio;cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}rs();addEventListener('resize',rs);
+function burst(n,x,y){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=4+Math.random()*9;parts.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-7,r:4+Math.random()*5,c:bc[i%bc.length],rot:Math.random()*6,vr:(Math.random()-.5)*.3,l:0})}}
+(function loop(){cx.clearRect(0,0,innerWidth,innerHeight);parts=parts.filter(p=>p.l<240&&p.y<innerHeight+30);
+  for(const p of parts){p.vy+=.22;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;p.l++;cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);cx.fillStyle=p.c;cx.fillRect(-p.r,-p.r/2,p.r*2,p.r);cx.restore()}
+  requestAnimationFrame(loop)})();
+document.getElementById('cake').addEventListener('click',function(){if(this.classList.contains('blown'))return;this.classList.add('blown');hero.classList.add('done');
+  const r=this.getBoundingClientRect();burst(170,r.left+r.width/2,r.top+r.height*.3);setTimeout(()=>{burst(80,innerWidth*.15,innerHeight*.3);burst(80,innerWidth*.85,innerHeight*.3)},350);watchReveals()});
+watchReveals();
+</script>
+</body>
+</html>
