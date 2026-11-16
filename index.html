@@ -132,14 +132,17 @@
       </div>
       <div class="case-body">
         <h3><span lang="mr" class="deva">दासबोध</span> Dasbodh</h3>
-        <p class="kicker">Offline reader for the works of Samarth Ramdas Swami</p>
-        <p>All 200 samas and 7,751 ovis of the Dasbodh, plus Manache Shlok and Atmaram, in Devanagari. It has no accounts, ads or analytics, and it never needs the internet. The care went into the text itself: readings were compared word by word against printed and online sources, and changed only when at least two sources agreed.</p>
+        <p class="kicker">Reader for the works of Samarth Ramdas Swami, with grounded AI answers</p>
+        <p>All 200 samas and 7,751 ovis of the Dasbodh, plus Manache Shlok and Atmaram, in Devanagari. Reading works fully offline, with no accounts, ads or analytics. The care went into the text itself: readings were compared word by word against printed and online sources, and changed only when at least two sources agreed.</p>
+        <p><strong>Ask AI</strong> answers questions about life and practice from the granths themselves. A question is embedded with a multilingual model, matched against every ovi and its meaning in a vector index, and answered by an LLM from those ovis only. The answer cites ovis by reference, and the app renders the cited verses from its own bundled text, so a quoted verse can never be invented.</p>
         <ul class="points">
-          <li>Search with Devanagari-normalised matching across every verse.</li>
-          <li>Short Marathi meanings bundled offline, shown on long-press.</li>
-          <li>Read-aloud using the phone's own Marathi text-to-speech voice, with a spelling clean-up layer for the older text.</li>
+          <li>Retrieval-augmented generation on Cloudflare Workers: bge-m3 embeddings, Vectorize over ~4,100 ovi + meaning chunks, DeepSeek for the answer, follow-up questions with conversation context.</li>
+          <li>Layered abuse guards, cheapest first: pattern checks for code, a relevance gate tuned on measured scores that refuses off-topic questions before any paid call, a model-side off-topic flag and an output check. Readers can report an answer.</li>
+          <li>Per-install credit wallet in a Durable Object, Play Integrity tokens bound to each request, and credit packs through Google Play Billing verified server-side, at about ₹0.12 of model cost per answer.</li>
+          <li>A contextual Marathi meaning for every ovi, generated offline with an LLM and reviewed, shown on long-press. UI in Marathi, Hindi and English.</li>
+          <li>Search with Devanagari-normalised matching, and read-aloud through the phone's Marathi text-to-speech voice.</li>
         </ul>
-        <ul class="tags"><li>React Native</li><li>Expo Router</li><li>TypeScript</li><li>Text-to-speech</li></ul>
+        <ul class="tags"><li>React Native</li><li>Expo Router</li><li>TypeScript</li><li>RAG</li><li>Cloudflare Workers</li><li>Vectorize</li><li>Workers AI</li><li>DeepSeek</li><li>Durable Objects</li><li>Play Integrity</li><li>Play Billing</li></ul>
         <p class="links">
           <a href="https://play.google.com/store/apps/details?id=com.apnaprogrammer.dasbodh" rel="noopener">Google Play <span aria-hidden="true">↗</span></a>
           <a href="https://www.indusappstore.com/apps/devotional/dasbodh/com.apnaprogrammer.dasbodh/?page=details&amp;id=com.apnaprogrammer.dasbodh" rel="noopener">Indus Appstore <span aria-hidden="true">↗</span></a>
@@ -279,7 +282,7 @@
       <div><dt>Data</dt><dd>PostgreSQL, MySQL, Redis, Apache Kafka, MongoDB, SQLite</dd></div>
       <div><dt>Frontend</dt><dd>Vue 3, React, TypeScript, Hotwire (Turbo and Stimulus), Tailwind CSS, PWAs</dd></div>
       <div><dt>Mobile</dt><dd>React Native, Expo, Zustand, native Android (Kotlin, Jetpack Compose, Java), Play and Indus releases</dd></div>
-      <div><dt>AI</dt><dd>LLM features in production (content generation, grading, summarisation) with automated checks, and AI coding agents used daily (Claude, Cursor, GitHub Copilot)</dd></div>
+      <div><dt>AI</dt><dd>LLM features in production (content generation, grading, summarisation, retrieval-augmented Q&amp;A over a vector index) with automated checks and cost controls, and AI coding agents used daily (Claude, Cursor, GitHub Copilot)</dd></div>
       <div><dt>Payments</dt><dd>Razorpay checkout and webhooks, subscription plans, GST invoicing</dd></div>
       <div><dt>Delivery</dt><dd>Docker, Kubernetes, Kamal 2, AWS, GCP, CI/CD, Capistrano, RSpec, Playwright, Vitest, Jest</dd></div>
     </dl>
