@@ -136,6 +136,6 @@ h4 a:hover { text-decoration: underline; }
   .job { grid-template-columns: 1fr; }
   .top { gap: .75rem; }
   .mark { font-size: 1.05rem; }
-  .top nav { gap: .7rem; font-size: .84rem; }
+  .top nav { gap: .25rem .7rem; font-size: .84rem; flex-wrap: wrap; justify-content: flex-end; }
   .lede { font-size: 1.1rem; }
 }
