@@ -47,6 +47,20 @@ a:hover { color: var(--accent); }
 .top nav a { text-decoration: none; color: var(--soft); }
 .top nav a:hover { color: var(--accent); }
 
+/* Hamburger: hidden on wide screens; on phones it toggles the menu (see the
+   script in each page). Without JavaScript the links stay visible, wrapped. */
+.menu-btn { display: none; width: 2.75rem; height: 2.75rem; margin: -.5rem -.6rem -.5rem 0; padding: 0; border: 0; background: none; color: var(--ink); cursor: pointer; place-items: center; border-radius: 6px; }
+.menu-btn:hover { color: var(--accent); }
+.menu-btn .bars, .menu-btn .bars::before, .menu-btn .bars::after { display: block; width: 1.35rem; height: 2px; background: currentColor; border-radius: 1px; transition: transform 200ms ease-in-out, background-color 150ms ease; }
+.menu-btn .bars { position: relative; }
+.menu-btn .bars::before, .menu-btn .bars::after { content: ""; position: absolute; left: 0; }
+.menu-btn .bars::before { top: -7px; }
+.menu-btn .bars::after { top: 7px; }
+.menu-btn[aria-expanded="true"] .bars { background: transparent; }
+.menu-btn[aria-expanded="true"] .bars::before { transform: translateY(7px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] .bars::after { transform: translateY(-7px) rotate(-45deg); }
+@media (prefers-reduced-motion: reduce) { .menu-btn .bars, .menu-btn .bars::before, .menu-btn .bars::after { transition: none; } }
+
 .hero { padding-block: clamp(3rem, 9vw, 7rem) clamp(3rem, 7vw, 5rem); }
 .eyebrow, .status, .meta, .facts dt, .scale dt, .stack dt { font-size: .84rem; line-height: 1.45; color: var(--soft); }
 h1 { font: 600 clamp(2.5rem, 6.6vw, 4.75rem)/1.08 var(--serif); letter-spacing: -.015em; margin-top: 1.25rem; max-width: 22ch; }
@@ -137,5 +151,10 @@ h4 a:hover { text-decoration: underline; }
   .top { gap: .75rem; }
   .mark { font-size: 1.05rem; }
   .top nav { gap: .25rem .7rem; font-size: .84rem; flex-wrap: wrap; justify-content: flex-end; }
+  .js .top { flex-wrap: wrap; align-items: center; }
+  .js .menu-btn { display: grid; }
+  .js .top nav { display: none; flex-basis: 100%; flex-direction: column; gap: 0; margin-top: 1rem; border-bottom: 1px solid var(--rule); font-size: 1rem; }
+  .js .top nav.open { display: flex; }
+  .js .top nav a { padding: .8rem 0; border-top: 1px solid var(--rule); color: var(--ink); }
   .lede { font-size: 1.1rem; }
 }

@@ -18,6 +18,7 @@
 <link rel="preload" href="assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
+<script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Amol Joshi","jobTitle":"Tech Lead / Principal Software Engineer","url":"https://amolmjoshi93.github.io/","address":{"@type":"PostalAddress","addressLocality":"Ratnagiri","addressCountry":"IN"},"sameAs":["https://www.linkedin.com/in/amolmjoshi93/","https://github.com/amolmjoshi93"]}
 </script>
@@ -27,7 +28,8 @@
 
 <header class="top wrap">
   <a class="mark" href="#top" aria-label="Amol Joshi, home">Amol Joshi</a>
-  <nav aria-label="Primary">
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span class="bars" aria-hidden="true"></span></button>
+  <nav id="site-nav" aria-label="Primary">
     <a href="#work">Work</a>
     <a href="#experience">Experience</a>
     <a href="#stack">Stack</a>
@@ -306,5 +308,6 @@
   <p>© 2026 Amol Joshi</p>
   <p>Ratnagiri, India</p>
 </footer>
+<script src="assets/menu.js" defer></script>
 </body>
 </html>
