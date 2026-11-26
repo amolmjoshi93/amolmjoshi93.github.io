@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KRCL CBT Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm exam-hall focus, one question at a time, quick honest feedback.
+   IDEA: a Konkan Railway journey — each part is a stretch of line, each question a station.
+   PICTURE: the route strip at the top, filling with green/red stations as you answer.
+   COLOUR and TYPE: laterite red ground band, white cards, ink text; signal green/red for right/wrong. Archivo + Inter.
+   LAYOUT: one centred column up to 760px; question palette under the card; results with per-part rows and a review list. */
+:root{color-scheme:light dark;
+--bg:light-dark(#f7f4f1,#16110f);--card:light-dark(#fff,#221a17);--ink:light-dark(#1c1412,#f3ece8);--mute:light-dark(#6b5c56,#b3a49d);
+--line:light-dark(#e6ddd8,#3a2e29);--lat:light-dark(#9c3b1b,#c4572f);--latd:light-dark(#7a2c12,#e07a50);
+--ok:light-dark(#1d7a3e,#4cc27a);--okbg:light-dark(#e5f4ea,#173826);--bad:light-dark(#b42318,#ff7a6b);--badbg:light-dark(#fcebe9,#3d1c19);--sel:light-dark(#fdf3ee,#2e211c)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Archivo,Inter,sans-serif;line-height:1.1;margin:0;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible{outline:3px solid var(--lat);outline-offset:2px}
+.top{background:var(--lat);color:#fff;padding:18px max(5vw,16px) 22px}
+.top .in{max-width:760px;margin:0 auto}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand h1{font-size:clamp(20px,3.4vw,26px);font-weight:800}
+.brand small{opacity:.85;font-size:14px}
+.home-btn{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:10px;padding:8px 14px;min-height:40px;color:#fff}
+.route{margin-top:16px;display:flex;gap:6px;align-items:center}
+.seg{flex:1;height:10px;border-radius:5px;background:rgba(255,255,255,.22);position:relative;overflow:hidden}
+.seg i{position:absolute;inset:0 auto 0 0;background:#fff;border-radius:5px;transition:width .4s}
+.route-l{display:flex;justify-content:space-between;font-size:13px;margin-top:6px;opacity:.9;gap:6px}
+.route-l span{flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+main{max-width:760px;margin:0 auto;padding:22px 16px 64px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:clamp(18px,3vw,28px);box-shadow:0 1px 0 var(--line)}
+.meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--mute);font-size:14px;margin-bottom:12px}
+.meta b{color:var(--lat);font-weight:600}
+.qtext{font-size:clamp(18px,2.4vw,21px);font-weight:600;line-height:1.4;margin:0 0 18px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;min-height:52px;transition:border-color .15s,background .15s}
+.opt:hover:not([disabled]){border-color:var(--lat);background:var(--sel)}
+.opt .k{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;background:var(--bg);border:1px solid var(--line)}
+.opt[disabled]{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok .k{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}.opt.bad .k{background:var(--bad);color:#fff;border-color:var(--bad)}
+.opt.dim{opacity:.6}
+.fb{margin-top:16px;border-radius:12px;padding:14px 16px;border-left:5px solid}
+.fb.ok{background:var(--okbg);border-color:var(--ok)}.fb.bad{background:var(--badbg);border-color:var(--bad)}
+.fb h3{font-size:17px;margin-bottom:6px}.fb.ok h3{color:var(--ok)}.fb.bad h3{color:var(--bad)}
+.fb p{margin:6px 0 0}
+.note{margin-top:10px;font-size:14px;padding:8px 10px;border-radius:8px;background:var(--card);border:1px dashed var(--lat);color:var(--ink)}
+.nav{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.btn{white-space:nowrap;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:10px 18px;min-height:46px;font-weight:600}
+.btn.pri{background:var(--lat);border-color:var(--lat);color:#fff}
+.btn.pri:hover{background:var(--latd);border-color:var(--latd)}
+.btn[disabled]{opacity:.4;cursor:default}
+.grow{flex:1}
+.pal{margin-top:18px}
+.pal summary{cursor:pointer;color:var(--mute);font-size:14px;padding:6px 0;min-height:44px;display:flex;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px;margin-top:8px}
+.grid button{height:40px;border-radius:8px;border:1px solid var(--line);background:var(--card);font-size:13px;font-weight:600}
+.grid .g-ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.grid .g-bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.grid .cur{outline:2px solid var(--ink);outline-offset:1px}
+.hero h2{font-size:clamp(28px,5vw,40px);margin-bottom:8px}
+.hero p{color:var(--mute);margin:0 0 20px;max-width:60ch}
+.parts{display:grid;gap:10px;margin-bottom:20px}
+.part{display:flex;align-items:center;gap:14px;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:14px;padding:14px 16px;min-height:64px;width:100%}
+.part:hover{border-color:var(--lat)}
+.part .n{flex:none;width:42px;height:42px;border-radius:10px;background:var(--lat);color:#fff;display:grid;place-items:center;font:800 18px Archivo,sans-serif}
+.part .t{flex:1}.part .t b{display:block;font-size:16px}.part .t span{font-size:14px;color:var(--mute)}
+.part .p{font-size:14px;color:var(--mute);white-space:nowrap}
+.opts-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin:4px 0 18px;font-size:15px}
+.opts-row label{display:flex;gap:8px;align-items:center;min-height:44px;cursor:pointer}
+.opts-row input{width:20px;height:20px;accent-color:var(--lat)}
+.opts-row select{font:inherit;font-size:16px;padding:8px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);min-height:44px}
+.score{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+.ring{width:132px;height:132px;flex:none}
+.score h2{font-size:clamp(28px,5vw,40px)}
+.score p{margin:6px 0 0;color:var(--mute)}
+.bars{display:grid;gap:12px;margin:8px 0 24px}
+.bar .l{display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;gap:8px}
+.bar .l span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.bar .tr{height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+.bar .tr i{display:block;height:100%;background:var(--ok);border-radius:5px}
+.filt{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.filt button{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;min-height:40px;font-size:14px}
+.filt button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.rv{border-top:1px solid var(--line);padding:16px 0}
+.rv h3{font:600 16px/1.4 Inter,sans-serif;margin-bottom:8px}
+.rv .tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;margin-right:6px}
+.tag.ok{background:var(--okbg);color:var(--ok)}.tag.bad{background:var(--badbg);color:var(--bad)}.tag.sk{background:var(--bg);color:var(--mute);border:1px solid var(--line)}
+.rv .a{font-size:15px;margin:4px 0}.rv .e{font-size:15px;color:var(--mute);margin:6px 0 0}
+.hint{font-size:13px;color:var(--mute);margin-top:14px}
+.hidden{display:none!important}
+@media(max-width:600px){.route-l{font-size:12px}.score{gap:16px}.ring{width:104px;height:104px}.nav .btn{flex:1}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <div class="brand"><div><h1>KRCL CBT Practice</h1><small>Notification CO/P-R/02/2026 · 200 questions</small></div>
+  <button class="home-btn" id="homeBtn" type="button">All parts</button></div>
+  <div class="route" id="route"></div>
+  <div class="route-l"><span>Technical</span><span>Maths</span><span>Reasoning</span><span>Science &amp; GK</span></div>
+</div></header>
+<main>
+  <section id="home"></section>
+  <section id="quiz" class="hidden"></section>
+  <section id="result" class="hidden"></section>
+</main>
+<script>
+const Q=[];
+// Part 1 — Technical Ability. Format: [section, question, [correct, wrong, wrong, wrong], explanation, correctionNote?]
+Q.push(
+["1.1 Computer Networks","What is the TCP Maximum Segment Size (MSS) if the MTU is 1500 bytes and standard IPv4 and TCP headers are used without options?",["1460 bytes","1480 bytes","1500 bytes","1440 bytes"],"Standard IPv4 header = 20 bytes, TCP header = 20 bytes. MSS = MTU − (IP + TCP) = 1500 − 40 = 1460 bytes."],
+["1.1 Computer Networks","Which routing protocol uses Dijkstra's algorithm to calculate the shortest path tree?",["OSPF","RIP","BGP","EIGRP"],"OSPF is a link-state protocol that uses Dijkstra's shortest-path-first algorithm to compute loop-free routes. RIP is distance-vector (Bellman-Ford), BGP is path-vector, and EIGRP uses DUAL."],
+["1.1 Computer Networks","What is the primary function of ARP (Address Resolution Protocol)?",["Resolves an IPv4 address to a MAC address","Resolves a domain name to an IP address","Assigns IP addresses dynamically","Resolves a MAC address to a port number"],"When a host needs to talk to a device on the same LAN, it broadcasts an ARP request to learn that device's layer-2 MAC address. DNS resolves names; DHCP assigns addresses."],
+["1.1 Computer Networks","How many usable host addresses does a /27 subnet (255.255.255.224) provide?",["30","32","62","14"],"/27 leaves 32 − 27 = 5 host bits → 2⁵ = 32 addresses. Subtract the network and broadcast addresses: 30 usable hosts."],
+["1.1 Computer Networks","Which OSI layer handles translation, data compression and encryption?",["Presentation layer (Layer 6)","Session layer (Layer 5)","Application layer (Layer 7)","Transport layer (Layer 4)"],"Layer 6 transforms data into a format the application can use, e.g. encryption, compression and character-set conversion (ASCII ↔ EBCDIC)."],
+["1.1 Computer Networks","What problem does CSMA/CD solve in Ethernet networks?",["Collision detection and handling on shared half-duplex media","Routing packets between networks","Encrypting frames on the wire","Assigning MAC addresses to hosts"],"Carrier Sense Multiple Access with Collision Detection senses the channel, detects collisions, sends a jam signal and backs off for a random time before retrying."],
+["1.1 Computer Networks","Which transport protocol is connectionless and does not guarantee delivery or ordering?",["UDP","TCP","SCTP","ICMP"],"UDP trades reliability and sequencing for low latency, which suits VoIP, DNS and live video. (ICMP is a network-layer protocol, not transport.)"],
+["1.1 Computer Networks","What is the bandwidth-delay product of a 10 Mbps link with an RTT of 40 ms?",["400,000 bits (50 KB)","4,000,000 bits (500 KB)","40,000 bits (5 KB)","250,000 bits (31.25 KB)"],"BDP = Bandwidth × RTT = (10 × 10⁶ bit/s) × 0.040 s = 400,000 bits = 50,000 bytes."],
+["1.1 Computer Networks","Which TCP/IP layer maps to Layer 3 of the OSI model?",["Internet layer","Transport layer","Network Access layer","Application layer"],"The TCP/IP Internet layer handles logical addressing and routing across networks, the same job as the OSI Network layer."],
+["1.1 Computer Networks","What is the well-known port number for HTTPS?",["443","80","8080","22"],"HTTP uses port 80; HTTP over TLS (HTTPS) defaults to port 443. Port 22 is SSH."],
+["1.2 Database Management","Which normal form ensures no non-prime attribute is transitively dependent on the primary key?",["Third Normal Form (3NF)","Second Normal Form (2NF)","First Normal Form (1NF)","Fourth Normal Form (4NF)"],"A relation is in 3NF if it is in 2NF and no non-prime attribute depends transitively on a candidate key."],
+["1.2 Database Management","What does the 'I' in ACID stand for?",["Isolation","Integrity","Indexing","Immutability"],"Isolation ensures concurrent transactions leave the database in the same state as if they ran one after another, e.g. preventing dirty reads of uncommitted data."],
+["1.2 Database Management","Which statement about DELETE vs TRUNCATE in SQL is correct?",["DELETE is DML and removes rows one by one; TRUNCATE is DDL and deallocates all data pages","DELETE is DDL; TRUNCATE is DML","TRUNCATE can take a WHERE clause; DELETE cannot","Both are DDL commands and behave identically"],"DELETE is row-by-row, fully logged and can filter with WHERE. TRUNCATE removes all rows by deallocating pages, is faster, resets identity columns and (in SQL Server) is blocked when a foreign key references the table."],
+["1.2 Database Management","Which relational algebra operator selects specific columns from a relation?",["Projection (π)","Selection (σ)","Union (∪)","Cartesian product (×)"],"Projection (π) picks columns; Selection (σ) picks rows (tuples) that satisfy a condition."],
+["1.2 Database Management","Which type of index stores the actual data rows in its leaf pages?",["Clustered index","Non-clustered index","Bitmap index","Hash index"],"A clustered index defines the physical order of the table's rows, so its leaf level is the data itself. A table can have only one clustered index."],
+["1.2 Database Management","Which join returns all rows from the left table and matching rows from the right, filling gaps with NULL?",["LEFT OUTER JOIN","INNER JOIN","RIGHT OUTER JOIN","CROSS JOIN"],"LEFT JOIN keeps every left-table row; right-side columns are NULL where no match exists."],
+["1.2 Database Management","What is a 'phantom read'?",["Re-running a query returns a different set of rows because another transaction inserted matching rows","Reading data that another transaction has not yet committed","Reading the same row twice and getting different values due to an update","A read that fails because the row was locked"],"Phantoms come from inserts/deletes that change the result set. They are possible under READ COMMITTED and REPEATABLE READ and are prevented by SERIALIZABLE (e.g. using range locks). Reading uncommitted data is a dirty read; a changed value in the same row is a non-repeatable read."],
+["1.2 Database Management","Which command removes previously granted privileges from a database user?",["REVOKE","DENY ALL","REMOVE","ROLLBACK"],"GRANT adds permissions; REVOKE takes them away (e.g. REVOKE SELECT ON emp FROM user1). ROLLBACK undoes a transaction."],
+["1.3 Data Structures & Algorithms","What is the average-case time complexity of QuickSelect for finding the k-th smallest element?",["O(N)","O(N log N)","O(log N)","O(N²)"],"QuickSelect partitions and recurses into only one side: N + N/2 + N/4 + … ≈ 2N → O(N) on average. Its worst case is O(N²)."],
+["1.3 Data Structures & Algorithms","Which data structure is used to evaluate postfix (Reverse Polish) expressions?",["Stack","Queue","Heap","Linked list"],"Push operands; on an operator, pop the top two operands, apply it and push the result."],
+["1.3 Data Structures & Algorithms","What is the space complexity of recursive DFS on a tree/graph path of maximum depth D?",["O(D)","O(1)","O(D²)","O(log D)"],"DFS keeps one stack frame per level of the current path, so space grows with the maximum depth D. (For a general graph with V vertices, the worst case is O(V).)"],
+["1.3 Data Structures & Algorithms","What balance factors are allowed for every node in an AVL tree?",["−1, 0, +1","0 only","−2 to +2","0 and +1"],"Balance factor = height(left) − height(right). If any node goes outside {−1, 0, 1}, rotations rebalance the tree."],
+["1.3 Data Structures & Algorithms","How does open addressing with linear probing resolve a hash collision?",["Checks the next slots (h(k)+1, h(k)+2, … mod M) until an empty one is found","Stores colliding keys in a linked list at that slot","Applies a second hash function to compute the step","Doubles the table size immediately"],"Linear probing scans sequentially from the home slot. It is simple but suffers from primary clustering. Chaining uses linked lists; double hashing uses a second hash function."],
+["1.3 Data Structures & Algorithms","What is the time complexity of inserting into a binary max-heap of N elements?",["O(log N)","O(1)","O(N)","O(N log N)"],"The element is appended at the end and 'sifted up' at most the height of the tree, which is log N."],
+["1.4 Operating Systems","Which four conditions must hold simultaneously for a deadlock (Coffman conditions)?",["Mutual exclusion, hold and wait, no preemption, circular wait","Mutual exclusion, starvation, preemption, circular wait","Hold and wait, aging, priority inversion, circular wait","Mutual exclusion, paging, thrashing, no preemption"],"These are the Coffman conditions. Breaking any one of them prevents deadlock."],
+["1.4 Operating Systems","What is the key difference between a process and a thread?",["A process has its own address space; threads of a process share code and heap memory","A thread has its own address space; processes share memory","Processes cannot run concurrently; threads can","There is no difference; the terms are interchangeable"],"Threads are lightweight units inside a process sharing its memory, which is why switching between threads is cheaper than switching between processes."],
+["1.4 Operating Systems","What is 'thrashing' in memory management?",["The system spends more time swapping pages than executing instructions","A process using 100% of the CPU","Two processes waiting on each other forever","Memory fragmentation caused by variable partitions"],"Thrashing happens when the working sets of active processes exceed physical RAM, causing continuous page faults."],
+["1.4 Operating Systems","Which CPU scheduling algorithm gives the minimum average waiting time?",["Shortest Job First (SJF / SRTF)","First Come First Served (FCFS)","Round Robin","Priority scheduling"],"Running the shortest bursts first minimises total waiting time; SRTF is its preemptive form. It is optimal but needs burst lengths in advance."],
+["1.4 Operating Systems","What is the function of a Translation Lookaside Buffer (TLB)?",["A cache of recent virtual-to-physical page translations used by the MMU","A buffer that holds disk blocks before writing","A register holding the next instruction address","A queue of processes waiting for I/O"],"A TLB hit avoids walking the page table in main memory, speeding up address translation."],
+["1.5 Railway S&T & OFC","Which wavelength windows are mainly used for low-loss transmission over single-mode fibre?",["1310 nm and 1550 nm","850 nm and 1300 nm","650 nm and 850 nm","400 nm and 700 nm"],"1310 nm has near-zero chromatic dispersion; 1550 nm has the lowest attenuation (≈ 0.2 dB/km), ideal for long-haul backbones. 850 nm is used with multimode fibre."],
+["1.5 Railway S&T & OFC","What does the 'Absolute Block System' in railway signalling ensure?",["Only one train occupies a block section at a time, after 'Line Clear' is received from the station ahead","Trains follow each other at a fixed time interval regardless of position","Signals change automatically based on track circuits only","Two trains may share a block if moving in the same direction"],"No train enters a block section until Line Clear is obtained from the station in advance, preventing collisions on single and double lines."],
+["1.5 Railway S&T & OFC","Which cable type is commonly used for track-side signalling to reduce interference from 25 kV AC traction?",["Armoured quad signalling cable","Unshielded twisted pair (Cat 5)","Coaxial RG-6 cable","Bare aluminium conductor"],"Armoured quad cables minimise crosstalk and induced voltages from 25 kV AC overhead equipment (OHE). OFC is used for data communication."],
+["1.5 Railway S&T & OFC","What is the function of an axle counter?",["Counts axles entering and leaving a section to detect whether it is clear or occupied","Measures train speed for overspeed alarms","Counts passengers boarding a coach","Detects broken rails by measuring current"],"Axle counters compare in-count and out-count. They are unaffected by ballast resistance, rusty rails or flooding, unlike track circuits."],
+["1.5 Railway S&T & OFC","Which transmission technologies are widely deployed on railway OFC networks to carry voice, signalling and SCADA data?",["SDH and IP-MPLS","ISDN and dial-up","Bluetooth and Zigbee","Token Ring and FDDI"],"SDH (STM-1/4/16) gives deterministic latency, fast (< 50 ms) protection switching and clock synchronisation; IP-MPLS is the newer packet backbone."],
+["1.5 Railway S&T & OFC","What is 'Kavach' in Indian Railways?",["An indigenous Automatic Train Protection (ATP) system","A passenger ticketing app","A track-renewal machine","A coach fire-detection sensor"],"Kavach (meaning 'armour') prevents Signal Passed At Danger (SPAD) incidents and applies brakes automatically if the loco pilot fails to control speed. It is a name, not an acronym.","Corrected: the original asked for Kavach's 'full form', but Kavach is not an abbreviation."],
+["1.5 Railway S&T & OFC","Which phenomenon keeps light travelling inside an optical fibre core?",["Total internal reflection","Diffraction","Dispersion","Polarisation"],"The core's refractive index (n₁) is higher than the cladding's (n₂); light hitting the boundary above the critical angle is totally reflected."],
+["1.6 Digital & Analog Electronics","Convert (11010110)₂ to hexadecimal.",["D6","C6","D5","B6"],"Group into nibbles: 1101 = 13 = D, 0110 = 6 → D6₁₆."],
+["1.6 Digital & Analog Electronics","What is the maximum efficiency of a transformer-coupled Class-A power amplifier?",["50%","25%","78.5%","100%"],"A directly coupled Class-A amplifier reaches 25%; transformer coupling doubles this to 50%. 78.5% is the Class-B maximum."],
+["1.6 Digital & Analog Electronics","By De Morgan's law, NOT(A · B) equals:",["A̅ + B̅","A̅ · B̅","A + B","A · B̅"],"The complement of a product equals the sum of the complements."],
+["1.6 Digital & Analog Electronics","Which op-amp circuit gives an output proportional to the negative integral of the input?",["Inverting integrator","Differentiator","Voltage follower","Non-inverting amplifier"],"Resistor R at the inverting input and capacitor C in feedback: Vout = −(1/RC)∫Vin dt."],
+["1.6 Digital & Analog Electronics","How many select lines does a 16 × 1 multiplexer need?",["4","16","8","2"],"2ⁿ = 16 → n = log₂16 = 4."],
+["1.6 Digital & Analog Electronics","Which flip-flop removes the race-around condition of a JK flip-flop when J = K = 1?",["Master-slave (or edge-triggered) JK flip-flop","SR latch","D latch","T latch with level triggering"],"The master works while the clock is high and the slave updates on the falling edge, so the output toggles only once per pulse."],
+["1.7 Microprocessors & Software","What are the widths of the 8085 address bus and data bus?",["Address 16-bit, data 8-bit","Address 8-bit, data 16-bit","Address 20-bit, data 16-bit","Address 16-bit, data 16-bit"],"A 16-bit address bus reaches 2¹⁶ = 64 KB of memory; the 8-bit data bus transfers one byte at a time. (20/16 is the 8086.)"],
+["1.7 Microprocessors & Software","What stack operation happens when an interrupt service routine is triggered?",["The current Program Counter is pushed onto the stack","The stack pointer is reset to zero","The accumulator is popped from the stack","All registers are cleared"],"Saving the return address lets the processor resume the interrupted program after the ISR ends with RET/RETI."],
+["1.7 Microprocessors & Software","Which SDLC model suits safety-critical railway signalling where requirements are fully defined upfront?",["V-Model","Agile Scrum","Big Bang model","Prototype model"],"The V-Model pairs each specification level with a matching test/validation phase, which suits SIL-4 systems like interlocking."],
+["1.7 Microprocessors & Software","In OOP, what is polymorphism?",["Different classes responding to the same method call in their own way","Hiding internal data behind methods","Creating a class from an existing class","Bundling data and methods into one unit"],"Polymorphism covers overriding (runtime) and overloading (compile time). Hiding data is encapsulation/abstraction; deriving classes is inheritance."],
+["1.7 Microprocessors & Software","What does CMMI stand for?",["Capability Maturity Model Integration","Capability Measurement Model Index","Code Maturity Management Integration","Certified Maturity Model Institute"],"CMMI rates process maturity on 5 levels: Initial, Managed, Defined, Quantitatively Managed, Optimizing."],
+["1.7 Microprocessors & Software","Which register holds the address of the next instruction to be fetched?",["Program Counter (PC)","Stack Pointer (SP)","Instruction Register (IR)","Accumulator"],"The PC advances after each fetch, unless a branch, call or interrupt changes it. The IR holds the current instruction."],
+["1.7 Microprocessors & Software","Which Git command combines a topic branch into the currently checked-out branch?",["git merge <branch>","git push <branch>","git clone <branch>","git stash <branch>"],"git merge integrates the commits of the named branch into the current HEAD branch."],
+["1.7 Microprocessors & Software","What distinguishes black-box testing from white-box testing?",["Black-box tests behaviour without seeing code; white-box tests internal logic and code paths","Black-box is done only by developers; white-box only by users","Black-box tests performance; white-box tests security","There is no difference"],"White-box testing measures statement/branch coverage; black-box testing checks requirements from the outside, e.g. acceptance tests."]
+);
+// Part 2 — Mathematics & Quantitative Aptitude
+Q.push(
+["2.1 Number System & HCF/LCM","Find the sum of all two-digit numbers divisible by 7.",["728","735","700","756"],"Multiples: 14, 21, …, 98 (a = 14, d = 7). 98 = 14 + (n−1)7 → n = 13. Sum = 13/2 × (14 + 98) = 13 × 56 = 728."],
+["2.1 Number System & HCF/LCM","What is the unit digit of (2467)¹⁵³ × (341)⁷²?",["7","1","3","9"],"Powers of 7 cycle every 4 (7, 9, 3, 1). 153 mod 4 = 1 → 7. Any power of a number ending in 1 ends in 1. 7 × 1 = 7."],
+["2.1 Number System & HCF/LCM","The HCF of two numbers is 16 and their product is 3072. Find their LCM.",["192","256","48","3056"],"LCM = Product ÷ HCF = 3072 ÷ 16 = 192."],
+["2.1 Number System & HCF/LCM","Simplify: 45 − [38 − {60 ÷ 3 − (6 − 9 ÷ 3)}]",["24","21","18","28"],"(6 − 3) = 3 → {20 − 3} = 17 → [38 − 17] = 21 → 45 − 21 = 24."],
+["2.1 Number System & HCF/LCM","Smallest 4-digit number that leaves remainder 3 when divided by 12, 18, 21 and 28?",["1011","1008","1015","1263"],"LCM(12, 18, 21, 28) = 252. Smallest 4-digit multiple = 252 × 4 = 1008. Add 3 → 1011."],
+["2.2 Percentage, Profit & Loss","Electricity price rises 25%. By what % must consumption fall to keep expenditure unchanged?",["20%","25%","15%","22.5%"],"Reduction = 25 / (100 + 25) × 100 = 20%."],
+["2.2 Percentage, Profit & Loss","An item is marked 40% above cost and sold at 20% discount. Net profit %?",["12%","20%","8%","16%"],"CP = 100 → MP = 140 → SP = 140 × 0.8 = 112. Profit = 12%."],
+["2.2 Percentage, Profit & Loss","Selling 33 m of cloth, a trader gains the selling price of 11 m. Profit %?",["50%","33.33%","25%","66.67%"],"SP of 1 m = ₹1 → SP = 33, profit = 11, CP = 22. Profit % = 11/22 × 100 = 50%."],
+["2.2 Percentage, Profit & Loss","Successive discounts of 20% and 10% equal a single discount of:",["28%","30%","25%","32%"],"20 + 10 − (20 × 10)/100 = 30 − 2 = 28%."],
+["2.2 Percentage, Profit & Loss","35% failed in Maths, 25% in English, 10% in both. What % passed both?",["50%","40%","60%","45%"],"Failed in at least one = 35 + 25 − 10 = 50%. Passed both = 100 − 50 = 50%."],
+["2.3 Ratio, Averages & Mixtures","If A : B = 3 : 4 and B : C = 8 : 9, find A : B : C.",["6 : 8 : 9","3 : 4 : 9","3 : 8 : 9","6 : 4 : 9"],"Multiply A : B by 2 to match B = 8 → 6 : 8, so A : B : C = 6 : 8 : 9."],
+["2.3 Ratio, Averages & Mixtures","Average age of 20 students is 15. Including the teacher, it rises by 1. Teacher's age?",["36 years","35 years","16 years","31 years"],"21 × 16 − 20 × 15 = 336 − 300 = 36 years."],
+["2.3 Ratio, Averages & Mixtures","60 L of milk and water is in ratio 2 : 1. How much water must be added to make it 1 : 2?",["60 litres","40 litres","20 litres","80 litres"],"Milk 40 L, water 20 L. 40 / (20 + x) = 1/2 → 80 = 20 + x → x = 60 L."],
+["2.3 Ratio, Averages & Mixtures","Ages of two employees are 4 : 5. After 6 years they will be 5 : 6. Present ages?",["24 and 30","20 and 25","28 and 35","16 and 20"],"(4x + 6)/(5x + 6) = 5/6 → 24x + 36 = 25x + 30 → x = 6. Ages 24 and 30."],
+["2.3 Ratio, Averages & Mixtures","Three numbers in ratio 1 : 2 : 3 have a sum of cubes of 4500. Largest number?",["15","12","18","10"],"x³ + 8x³ + 27x³ = 36x³ = 4500 → x³ = 125 → x = 5. Largest = 15."],
+["2.4 Time & Work, Pipes","A builds a box in 12 days, B in 18 days. After working together 4 days, what fraction remains?",["4/9","5/9","1/3","2/9"],"Per day: 1/12 + 1/18 = 5/36. In 4 days: 20/36 = 5/9. Remaining = 4/9."],
+["2.4 Time & Work, Pipes","12 men or 18 women finish a job in 14 days. How long for 8 men and 16 women?",["9 days","10 days","12 days","8 days"],"1 man = 1.5 women → 8 M + 16 W = 12 W + 16 W = 28 W. Days = 18 × 14 / 28 = 9."],
+["2.4 Time & Work, Pipes","Pipe A fills in 10 h, B in 15 h, C empties in 20 h. All open — time to fill?",["60/7 h (8 4/7 h)","6 h","12 h","7.5 h"],"Net rate = 1/10 + 1/15 − 1/20 = (6 + 4 − 3)/60 = 7/60 → time = 60/7 h."],
+["2.4 Time & Work, Pipes","A is twice as efficient as B. Together they finish in 14 days. A alone?",["21 days","28 days","42 days","18 days"],"Total work = (2 + 1) × 14 = 42 units. A alone = 42 / 2 = 21 days."],
+["2.4 Time & Work, Pipes","A (6 days) and B (8 days) take a job for ₹600; with C it's done in 3 days. C's share?",["₹75","₹100","₹150","₹50"],"C's rate = 1/3 − (1/6 + 1/8) = 1/24. A : B : C = 4 : 3 : 1, so C gets 600/8 = ₹75."],
+["2.5 Speed, Distance & Trains","A train at 72 km/h crosses a pole in 9 s. Its length?",["180 m","200 m","160 m","648 m"],"72 × 5/18 = 20 m/s. Length = 20 × 9 = 180 m."],
+["2.5 Speed, Distance & Trains","Trains of 140 m and 160 m move in opposite directions at 60 and 48 km/h. Time to cross?",["10 s","12 s","15 s","25 s"],"Relative speed = 108 × 5/18 = 30 m/s. Distance = 300 m. Time = 10 s."],
+["2.5 Speed, Distance & Trains","A train at 54 km/h crosses a 150 m platform in 30 s. Time to cross a signal post?",["20 s","10 s","25 s","30 s"],"15 m/s × 30 = 450 m = L + 150 → L = 300 m. Time = 300/15 = 20 s."],
+["2.5 Speed, Distance & Trains","A boat goes upstream at 12 km/h and downstream at 20 km/h. Boat speed and current?",["16 km/h and 4 km/h","16 km/h and 8 km/h","8 km/h and 4 km/h","20 km/h and 12 km/h"],"Boat = (20 + 12)/2 = 16 km/h; current = (20 − 12)/2 = 4 km/h."],
+["2.5 Speed, Distance & Trains","At 3/4 of his usual speed, an engineer is 20 min late. His usual time?",["60 minutes","80 minutes","45 minutes","40 minutes"],"Time ratio usual : slow = 3 : 4. 1 unit = 20 min → usual = 3 × 20 = 60 min."],
+["2.6 Simple & Compound Interest","What principal earns ₹1,200 simple interest at 8% p.a. in 3 years?",["₹5,000","₹4,800","₹6,000","₹4,500"],"P = 1200 × 100 / (8 × 3) = ₹5,000."],
+["2.6 Simple & Compound Interest","Compound interest on ₹8,000 for 2 years at 10% p.a. (annual)?",["₹1,680","₹1,600","₹1,760","₹9,680"],"A = 8000 × 1.1² = 9680 → CI = ₹1,680. (₹1,600 is the simple interest.)"],
+["2.6 Simple & Compound Interest","CI − SI for 2 years at 5% p.a. is ₹25. Find the sum.",["₹10,000","₹5,000","₹12,500","₹2,500"],"P = Diff × (100/R)² = 25 × 400 = ₹10,000."],
+["2.6 Simple & Compound Interest","A sum triples in 8 years at simple interest. When will it become 5 times?",["16 years","24 years","12 years","20 years"],"Interest of 2P takes 8 years, so 4P takes 16 years."],
+["2.6 Simple & Compound Interest","A sum amounts to ₹1,331 in 3 years at 10% compounded annually. The principal?",["₹1,000","₹1,100","₹1,210","₹900"],"P = 1331 / 1.1³ = 1331 / 1.331 = ₹1,000."],
+["2.7 Algebra & Equations","If x + 1/x = 5, find x² + 1/x².",["23","25","27","21"],"(x + 1/x)² − 2 = 25 − 2 = 23."],
+["2.7 Algebra & Equations","If a + b = 10 and ab = 21, find a³ + b³.",["370","1000","430","630"],"a³ + b³ = (a + b)³ − 3ab(a + b) = 1000 − 630 = 370."],
+["2.7 Algebra & Equations","Roots of x² − 7x + 12 = 0?",["3 and 4","−3 and −4","2 and 6","1 and 12"],"(x − 3)(x − 4) = 0 → x = 3 or 4."],
+["2.7 Algebra & Equations","Solve: (2x + 5)/3 − (x − 1)/4 = 3",["x = 13/5 (2.6)","x = 3","x = 2","x = 13/3"],"Multiply by 12: 4(2x + 5) − 3(x − 1) = 36 → 5x + 23 = 36 → x = 13/5."],
+["2.7 Algebra & Equations","If 3^(x−y) = 27 and 3^(x+y) = 243, find x.",["4","3","5","1"],"x − y = 3 and x + y = 5 → 2x = 8 → x = 4."],
+["2.8 Geometry & Trigonometry","Two parallel lines are cut by a transversal. One co-interior angle is 65°. The other is:",["115°","65°","25°","135°"],"Co-interior (same-side interior) angles are supplementary: 180° − 65° = 115°."],
+["2.8 Geometry & Trigonometry","A right triangle has hypotenuse 13 cm and one side 12 cm. Third side?",["5 cm","7 cm","1 cm","√313 cm"],"√(13² − 12²) = √25 = 5 cm."],
+["2.8 Geometry & Trigonometry","If sin θ = 3/5, then tan θ = ?",["3/4","4/3","4/5","5/3"],"Base = √(5² − 3²) = 4. tan θ = perpendicular/base = 3/4."],
+["2.8 Geometry & Trigonometry","Each interior angle of a regular hexagon measures:",["120°","108°","135°","60°"],"(6 − 2) × 180° / 6 = 120°."],
+["2.8 Geometry & Trigonometry","From 30 m away, the angle of elevation of a tower top is 30°. Tower height?",["10√3 m (≈ 17.32 m)","30√3 m","15 m","10 m"],"H = 30 × tan 30° = 30/√3 = 10√3 m."],
+["2.9 Mensuration","Area of a circular turntable with circumference 88 m? (π = 22/7)",["616 m²","1232 m²","154 m²","308 m²"],"2πr = 88 → r = 14 m. Area = 22/7 × 14² = 616 m²."],
+["2.9 Mensuration","A rectangle's sides are 5 : 3 and perimeter 320 m. Its area?",["6,000 m²","6,400 m²","4,800 m²","3,600 m²"],"2(5x + 3x) = 320 → x = 20 → 100 m × 60 m = 6,000 m²."],
+["2.9 Mensuration","Volume of a cylindrical tank, height 10 m, radius 7 m?",["1,540 m³","440 m³","1,450 m³","3,080 m³"],"πr²h = 22/7 × 49 × 10 = 1,540 m³."],
+["2.9 Mensuration","A sphere of radius 6 cm is recast into spheres of radius 2 cm. How many?",["27","9","3","36"],"Volume ratio = (6/2)³ = 27."],
+["2.9 Mensuration","A square's diagonal is 10√2 m. Its perimeter?",["40 m","40√2 m","20 m","100 m"],"Side = diagonal/√2 = 10 m. Perimeter = 40 m."],
+["2.10 Statistics & Probability","For the data 3, 4, 5, 6, 7, 7, 7, 8, 9 — mean, median and mode are:",["Mean ≈ 6.22, Median 7, Mode 7","Mean 6, Median 7, Mode 7","Mean 7, Median 6, Mode 7","Mean 6.22, Median 6, Mode 7"],"Sum = 56, so mean = 56/9 ≈ 6.22. Median = 5th value = 7. Mode = 7 (appears three times).","Corrected: the original answer said mean = 6 (using a sum of 54), but the values add up to 56."],
+["2.10 Statistics & Probability","Mean of x, x+2, x+4, x+6, x+8 is 11. Find x.",["7","11","5","9"],"For an AP the mean equals the middle term: x + 4 = 11 → x = 7."],
+["2.10 Statistics & Probability","In a pie chart, fuel cost has a 108° sector. What % of expenditure is fuel?",["30%","108%","36%","25%"],"108/360 × 100 = 30%."],
+["2.10 Statistics & Probability","A fair die is rolled. Probability of a prime number?",["1/2","1/3","2/3","1/6"],"Primes: 2, 3, 5 → 3/6 = 1/2. (1 is not prime.)"],
+["2.10 Statistics & Probability","Two coins are tossed. Probability of at least one head?",["3/4","1/2","1/4","2/3"],"Favourable: HH, HT, TH → 3 of 4 outcomes."]
+);
+// Part 3 — General Intelligence & Reasoning
+Q.push(
+["3.1 Analogies & Classification","Station Master : Railway Station :: Air Traffic Controller : ?",["Airport","Aeroplane","Pilot","Runway"],"A Station Master manages train movements at a station, just as an Air Traffic Controller manages aircraft movements at an airport."],
+["3.1 Analogies & Classification","8 : 64 :: 11 : ?",["121","111","132","88"],"The relation is n : n². 11² = 121."],
+["3.1 Analogies & Classification","BJR : EMU :: DFP : ?",["GIS","GHS","FIS","GIR"],"Each letter moves +3: B→E, J→M, R→U. So D→G, F→I, P→S."],
+["3.1 Analogies & Classification","Find the odd one out: Kilogram, Gram, Tonne, Metre, Quintal",["Metre","Tonne","Quintal","Gram"],"All others are units of mass; the metre measures length."],
+["3.1 Analogies & Classification","Find the odd pair: (13, 169), (17, 289), (19, 361), (21, 442)",["(21, 442)","(13, 169)","(17, 289)","(19, 361)"],"21² = 441, not 442. All other pairs follow (n, n²)."],
+["3.2 Number & Letter Series","Next number: 5, 11, 23, 47, 95, …",["191","190","189","143"],"Each term = previous × 2 + 1 → 95 × 2 + 1 = 191."],
+["3.2 Number & Letter Series","Next number: 2, 6, 12, 20, 30, 42, …",["56","54","52","60"],"Terms are n(n + 1): 1·2, 2·3, … 6·7, so next is 7 × 8 = 56."],
+["3.2 Number & Letter Series","Next term: AZ, CX, EV, GT, …",["IR","IS","HR","JR"],"First letters move +2 (A, C, E, G, I); second letters move −2 (Z, X, V, T, R).","Explanation corrected: the second letter simply steps back by 2 each time."],
+["3.2 Number & Letter Series","Next number: 3, 8, 18, 38, 78, …",["158","156","118","148"],"Differences double: +5, +10, +20, +40, so next is +80 → 158. (Equivalently ×2 + 2.)"],
+["3.2 Number & Letter Series","Next number: 7, 10, 8, 11, 9, 12, …",["10","13","11","14"],"Two interleaved series: 7, 8, 9, 10 … and 10, 11, 12 … The next term belongs to the first: 10."],
+["3.3 Coding-Decoding","If SIGNAL is coded as HRTMZO, how is TRAIN coded?",["GIZRM","GIZRN","HIZRM","GJZRM"],"Each letter is replaced by its opposite letter (A↔Z, B↔Y …): T→G, R→I, A→Z, I→R, N→M.","Corrected: the original code for SIGNAL was HITMZO, which does not follow the opposite-letter rule (I's opposite is R). It is now HRTMZO."],
+["3.3 Coding-Decoding","If ENGINEER is coded as 51479145518 (alphabet positions), how is DATA coded?",["41201","42011","4121","41210"],"D = 4, A = 1, T = 20, A = 1 → 41201."],
+["3.3 Coding-Decoding","RED = 27 and BLUE = 40. What is GREEN?",["49","47","52","45"],"Sum of letter positions: G7 + R18 + E5 + E5 + N14 = 49."],
+["3.3 Coding-Decoding","Water is called food, food is called tree, tree is called sky, sky is called wall. Where does a bird fly?",["Wall","Sky","Tree","Food"],"Birds fly in the sky, and 'sky' is called 'wall'."],
+["3.3 Coding-Decoding","TRACK = 37651 and RAIL = 7698. How is LART written?",["8673","8763","8637","6873"],"Direct substitution: L = 8, A = 6, R = 7, T = 3."],
+["3.4 Blood Relations","Pointing to a boy, Suresh said, 'He is the son of the only son of my mother.' Suresh is the boy's:",["Father","Uncle","Brother","Grandfather"],"The only son of Suresh's mother is Suresh himself, so the boy is his son."],
+["3.4 Blood Relations","A + B: A is brother of B; A − B: A is sister of B; A × B: A is father of B. What is P to S in P × Q + R − S?",["Father","Uncle","Brother","Grandfather"],"Q, R and S are siblings, and P is Q's father, so P is S's father."],
+["3.4 Blood Relations","A and B are brothers. C and D are sisters. A's son is D's brother. How is B related to C?",["Uncle","Father","Brother","Cousin"],"D (and so C) are A's daughters. B is A's brother, so B is C's uncle."],
+["3.4 Blood Relations","A man says of a woman: 'Her mother is the only daughter of my mother-in-law.' He is her:",["Father","Uncle","Brother","Husband"],"The only daughter of his mother-in-law is his wife, so the woman is his daughter."],
+["3.4 Blood Relations","P is the father of Q, but Q is not P's son. Q is P's:",["Daughter","Niece","Son","Cannot be determined"],"Q is P's child and not a son, so Q is his daughter."],
+["3.5 Direction & Distance","A man walks 10 m East, turns left and walks 5 m, turns left again and walks 10 m. Where is he from the start?",["5 m North","5 m South","10 m North","15 m West"],"East 10 and West 10 cancel, leaving 5 m North."],
+["3.5 Direction & Distance","Rahul walks 6 km South, turns right and walks 8 km. Distance from start?",["10 km","14 km","2 km","12 km"],"√(6² + 8²) = √100 = 10 km."],
+["3.5 Direction & Distance","At 3:00, the minute hand points West. Which way does the hour hand point?",["North","South","East","West"],"At 3:00 the minute hand is at 12 and the hour hand at 3, which is 90° clockwise from 12. Turning 90° clockwise from West gives North.","Corrected: the original answer was South. If 12 points West, then 3 (a quarter-turn clockwise) points North."],
+["3.5 Direction & Distance","A is 5 m North of B. C is 5 m East of B. Where is A with respect to C?",["North-West","North-East","South-West","South-East"],"With B at (0,0): A = (0,5), C = (5,0). From C, A is up and to the left: North-West."],
+["3.5 Direction & Distance","Sunita walks 20 m North, turns right 30 m, turns right 35 m, turns left 15 m. Which way is she facing?",["East","West","South","North"],"North → right = East → right = South → left = East."],
+["3.6 Syllogisms","All trains are tracks. All tracks are signals. Conclusions: I. All trains are signals. II. Some signals are tracks.",["Both I and II follow","Only I follows","Only II follows","Neither follows"],"Trains ⊂ Tracks ⊂ Signals, so both conclusions follow."],
+["3.6 Syllogisms","Some engines are motors. No motor is a battery. Conclusions: I. Some engines are not batteries. II. Some motors are engines.",["Both I and II follow","Only I follows","Only II follows","Neither follows"],"The engines that are motors cannot be batteries (I), and 'some engines are motors' converts to 'some motors are engines' (II)."],
+["3.6 Syllogisms","All computers are laptops. Some laptops are tablets. Conclusions: I. Some computers are tablets. II. No computer is a tablet.",["Either I or II follows","Only I follows","Only II follows","Both follow"],"Neither is certain alone, but they form a complementary pair (Some / No) about the same terms, so 'either I or II' follows."],
+["3.6 Syllogisms","All red are blue. No blue is green. Conclusions: I. No red is green. II. Some blue are red.",["Both I and II follow","Only I follows","Only II follows","Neither follows"],"Red lies inside blue and blue is separate from green, so no red is green; 'all red are blue' converts to 'some blue are red'."],
+["3.6 Syllogisms","Some pens are pencils. Some pencils are erasers. Conclusions: I. Some pens are erasers. II. All erasers are pencils.",["Neither follows","Only I follows","Only II follows","Both follow"],"Two particular ('some') statements give no definite conclusion."],
+["3.7 Seating & Puzzles","A, B, C, D, E sit in a row facing North. C is in the middle, A is immediately left of C, E is at the right end, and B is not next to E. Who is immediately right of C?",["D","B","E","A"],"Left to right: B A C D E."],
+["3.7 Seating & Puzzles","P, Q, R, S, T, U sit round a table facing the centre. P is opposite S, Q is immediately right of P, and R is between P and T. Who is opposite Q?",["T","U","R","P"],"Q and R sit on either side of P, T is next to R, and U fills the last seat between Q and S. Opposite Q is T."],
+["3.7 Seating & Puzzles","In a class of 40, Amit is 13th from the top. His rank from the bottom?",["28th","27th","29th","26th"],"40 − 13 + 1 = 28."],
+["3.7 Seating & Puzzles","A is taller than B but shorter than C. D is taller than E but shorter than B. Who is tallest?",["C","A","B","D"],"C > A > B > D > E."],
+["3.7 Seating & Puzzles","W is heavier than X. Y is lighter than Z. Z is lighter than X. Which is lightest?",["Y","Z","X","W"],"W > X > Z > Y."],
+["3.8 Venn Diagrams","Which Venn diagram represents Engineers, IT Professionals, Humans?",["Two intersecting circles inside one large circle","Three separate circles","Three concentric circles","Two separate circles inside one large circle"],"All engineers and IT professionals are humans, and some engineers are IT professionals."],
+["3.8 Venn Diagrams","Of 50 people, 30 speak Marathi, 25 Hindi and 10 both. How many speak neither?",["5","15","10","0"],"50 − (30 + 25 − 10) = 50 − 45 = 5."],
+["3.8 Venn Diagrams","Which Venn diagram represents Dogs, Pets, Cats?",["Two separate circles, each partly overlapping a third (Pets)","Three concentric circles","Dogs and Cats overlapping, Pets separate","Three separate circles"],"Dogs and cats don't overlap, but some of each are pets."],
+["3.8 Venn Diagrams","18 students play cricket, 15 football and 6 both. How many play at least one?",["27","33","21","39"],"18 + 15 − 6 = 27."],
+["3.8 Venn Diagrams","Which diagram represents Reptiles, Snakes, Birds?",["One circle inside another, with a third separate circle","Three intersecting circles","Three concentric circles","Three separate circles"],"All snakes are reptiles; birds are a separate class."],
+["3.9 Mathematical Operations","If + means ÷, − means ×, × means −, and ÷ means +, evaluate 16 ÷ 8 − 4 + 2 × 5.",["27","19","32","11"],"Becomes 16 + 8 × 4 ÷ 2 − 5 = 16 + 16 − 5 = 27."],
+["3.9 Mathematical Operations","Which interchange makes 10 + 4 − 2 × 3 = 12 correct?",["Swap + and −","Swap + and ×","Swap − and ×","No change needed"],"Swapping + and −: 10 − 4 + 2 × 3 = 10 − 4 + 6 = 12. As written it equals 8.","Corrected: the original equation (8 − 4 + 2 × 6 ÷ 3 = 12) cannot be made true by any single swap of two signs, so the question was rewritten."],
+["3.9 Mathematical Operations","All regular employees get annual leave. X is an employee. Conclusions: I. X gets annual leave. II. X may be a temporary employee.",["Only II follows","Only I follows","Both follow","Neither follows"],"We don't know that X is a regular employee, so I is not certain; II is a valid possibility."],
+["3.9 Mathematical Operations","Choose signs for * in 7 * 5 * 2 * 17 to make a true statement.",["+, ×, =","×, +, =","−, ×, =","+, −, ="],"7 + 5 × 2 = 7 + 10 = 17."],
+["3.9 Mathematical Operations","If 5 ★ 3 = 16 and 7 ★ 2 = 18, find 9 ★ 4.",["26","36","13","24"],"a ★ b = 2(a + b): 2(5+3) = 16, 2(7+2) = 18, so 2(9+4) = 26."],
+["3.10 Non-Verbal & Misc.","How many triangles are in a square with both diagonals drawn?",["8","4","6","10"],"4 small triangles + 4 larger ones (each half of the square) = 8."],
+["3.10 Non-Verbal & Misc.","A mirror is placed to the right of the word KRCL. How does the reflection appear?",["Letters reversed in order (L C R K) and each laterally inverted","Same order, letters upside down","Same order, no change","Order reversed but letters unchanged"],"A side mirror reverses the left-right order and flips each letter left-to-right."],
+["3.10 Non-Verbal & Misc.","On a standard die (opposite faces sum to 7), which number is opposite 3?",["4","6","5","1"],"7 − 3 = 4."],
+["3.10 Non-Verbal & Misc.","Complete the pattern: 1 dot, 4 dots, 9 dots, 16 dots, …",["25 dots","20 dots","24 dots","32 dots"],"Squares: 1², 2², 3², 4², 5² = 25."],
+["3.10 Non-Verbal & Misc.","A sheet is folded in half twice and two holes are punched through it. How many holes after unfolding?",["8","4","6","2"],"Two folds make 2² = 4 layers; 4 × 2 holes = 8."]
+);
+// Part 4 — General Science & Railway GK
+Q.push(
+["4.1 Physics","What is the SI unit of electric current?",["Ampere","Volt","Ohm","Coulomb"],"1 ampere = 1 coulomb per second."],
+["4.1 Physics","Which law says 'for every action there is an equal and opposite reaction'?",["Newton's third law","Newton's first law","Newton's second law","Law of conservation of momentum"],"Action and reaction act at the same time on two different bodies."],
+["4.1 Physics","Which mirror is used in vehicle headlights to produce a strong parallel beam?",["Concave mirror","Convex mirror","Plane mirror","Cylindrical mirror"],"A bulb at the principal focus of a concave mirror reflects rays parallel to the principal axis. Convex mirrors are used as rear-view mirrors."],
+["4.1 Physics","What is the SI unit of the power of a lens?",["Dioptre","Watt","Lux","Candela"],"P = 1 / f, with f in metres."],
+["4.1 Physics","Why do stars twinkle?",["Atmospheric refraction","Total internal reflection","Scattering of light","Diffraction by dust"],"Starlight keeps bending as it passes through air layers of varying density, so its apparent position and brightness flicker."],
+["4.1 Physics","What is the approximate value of g on Earth's surface?",["9.8 m/s²","8.9 m/s²","1.6 m/s²","98 m/s²"],"Standard gravitational acceleration is about 9.8 m/s². (1.6 m/s² is on the Moon.)"],
+["4.1 Physics","Which instrument measures atmospheric pressure?",["Barometer","Hygrometer","Anemometer","Manometer"],"The mercury barometer was invented by Torricelli. A hygrometer measures humidity; an anemometer, wind speed."],
+["4.1 Physics","Why does a straw in a glass of water look bent?",["Refraction of light","Reflection of light","Dispersion of light","Interference of light"],"Light changes speed passing from water to air, shifting the straw's apparent position."],
+["4.1 Physics","Which colour of visible light has the shortest wavelength?",["Violet","Red","Green","Yellow"],"Violet (≈ 400 nm) has the shortest wavelength and highest frequency in VIBGYOR; red has the longest."],
+["4.1 Physics","A transformer works on the principle of:",["Mutual induction","Self induction","Electrostatic induction","Photoelectric effect"],"AC in the primary coil creates changing flux that induces voltage in the secondary coil."],
+["4.2 Chemistry","Chemical formula of common salt?",["NaCl","KCl","NaHCO₃","Na₂CO₃"],"Sodium chloride. Na₂CO₃ is washing soda; NaHCO₃ is baking soda."],
+["4.2 Chemistry","pH of pure water at 25 °C?",["7","0","14","6.5"],"H⁺ and OH⁻ ion concentrations are equal, so it is neutral."],
+["4.2 Chemistry","Which gas is called 'laughing gas'?",["Nitrous oxide (N₂O)","Nitric oxide (NO)","Nitrogen dioxide (NO₂)","Carbon monoxide (CO)"],"N₂O is used as a mild anaesthetic in medicine and dentistry."],
+["4.2 Chemistry","Chemical name of baking soda?",["Sodium bicarbonate (NaHCO₃)","Sodium carbonate (Na₂CO₃)","Calcium carbonate (CaCO₃)","Sodium hydroxide (NaOH)"],"It releases CO₂ when heated or mixed with acid, which makes dough rise."],
+["4.2 Chemistry","Most abundant metal in the Earth's crust?",["Aluminium","Iron","Calcium","Sodium"],"Aluminium is about 8.1% of the crust; iron is second (≈ 5%). (Oxygen is the most abundant element.)"],
+["4.2 Chemistry","Coating iron with zinc to prevent rusting is called:",["Galvanisation","Electroplating with tin","Anodising","Vulcanisation"],"Zinc acts as a sacrificial anode and corrodes in place of iron. Vulcanisation is for rubber."],
+["4.2 Chemistry","Which gas turns lime water milky?",["Carbon dioxide","Oxygen","Hydrogen","Nitrogen"],"CO₂ reacts with Ca(OH)₂ to form insoluble white calcium carbonate (CaCO₃)."],
+["4.2 Chemistry","Main constituent of natural gas and biogas?",["Methane","Ethane","Butane","Propane"],"Methane (CH₄) makes up most of natural gas. LPG is mainly butane and propane."],
+["4.2 Chemistry","Which acid is secreted in the human stomach?",["Hydrochloric acid","Sulphuric acid","Nitric acid","Acetic acid"],"HCl keeps gastric pH around 1.5–3.5 and activates the enzyme pepsin."],
+["4.2 Chemistry","Chemical formula of Plaster of Paris?",["CaSO₄ · ½H₂O","CaSO₄ · 2H₂O","CaCO₃","Ca(OH)₂"],"Calcium sulphate hemihydrate. CaSO₄ · 2H₂O is gypsum."],
+["4.3 Biology","Which organelle is the 'powerhouse of the cell'?",["Mitochondria","Ribosome","Golgi apparatus","Lysosome"],"Mitochondria produce ATP, the cell's energy currency. Lysosomes are 'suicide bags'."],
+["4.3 Biology","Which blood group is the universal recipient?",["AB positive","O negative","A positive","B negative"],"AB⁺ plasma has no anti-A, anti-B or anti-Rh antibodies. O⁻ is the universal donor."],
+["4.3 Biology","Which gland is the 'master gland'?",["Pituitary","Thyroid","Adrenal","Pancreas"],"The pituitary regulates hormone secretion by other endocrine glands."],
+["4.3 Biology","Deficiency of vitamin C causes:",["Scurvy","Rickets","Beriberi","Night blindness"],"Vitamin C is needed for collagen; lack of it causes bleeding gums. Rickets = vitamin D, beriberi = B1, night blindness = A."],
+["4.3 Biology","Which pigment captures sunlight for photosynthesis?",["Chlorophyll","Haemoglobin","Melanin","Carotene"],"Chlorophyll sits in the chloroplasts of green plants."],
+["4.3 Biology","Normal resting heart rate of an adult?",["60–100 beats per minute","40–60 beats per minute","100–140 beats per minute","20–40 beats per minute"],"The average is about 72 bpm."],
+["4.3 Biology","Which blood cells carry oxygen?",["Red blood cells (erythrocytes)","White blood cells","Platelets","Lymphocytes"],"RBCs contain haemoglobin, which binds oxygen. Platelets help clotting."],
+["4.3 Biology","The structural and functional unit of the kidney is the:",["Nephron","Neuron","Alveolus","Villus"],"Nephrons filter blood to form urine. Neurons are nerve cells; alveoli are in the lungs."],
+["4.3 Biology","Which vitamin is made in the skin on exposure to sunlight?",["Vitamin D","Vitamin A","Vitamin K","Vitamin B12"],"UVB light converts a cholesterol derivative in the skin into vitamin D."],
+["4.3 Biology","Longest and strongest bone in the human body?",["Femur","Tibia","Humerus","Fibula"],"The femur (thigh bone) runs from hip to knee. The stapes in the ear is the smallest."],
+["4.4 Indian Railways GK","When and between which stations did India's first passenger train run?",["16 April 1853, Bori Bunder to Thane","16 April 1853, Howrah to Hooghly","15 August 1854, Bori Bunder to Kalyan","1 May 1853, Madras to Arcot"],"It covered 34 km hauled by the locomotives Sahib, Sindh and Sultan."],
+["4.4 Indian Railways GK","Where is the headquarters of Indian Railways (Railway Board)?",["Rail Bhavan, New Delhi","CST, Mumbai","Fairlie Place, Kolkata","Chennai Central"],"Rail Bhavan houses the Ministry of Railways and the Railway Board."],
+["4.4 Indian Railways GK","How many railway zones does Indian Railways have (as of 2026)?",["18","17","16","19"],"South Coast Railway (HQ Visakhapatnam) began operations on 1 June 2026, taking the count from 17 to 18. This count includes Metro Railway, Kolkata.","Corrected: the original said '18 zones excluding Metro Railway Kolkata' and called the new zone 'Southern Coast Railway'. The official name is South Coast Railway, and the 18 includes Kolkata Metro."],
+["4.4 Indian Railways GK","Where is the Integral Coach Factory (ICF) located?",["Perambur, Chennai","Kapurthala, Punjab","Rae Bareli, UP","Varanasi, UP"],"ICF builds coaches including Vande Bharat trainsets. Kapurthala has the Rail Coach Factory; Varanasi builds locomotives (BLW)."],
+["4.4 Indian Railways GK","Track width of broad gauge in India?",["1,676 mm","1,435 mm","1,000 mm","762 mm"],"5 ft 6 in. 1,435 mm is standard gauge (used by many metros); 1,000 mm is metre gauge."],
+["4.4 Indian Railways GK","Where is the National Rail Museum?",["Chanakyapuri, New Delhi","Mysuru, Karnataka","Howrah, West Bengal","Byculla, Mumbai"],"It preserves historic locomotives, coaches and exhibits."],
+["4.4 Indian Railways GK","Which station has the longest railway platform in the world?",["Hubballi Junction (Shree Siddharoodha Swamiji), Karnataka","Gorakhpur Junction, Uttar Pradesh","Kollam Junction, Kerala","Kharagpur Junction, West Bengal"],"Platform 1 at Hubballi is about 1,507 m long. Gorakhpur held the record before it."],
+["4.4 Indian Railways GK","Which Indian mountain railway first received UNESCO World Heritage status?",["Darjeeling Himalayan Railway (1999)","Nilgiri Mountain Railway","Kalka–Shimla Railway","Matheran Hill Railway"],"Nilgiri was added in 2005 and Kalka–Shimla in 2008 under 'Mountain Railways of India'. Matheran is on the tentative list."],
+["4.4 Indian Railways GK","What was the original project name of the Vande Bharat Express?",["Train 18","Project 2018","Mission Raftaar","Gatimaan"],"India's first indigenous semi-high-speed self-propelled trainset, built at ICF."],
+["4.4 Indian Railways GK","Which city got India's first underground metro?",["Kolkata (24 October 1984)","Delhi (2002)","Mumbai (2014)","Chennai (1995)"],"The first stretch ran between Esplanade and Bhowanipore (now Netaji Bhavan)."],
+["4.5 Konkan Railway GK","When was Konkan Railway Corporation Ltd incorporated?",["19 July 1990","26 January 1998","1 May 1998","15 August 1990"],"KRCL was incorporated in 1990. The first train ran on the full route on 26 January 1998 and the line was dedicated to the nation on 1 May 1998."],
+["4.5 Konkan Railway GK","Who was the founding Chairman & Managing Director of the Konkan Railway project?",["Dr E. Sreedharan","Madhu Dandavate","George Fernandes","Ashwini Lohani"],"E. Sreedharan led the construction of the coastal route. George Fernandes was Railway Minister who championed the project; Madhu Dandavate was an earlier Railway Minister who pushed for it."],
+["4.5 Konkan Railway GK","Which two stations are the end points of the Konkan Railway line?",["Roha (Maharashtra) and Thokur (Karnataka)","Mumbai CSMT and Mangaluru Central","Panvel and Madgaon","Ratnagiri and Udupi"],"The line runs about 741 km across Maharashtra, Goa and Karnataka."],
+["4.5 Konkan Railway GK","Where is KRCL's corporate headquarters?",["CBD Belapur, Navi Mumbai","Ratnagiri","Madgaon, Goa","Karwar"],"Belapur Bhavan is the corporate office. Ratnagiri and Karwar are regional offices."],
+["4.5 Konkan Railway GK","Which viaduct near Ratnagiri was long known as India's tallest railway viaduct?",["Panval Nadi viaduct","Chenab bridge","Zuari bridge","Sharavati bridge"],"Panval Nadi viaduct stands about 64 m high. The Chenab bridge in J&K (opened 2025) is far taller."],
+["4.5 Konkan Railway GK","Which is the longest tunnel on the Konkan Railway?",["Karbude tunnel (≈ 6.5 km)","Nathuwadi tunnel","Tike tunnel","Berdewadi tunnel"],"Karbude tunnel is near Ratnagiri in Maharashtra."],
+["4.5 Konkan Railway GK","Which freight service did Konkan Railway pioneer in 1999?",["Roll-on/Roll-off (Ro-Ro)","Double-stack containers","Parcel express","Kisan Rail"],"Ro-Ro carries loaded trucks on flat wagons, saving fuel and road time."],
+["4.5 Konkan Railway GK","Which entities hold shares in KRCL?",["Ministry of Railways with Maharashtra, Goa, Karnataka and Kerala","Ministry of Railways alone","Maharashtra and Goa only","Ministry of Railways and Tamil Nadu"],"KRCL was built on a central–state shareholding model."],
+["4.5 Konkan Railway GK","In which year did Konkan Railway complete 100% route electrification?",["2022","2020","2018","2024"],"Electrification of the whole Roha–Thokur route was completed in March 2022 (cost about ₹1,287 crore) and dedicated to the nation in June 2022."],
+["4.5 Konkan Railway GK","Which two Goa rivers are crossed by long Konkan Railway bridges?",["Mandovi and Zuari","Sharavati and Kali","Vashishti and Savitri","Netravati and Gangavalli"],"These bridges link North and South Goa on the KRCL alignment."]
+);
+
+</script>
+<script>
+{
+const PARTS=[{n:1,t:"Technical Ability",d:"Networks, DBMS, DSA, OS, S&T, electronics, software"},{n:2,t:"Mathematics & Aptitude",d:"Numbers, percentages, work, trains, interest, mensuration"},{n:3,t:"General Intelligence & Reasoning",d:"Series, coding, relations, directions, syllogisms, puzzles"},{n:4,t:"General Science & Railway GK",d:"Physics, chemistry, biology, Indian Railways, Konkan Railway"}];
+const DATA=Q.map((q,i)=>({id:i,part:+q[0][0],sec:q[0],q:q[1],opts:q[2],ans:q[2][0],e:q[3],fix:q[4]||""}));
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const KEY="krcl-quiz-v1";
+let store={answers:{}};
+try{store=JSON.parse(localStorage.getItem(KEY))||store}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}};
+let S=null; // session: {ids, order:{id:[opts]}, i, picks:{id:opt}, label}
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+
+function route(){
+  const cur=S?S.ids.map(id=>DATA[id]):null;
+  $("route").innerHTML=PARTS.map(p=>{
+    let pct;
+    if(S){const ids=S.ids.filter(id=>DATA[id].part===p.n);pct=ids.length?ids.filter(id=>id in S.picks).length/ids.length*100:0}
+    else{const ids=DATA.filter(d=>d.part===p.n);pct=ids.filter(d=>d.id in store.answers).length/ids.length*100}
+    return `<div class="seg"><i style="width:${pct}%"></i></div>`}).join("");
+}
+function show(v){for(const s of ["home","quiz","result"])$(s).classList.toggle("hidden",s!==v);route();window.scrollTo(0,0)}
+
+function home(){
+  const done=Object.keys(store.answers).length,right=Object.entries(store.answers).filter(([id,a])=>a===DATA[id].ans).length;
+  $("home").innerHTML=`<div class="hero"><h2>Pick a stretch of the line</h2>
+  <p>Answer each question to see instantly whether you were right, with the explanation. A full review appears at the end of every run.${done?` You've answered ${done} of 200 so far, ${right} correctly.`:""}</p></div>
+  <div class="opts-row">
+    <label><input type="checkbox" id="optShuf" checked> Shuffle question order</label>
+    <label>Questions <select id="optN"><option value="0">All</option><option value="10">10</option><option value="25">25</option><option value="50">50</option></select></label>
+  </div>
+  <div class="parts">
+  <button class="part" type="button" data-p="0"><span class="n">★</span><span class="t"><b>Full mock: all 4 parts</b><span>Mixed questions from the whole question bank</span></span><span class="p">200 Q</span></button>
+  ${PARTS.map(p=>{const ids=DATA.filter(d=>d.part===p.n),a=ids.filter(d=>d.id in store.answers).length;return `<button class="part" type="button" data-p="${p.n}"><span class="n">${p.n}</span><span class="t"><b>${esc(p.t)}</b><span>${esc(p.d)}</span></span><span class="p">${a?a+"/":""}${ids.length} Q</span></button>`}).join("")}
+  ${(()=>{const w=DATA.filter(d=>d.id in store.answers&&store.answers[d.id]!==d.ans);return w.length?`<button class="part" type="button" data-p="w"><span class="n">↺</span><span class="t"><b>Retry my wrong answers</b><span>Every question you've got wrong so far</span></span><span class="p">${w.length} Q</span></button>`:""})()}
+  </div>
+  ${done?`<button class="btn" type="button" id="reset">Clear saved progress</button>`:""}
+  <p class="hint">Keyboard: press 1–4 or A–D to answer, → or Enter for next, ← for previous. 7 answers in the source guide were corrected and are marked on their questions.</p>`;
+  $("home").querySelectorAll(".part").forEach(b=>b.onclick=()=>{
+    const p=b.dataset.p;let ids;
+    if(p==="w")ids=DATA.filter(d=>d.id in store.answers&&store.answers[d.id]!==d.ans).map(d=>d.id);
+    else ids=DATA.filter(d=>p==="0"||d.part===+p).map(d=>d.id);
+    if($("optShuf").checked)ids=shuf(ids);
+    const n=+$("optN").value;if(n)ids=ids.slice(0,n);
+    const label=p==="0"?"Full mock":p==="w"?"Wrong answers":PARTS[p-1].t;
+    start(ids,label)});
+  const r=$("reset");if(r)r.onclick=()=>{if(r.dataset.c){store={answers:{}};save();home();route()}else{r.dataset.c=1;r.textContent="Tap again to confirm"}};
+  show("home");
+}
+function start(ids,label){
+  const order={};ids.forEach(id=>order[id]=shuf(DATA[id].opts));
+  S={ids,order,i:0,picks:{},label};quiz();
+}
+function quiz(){
+  const id=S.ids[S.i],d=DATA[id],pick=S.picks[id],done=pick!==undefined,ok=pick===d.ans;
+  const answered=Object.keys(S.picks).length,last=S.i===S.ids.length-1;
+  $("quiz").innerHTML=`<div class="card">
+  <div class="meta"><span><b>${esc(S.label)}</b> · ${esc(d.sec)}</span><span>Question ${S.i+1} of ${S.ids.length} · Q${id+1} in the guide</span></div>
+  <p class="qtext">${esc(d.q)}</p>
+  <div class="opts">${S.order[id].map((o,k)=>{let c="";if(done){if(o===d.ans)c="ok";else if(o===pick)c="bad";else c="dim"}
+    return `<button class="opt ${c}" type="button" data-o="${k}" ${done?"disabled":""}><span class="k">${"ABCD"[k]}</span><span>${esc(o)}</span></button>`}).join("")}</div>
+  ${done?`<div class="fb ${ok?"ok":"bad"}"><h3>${ok?"Correct":"Not quite"}</h3>${ok?"":`<p><b>Answer:</b> ${esc(d.ans)}</p>`}<p>${esc(d.e)}</p>${d.fix?`<div class="note">${esc(d.fix)}</div>`:""}</div>`:""}
+  <div class="nav"><button class="btn" type="button" id="prev" ${S.i?"":"disabled"}>← Previous</button><span class="grow"></span>
+  <button class="btn" type="button" id="fin">Finish</button>
+  <button class="btn pri" type="button" id="next">${last?"See results":done?"Next →":"Skip →"}</button></div>
+  <details class="pal"><summary>Jump to a question · ${answered} of ${S.ids.length} answered</summary><div class="grid">${S.ids.map((x,j)=>{const p=S.picks[x];const c=p===undefined?"":p===DATA[x].ans?"g-ok":"g-bad";return `<button type="button" data-j="${j}" class="${c}${j===S.i?" cur":""}">${j+1}</button>`}).join("")}</div></details>
+  </div>`;
+  $("quiz").querySelectorAll(".opt").forEach(b=>b.onclick=()=>answer(+b.dataset.o));
+  $("quiz").querySelectorAll(".grid button").forEach(b=>b.onclick=()=>{S.i=+b.dataset.j;quiz()});
+  $("prev").onclick=()=>go(-1);$("next").onclick=()=>last?result():go(1);$("fin").onclick=result;
+  if($("quiz").classList.contains("hidden"))show("quiz");else route();
+}
+function answer(k){const id=S.ids[S.i];if(S.picks[id]!==undefined)return;S.picks[id]=S.order[id][k];store.answers[id]=S.picks[id];save();quiz();
+  const fb=document.querySelector(".fb");if(fb&&fb.getBoundingClientRect().bottom>innerHeight)fb.scrollIntoView({block:"nearest",behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})}
+function go(n){const j=S.i+n;if(j<0||j>=S.ids.length)return;S.i=j;quiz();window.scrollTo(0,0)}
+
+let filt="all";
+function result(){
+  const ids=S.ids,right=ids.filter(id=>S.picks[id]===DATA[id].ans).length,ans=ids.filter(id=>id in S.picks).length,pct=ids.length?Math.round(right/ids.length*100):0;
+  const R=56,C=2*Math.PI*R;
+  const byPart=PARTS.map(p=>{const x=ids.filter(id=>DATA[id].part===p.n);return {p,n:x.length,r:x.filter(id=>S.picks[id]===DATA[id].ans).length}}).filter(o=>o.n);
+  const wrongIds=ids.filter(id=>id in S.picks&&S.picks[id]!==DATA[id].ans);
+  const list=ids.filter(id=>filt==="all"||(filt==="wrong"&&id in S.picks&&S.picks[id]!==DATA[id].ans)||(filt==="skip"&&!(id in S.picks))||(filt==="fix"&&DATA[id].fix));
+  $("result").innerHTML=`<div class="card">
+  <div class="score"><svg class="ring" viewBox="0 0 132 132" role="img" aria-label="${pct}% correct"><circle cx="66" cy="66" r="${R}" fill="none" stroke="var(--line)" stroke-width="12"/>${pct?`<circle cx="66" cy="66" r="${R}" fill="none" stroke="var(--ok)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${C*pct/100} ${C}" transform="rotate(-90 66 66)"/>`:""}<text x="66" y="74" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="28" fill="var(--ink)">${pct}%</text></svg>
+  <div><h2>${right} of ${ids.length} correct</h2><p>${esc(S.label)} · ${ans} answered, ${ans-right} wrong, ${ids.length-ans} skipped</p></div></div>
+  ${byPart.length>1?`<div class="bars">${byPart.map(o=>`<div class="bar"><div class="l"><span>${esc(o.p.t)}</span><span>${o.r} / ${o.n}</span></div><div class="tr"><i style="width:${o.r/o.n*100}%"></i></div></div>`).join("")}</div>`:""}
+  <div class="nav" style="margin-top:0">${wrongIds.length?`<button class="btn pri" type="button" id="retry">Retry ${wrongIds.length} wrong</button>`:""}<button class="btn" type="button" id="again">Back to all parts</button></div>
+  </div>
+  <h2 style="font-size:24px;margin:28px 0 4px">Review with explanations</h2>
+  <div class="filt">${[["all","All"],["wrong","Wrong"],["skip","Skipped"],["fix","Corrected in guide"]].map(([k,l])=>`<button type="button" data-f="${k}" class="${filt===k?"on":""}">${l}</button>`).join("")}</div>
+  <div>${list.length?list.map(id=>{const d=DATA[id],p=S.picks[id],st=p===undefined?"sk":p===d.ans?"ok":"bad";
+    return `<div class="rv"><h3><span class="tag ${st}">${st==="ok"?"Correct":st==="bad"?"Wrong":"Skipped"}</span>Q${id+1}. ${esc(d.q)}</h3>
+    ${st==="bad"?`<p class="a">Your answer: ${esc(p)}</p>`:""}<p class="a"><b>Answer:</b> ${esc(d.ans)}</p><p class="e">${esc(d.e)}</p>${d.fix?`<div class="note">${esc(d.fix)}</div>`:""}</div>`}).join(""):`<p class="hint">Nothing here.</p>`}</div>`;
+  const rt=$("retry");if(rt)rt.onclick=()=>{filt="all";start(shuf(wrongIds),"Retry wrong answers")};
+  $("again").onclick=()=>{filt="all";S=null;home()};
+  $("result").querySelectorAll(".filt button").forEach(b=>b.onclick=()=>{filt=b.dataset.f;const y=scrollY;result();window.scrollTo(0,y)});
+  if($("result").classList.contains("hidden"))show("result");else route();
+}
+$("homeBtn").onclick=()=>{S=null;filt="all";home()};
+document.addEventListener("keydown",e=>{
+  if($("quiz").classList.contains("hidden")||e.metaKey||e.ctrlKey||e.altKey)return;
+  const k=e.key.toLowerCase(),m={"1":0,"2":1,"3":2,"4":3,a:0,b:1,c:2,d:3};
+  if(k in m){answer(m[k]);return}
+  if(k==="arrowright"||k==="enter"){if(e.target.tagName==="BUTTON"&&k==="enter")return;S.i===S.ids.length-1?result():go(1)}
+  if(k==="arrowleft")go(-1);
+});
+home();
+}
+</script>
+</body>
+</html>
