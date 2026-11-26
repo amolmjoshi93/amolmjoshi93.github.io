@@ -64,6 +64,13 @@ main{max-width:760px;margin:0 auto;padding:22px 16px 64px}
 .grid .g-ok{background:var(--ok);border-color:var(--ok);color:#fff}
 .grid .g-bad{background:var(--bad);border-color:var(--bad);color:#fff}
 .grid .cur{outline:2px solid var(--ink);outline-offset:1px}
+.stat{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:-4px 0 10px;font-size:15px}
+.stat b{font-family:Archivo,sans-serif;font-size:18px}.stat small{color:var(--mute)}
+.clock{font:700 18px Archivo,sans-serif;font-variant-numeric:tabular-nums;padding:4px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--line);white-space:nowrap}
+.clock.low{color:#fff;background:var(--bad);border-color:var(--bad)}.clock.off{font:500 14px Inter,sans-serif;color:var(--mute)}
+.tbar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:16px}.tbar i{display:block;height:100%;background:var(--lat);border-radius:3px}
+.fb.tu{background:var(--bg);border-color:var(--mute)}.fb.tu h3{color:var(--mute)}
+.grid .g-tu{background:var(--mute);border-color:var(--mute);color:var(--card)}
 .hero h2{font-size:clamp(28px,5vw,40px);margin-bottom:8px}
 .hero p{color:var(--mute);margin:0 0 20px;max-width:60ch}
 .parts{display:grid;gap:10px;margin-bottom:20px}
@@ -337,7 +344,11 @@ const KEY="krcl-quiz-v1";
 let store={answers:{}};
 try{store=JSON.parse(localStorage.getItem(KEY))||store}catch(e){}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}};
-let S=null; // session: {ids, order:{id:[opts]}, i, picks:{id:opt}, label}
+let S=null; // session: {ids, order:{id:[opts]}, i, picks:{id:opt}, tu:{id:true}, left:{id:sec}, pen, tlim, label}
+const cfg=Object.assign({pen:1,t:60},store.cfg||{});
+let tick=null;
+const fmtN=x=>(Math.round(x*100)/100).toString().replace("-","−");
+const marks=s=>{let r=0,w=0;s.ids.forEach(id=>{if(id in s.picks){s.picks[id]===DATA[id].ans?r++:w++}});return {r,w,m:r-w*s.pen}};
 const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 
 function route(){
@@ -357,6 +368,8 @@ function home(){
   <div class="opts-row">
     <label><input type="checkbox" id="optShuf" checked> Shuffle question order</label>
     <label>Questions <select id="optN"><option value="0">All</option><option value="10">10</option><option value="25">25</option><option value="50">50</option></select></label>
+    <label>Negative marking <select id="optPen"><option value="1">−1 per wrong</option><option value="0.3333333333">−1/3 per wrong</option><option value="0.25">−1/4 per wrong</option><option value="0">None</option></select></label>
+    <label>Timer per question <select id="optT"><option value="30">30 s</option><option value="45">45 s</option><option value="60">60 s</option><option value="90">90 s</option><option value="120">2 min</option><option value="0">Off</option></select></label>
   </div>
   <div class="parts">
   <button class="part" type="button" data-p="0"><span class="n">★</span><span class="t"><b>Full mock: all 4 parts</b><span>Mixed questions from the whole question bank</span></span><span class="p">200 Q</span></button>
@@ -364,7 +377,7 @@ function home(){
   ${(()=>{const w=DATA.filter(d=>d.id in store.answers&&store.answers[d.id]!==d.ans);return w.length?`<button class="part" type="button" data-p="w"><span class="n">↺</span><span class="t"><b>Retry my wrong answers</b><span>Every question you've got wrong so far</span></span><span class="p">${w.length} Q</span></button>`:""})()}
   </div>
   ${done?`<button class="btn" type="button" id="reset">Clear saved progress</button>`:""}
-  <p class="hint">Keyboard: press 1–4 or A–D to answer, → or Enter for next, ← for previous. 7 answers in the source guide were corrected and are marked on their questions.</p>`;
+  <p class="hint">Scoring: +1 for each correct answer, minus the chosen penalty for each wrong one; skipped or timed-out questions score 0. Keyboard: press 1–4 or A–D to answer, → or Enter for next, ← for previous. 7 answers in the source guide were corrected and are marked on their questions.</p>`;
   $("home").querySelectorAll(".part").forEach(b=>b.onclick=()=>{
     const p=b.dataset.p;let ids;
     if(p==="w")ids=DATA.filter(d=>d.id in store.answers&&store.answers[d.id]!==d.ans).map(d=>d.id);
@@ -372,61 +385,73 @@ function home(){
     if($("optShuf").checked)ids=shuf(ids);
     const n=+$("optN").value;if(n)ids=ids.slice(0,n);
     const label=p==="0"?"Full mock":p==="w"?"Wrong answers":PARTS[p-1].t;
+    cfg.pen=+$("optPen").value;cfg.t=+$("optT").value;store.cfg=cfg;save();
     start(ids,label)});
+  $("optPen").value=String(cfg.pen===1/3?"0.3333333333":cfg.pen);$("optT").value=String(cfg.t);
   const r=$("reset");if(r)r.onclick=()=>{if(r.dataset.c){store={answers:{}};save();home();route()}else{r.dataset.c=1;r.textContent="Tap again to confirm"}};
   show("home");
 }
 function start(ids,label){
   const order={};ids.forEach(id=>order[id]=shuf(DATA[id].opts));
-  S={ids,order,i:0,picks:{},label};quiz();
+  S={ids,order,i:0,picks:{},tu:{},left:{},pen:cfg.pen,tlim:cfg.t,label,t0:Date.now()};quiz();
 }
 function quiz(){
-  const id=S.ids[S.i],d=DATA[id],pick=S.picks[id],done=pick!==undefined,ok=pick===d.ans;
-  const answered=Object.keys(S.picks).length,last=S.i===S.ids.length-1;
+  clearInterval(tick);tick=null;
+  const id=S.ids[S.i],d=DATA[id],pick=S.picks[id],tu=!!S.tu[id],done=pick!==undefined||tu,ok=pick===d.ans;
+  const answered=Object.keys(S.picks).length,last=S.i===S.ids.length-1,mk=marks(S);
+  if(S.tlim&&!(id in S.left))S.left[id]=S.tlim;
+  const timed=S.tlim&&!done;
   $("quiz").innerHTML=`<div class="card">
   <div class="meta"><span><b>${esc(S.label)}</b> · ${esc(d.sec)}</span><span>Question ${S.i+1} of ${S.ids.length} · Q${id+1} in the guide</span></div>
+  <div class="stat"><span>Marks <b>${fmtN(mk.m)}</b> <small>(+1 right${S.pen?`, −${S.pen===1?1:S.pen===0.25?"1/4":"1/3"} wrong`:""})</small></span>${S.tlim?`<span class="clock ${done?"off":""}" id="clock">${done?(tu?"Time up":"Answered"):fmtT(S.left[id])}</span>`:""}</div>
+  ${S.tlim?`<div class="tbar"><i id="tbar" style="width:${done?0:S.left[id]/S.tlim*100}%"></i></div>`:""}
   <p class="qtext">${esc(d.q)}</p>
   <div class="opts">${S.order[id].map((o,k)=>{let c="";if(done){if(o===d.ans)c="ok";else if(o===pick)c="bad";else c="dim"}
     return `<button class="opt ${c}" type="button" data-o="${k}" ${done?"disabled":""}><span class="k">${"ABCD"[k]}</span><span>${esc(o)}</span></button>`}).join("")}</div>
-  ${done?`<div class="fb ${ok?"ok":"bad"}"><h3>${ok?"Correct":"Not quite"}</h3>${ok?"":`<p><b>Answer:</b> ${esc(d.ans)}</p>`}<p>${esc(d.e)}</p>${d.fix?`<div class="note">${esc(d.fix)}</div>`:""}</div>`:""}
+  ${done?`<div class="fb ${ok?"ok":tu?"tu":"bad"}"><h3>${ok?"Correct · +1":tu?"Time up · 0 marks":`Wrong · −${fmtN(S.pen)}`}</h3>${ok?"":`<p><b>Answer:</b> ${esc(d.ans)}</p>`}<p>${esc(d.e)}</p>${d.fix?`<div class="note">${esc(d.fix)}</div>`:""}</div>`:""}
   <div class="nav"><button class="btn" type="button" id="prev" ${S.i?"":"disabled"}>← Previous</button><span class="grow"></span>
   <button class="btn" type="button" id="fin">Finish</button>
   <button class="btn pri" type="button" id="next">${last?"See results":done?"Next →":"Skip →"}</button></div>
-  <details class="pal"><summary>Jump to a question · ${answered} of ${S.ids.length} answered</summary><div class="grid">${S.ids.map((x,j)=>{const p=S.picks[x];const c=p===undefined?"":p===DATA[x].ans?"g-ok":"g-bad";return `<button type="button" data-j="${j}" class="${c}${j===S.i?" cur":""}">${j+1}</button>`}).join("")}</div></details>
+  <details class="pal"><summary>Jump to a question · ${answered} of ${S.ids.length} answered</summary><div class="grid">${S.ids.map((x,j)=>{const p=S.picks[x];const c=p!==undefined?(p===DATA[x].ans?"g-ok":"g-bad"):S.tu[x]?"g-tu":"";return `<button type="button" data-j="${j}" class="${c}${j===S.i?" cur":""}">${j+1}</button>`}).join("")}</div></details>
   </div>`;
   $("quiz").querySelectorAll(".opt").forEach(b=>b.onclick=()=>answer(+b.dataset.o));
   $("quiz").querySelectorAll(".grid button").forEach(b=>b.onclick=()=>{S.i=+b.dataset.j;quiz()});
   $("prev").onclick=()=>go(-1);$("next").onclick=()=>last?result():go(1);$("fin").onclick=result;
   if($("quiz").classList.contains("hidden"))show("quiz");else route();
+  if(timed){let end=Date.now()+S.left[id]*1000;
+    tick=setInterval(()=>{const l=Math.max(0,(end-Date.now())/1000);S.left[id]=l;
+      const c=$("clock"),b=$("tbar");if(c){c.textContent=fmtT(l);c.classList.toggle("low",l<=10)}if(b)b.style.width=(l/S.tlim*100)+"%";
+      if(l<=0){clearInterval(tick);tick=null;S.tu[id]=true;quiz()}},200)}
 }
-function answer(k){const id=S.ids[S.i];if(S.picks[id]!==undefined)return;S.picks[id]=S.order[id][k];store.answers[id]=S.picks[id];save();quiz();
+const fmtT=s=>{s=Math.ceil(s);return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")};
+function answer(k){const id=S.ids[S.i];if(S.picks[id]!==undefined||S.tu[id])return;S.picks[id]=S.order[id][k];store.answers[id]=S.picks[id];save();quiz();
   const fb=document.querySelector(".fb");if(fb&&fb.getBoundingClientRect().bottom>innerHeight)fb.scrollIntoView({block:"nearest",behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})}
 function go(n){const j=S.i+n;if(j<0||j>=S.ids.length)return;S.i=j;quiz();window.scrollTo(0,0)}
 
 let filt="all";
 function result(){
   const ids=S.ids,right=ids.filter(id=>S.picks[id]===DATA[id].ans).length,ans=ids.filter(id=>id in S.picks).length,pct=ids.length?Math.round(right/ids.length*100):0;
-  const R=56,C=2*Math.PI*R;
+  const R=56,C=2*Math.PI*R,mk=marks(S),tuN=ids.filter(id=>S.tu[id]&&!(id in S.picks)).length;clearInterval(tick);tick=null;if(!S.t1)S.t1=Date.now();
   const byPart=PARTS.map(p=>{const x=ids.filter(id=>DATA[id].part===p.n);return {p,n:x.length,r:x.filter(id=>S.picks[id]===DATA[id].ans).length}}).filter(o=>o.n);
   const wrongIds=ids.filter(id=>id in S.picks&&S.picks[id]!==DATA[id].ans);
   const list=ids.filter(id=>filt==="all"||(filt==="wrong"&&id in S.picks&&S.picks[id]!==DATA[id].ans)||(filt==="skip"&&!(id in S.picks))||(filt==="fix"&&DATA[id].fix));
   $("result").innerHTML=`<div class="card">
   <div class="score"><svg class="ring" viewBox="0 0 132 132" role="img" aria-label="${pct}% correct"><circle cx="66" cy="66" r="${R}" fill="none" stroke="var(--line)" stroke-width="12"/>${pct?`<circle cx="66" cy="66" r="${R}" fill="none" stroke="var(--ok)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${C*pct/100} ${C}" transform="rotate(-90 66 66)"/>`:""}<text x="66" y="74" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="28" fill="var(--ink)">${pct}%</text></svg>
-  <div><h2>${right} of ${ids.length} correct</h2><p>${esc(S.label)} · ${ans} answered, ${ans-right} wrong, ${ids.length-ans} skipped</p></div></div>
+  <div><h2>${fmtN(mk.m)} / ${ids.length} marks</h2><p>${right} correct (+${right}) · ${ans-right} wrong (−${fmtN((ans-right)*S.pen)}) · ${ids.length-ans} skipped${tuN?`, ${tuN} timed out`:""}<br>${esc(S.label)} · ${pct}% correct · time taken ${fmtT((S.t1-S.t0)/1000)}</p></div></div>
   ${byPart.length>1?`<div class="bars">${byPart.map(o=>`<div class="bar"><div class="l"><span>${esc(o.p.t)}</span><span>${o.r} / ${o.n}</span></div><div class="tr"><i style="width:${o.r/o.n*100}%"></i></div></div>`).join("")}</div>`:""}
   <div class="nav" style="margin-top:0">${wrongIds.length?`<button class="btn pri" type="button" id="retry">Retry ${wrongIds.length} wrong</button>`:""}<button class="btn" type="button" id="again">Back to all parts</button></div>
   </div>
   <h2 style="font-size:24px;margin:28px 0 4px">Review with explanations</h2>
   <div class="filt">${[["all","All"],["wrong","Wrong"],["skip","Skipped"],["fix","Corrected in guide"]].map(([k,l])=>`<button type="button" data-f="${k}" class="${filt===k?"on":""}">${l}</button>`).join("")}</div>
   <div>${list.length?list.map(id=>{const d=DATA[id],p=S.picks[id],st=p===undefined?"sk":p===d.ans?"ok":"bad";
-    return `<div class="rv"><h3><span class="tag ${st}">${st==="ok"?"Correct":st==="bad"?"Wrong":"Skipped"}</span>Q${id+1}. ${esc(d.q)}</h3>
+    return `<div class="rv"><h3><span class="tag ${st}">${st==="ok"?"Correct +1":st==="bad"?"Wrong −"+fmtN(S.pen):S.tu[id]?"Time up":"Skipped"}</span>Q${id+1}. ${esc(d.q)}</h3>
     ${st==="bad"?`<p class="a">Your answer: ${esc(p)}</p>`:""}<p class="a"><b>Answer:</b> ${esc(d.ans)}</p><p class="e">${esc(d.e)}</p>${d.fix?`<div class="note">${esc(d.fix)}</div>`:""}</div>`}).join(""):`<p class="hint">Nothing here.</p>`}</div>`;
   const rt=$("retry");if(rt)rt.onclick=()=>{filt="all";start(shuf(wrongIds),"Retry wrong answers")};
   $("again").onclick=()=>{filt="all";S=null;home()};
   $("result").querySelectorAll(".filt button").forEach(b=>b.onclick=()=>{filt=b.dataset.f;const y=scrollY;result();window.scrollTo(0,y)});
   if($("result").classList.contains("hidden"))show("result");else route();
 }
-$("homeBtn").onclick=()=>{S=null;filt="all";home()};
+$("homeBtn").onclick=()=>{clearInterval(tick);S=null;filt="all";home()};
 document.addEventListener("keydown",e=>{
   if($("quiz").classList.contains("hidden")||e.metaKey||e.ctrlKey||e.altKey)return;
   const k=e.key.toLowerCase(),m={"1":0,"2":1,"3":2,"4":3,a:0,b:1,c:2,d:3};
